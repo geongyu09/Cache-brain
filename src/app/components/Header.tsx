@@ -5,6 +5,7 @@ export default function Header() {
     <header className="w-full flex ">
       <h1>CacheBrain</h1>
       <div>icon</div>
+      <button>signin</button>
     </header>
   );
 }
