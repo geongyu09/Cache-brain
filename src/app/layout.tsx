@@ -18,12 +18,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" className={inter.className}>
-      <AuthProvider>
-        <body className="flex flex-col w-[100vw] h-[100vh] max-w-screen-2xl mx-auto bg-slate-700">
-          <Header />
+      <body className="flex flex-col w-[100vw] h-[100vh] max-w-screen-2xl mx-auto bg-slate-700">
+        <AuthProvider>
           <main className="grow w-full ">{children}</main>
-        </body>
-      </AuthProvider>
+        </AuthProvider>
+      </body>
     </html>
   );
 }
