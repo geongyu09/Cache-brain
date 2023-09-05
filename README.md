@@ -1,34 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CacheBrain
 
-## Getting Started
+캐시란 컴퓨터에서 작게는 하나의 게산을, 크게는 하나의 프로그램을 실행하기 위해서 필요한 정보들을 중앙 처리 장치(cpu)와 가장 가깝고 빠르게 정보를 주고 받을 수 있는 위치에 저장시켜서 필요할 때마다 빠른 속도로 데이터를 가져올 수 있도록 해준다. 또한 이전에 작업한 내용을 미리 저장하여 다음에 동일한 작업을 수행할 때 이미 저장된 데이터를 가져옴으로서 높은 퍼포먼스를 보여줄 수 있다. 이처럼 중앙처리장치를 우리의 뇌(brain)라고 하였을 때, 이 사이트를 가지고 공부하게 되면 머릿속에 해당 공부내용이 캐시되어 , 이후에 시험을 볼 때 빠르게 캐시된 데이터를 빠서 쓸 수 있도록 도와준다.
 
-First, run the development server:
+# 기술 스택
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## 언어
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+javascript, typescript
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 패키지 메니저
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+yarn
 
-## Learn More
+## 웹 프레임워크
 
-To learn more about Next.js, take a look at the following resources:
+next.js, react.js
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 스타일 라이브러리
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+tailwind, post css?
 
-## Deploy on Vercel
+## 로그인 처리
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Next-Auth.js
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 데이터 관리
+
+sanity
+
+## 기타 라이브러리
+
+# 백로그
+
+[CasheBrain 백로그](https://www.notion.so/CasheBrain-d69b36f605244032a17eceb28d724530?pvs=21)
