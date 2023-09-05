@@ -1,3 +1,10 @@
-export default function Home() {
-  return <main></main>;
+import Footer from "./components/Footer";
+
+export default function HomePage() {
+  return (
+    <>
+      {/*  */}
+      <Footer />
+    </>
+  );
 }
