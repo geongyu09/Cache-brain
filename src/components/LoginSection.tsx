@@ -12,14 +12,16 @@ type Props = {
 
 export default function LoginSection({ providers }: Props) {
   return (
-    <section>
-      {Object.values(providers).map((provider) => (
-        <div key={provider.name}>
-          <button onClick={() => signIn(provider.id)}>
-            Sign in with {provider.name}
-          </button>
-        </div>
-      ))}
+    <section className="w-96 h-96 bg-slate-300 rounded-xl m-auto">
+      <h1>로그인</h1>
+      {providers &&
+        Object.values(providers).map((provider) => (
+          <div key={provider.name} className="bg-white">
+            <button onClick={() => signIn(provider.id)}>
+              Sign in with {provider.name}
+            </button>
+          </div>
+        ))}
     </section>
   );
 }

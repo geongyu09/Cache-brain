@@ -7,7 +7,7 @@ import React from "react";
 
 export default async function page() {
   const session = await getServerSession(authOptions);
-  if (session) redirect("/");
+  if (session) redirect("/"); //로그인 여부에 따른 리다이렉트
 
   const providers = await getProviders();
 
