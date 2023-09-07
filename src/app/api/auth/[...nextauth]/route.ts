@@ -11,6 +11,16 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: "/auth/signin",
   },
+  callbacks: {
+    async signIn({ user }) {
+      const isAllowedToSignIn = true;
+      if (isAllowedToSignIn) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+  },
 };
 
 const handler = NextAuth(authOptions);

@@ -1,7 +1,13 @@
 "use client";
-import { ClientSafeProvider, LiteralUnion, signIn } from "next-auth/react";
+import {
+  ClientSafeProvider,
+  LiteralUnion,
+  signIn,
+  useSession,
+} from "next-auth/react";
 import { BuiltInProviderType } from "../../node_modules/next-auth/src/providers/index";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 type Props = {
   providers: Record<
@@ -11,6 +17,10 @@ type Props = {
 };
 
 export default function LoginSection({ providers }: Props) {
+  const session = useSession();
+  const user = session.data?.user;
+  const router = useRouter();
+  if (user) router.push(`/${user.name}`);
   return (
     <section className="w-96 h-96 bg-slate-300 rounded-xl m-auto">
       <h1>로그인</h1>
