@@ -12,13 +12,9 @@ export const authOptions: NextAuthOptions = {
     signIn: "/auth/signin",
   },
   callbacks: {
-    async signIn({ user }) {
-      const isAllowedToSignIn = true;
-      if (isAllowedToSignIn) {
-        return true;
-      } else {
-        return false;
-      }
+    async session({ session }) {
+      console.log(session);
+      return session;
     },
   },
 };
