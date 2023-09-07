@@ -1,5 +1,6 @@
 import { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import { makeNewUser } from "./user";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -13,6 +14,7 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async signIn({ user }) {
+      await makeNewUser(user);
       const isAllowedToSignIn = true;
       if (isAllowedToSignIn) {
         return true;
@@ -21,7 +23,6 @@ export const authOptions: NextAuthOptions = {
       }
     },
     async session({ session }) {
-      console.log(session);
       return session;
     },
   },
