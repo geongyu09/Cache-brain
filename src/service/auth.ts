@@ -22,8 +22,20 @@ export const authOptions: NextAuthOptions = {
         return false;
       }
     },
-    async session({ session }) {
+    async session({ session, token }) {
+      const user = {
+        ...session?.user,
+        username: session?.user?.email ? session.user.email.split("@")[0] : "",
+        id: token.id as string,
+      };
+      session.user = user;
       return session;
+    },
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+      }
+      return token;
     },
   },
 };

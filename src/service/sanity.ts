@@ -1,5 +1,4 @@
 import { createClient } from "@sanity/client";
-console.log();
 
 export const client = createClient({
   projectId: process.env.SANITY_PROJECT_ID,
