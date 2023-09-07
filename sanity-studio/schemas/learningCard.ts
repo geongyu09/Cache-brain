@@ -9,9 +9,44 @@ export default {
       title: 'Title',
     },
     {
-      name: 'destribute',
+      name: 'originCard',
+      type: 'reference',
+      to: [{type: 'card'}],
+    },
+    {
+      name: 'process',
+      title: 'Process',
+      type: 'array',
+      of: [
+        {
+          title: 'Cardlist',
+          name: 'cardlist',
+          type: 'object',
+          fields: [
+            {name: 'problem', type: 'string', title: 'Problem'},
+            {name: 'answer', type: 'string', title: 'Answer'},
+            {name: 'completeness', type: 'string', title: 'Completeness'},
+          ],
+        },
+      ],
+    },
+    {
+      name: 'learner',
+      type: 'reference',
+      to: [{type: 'user'}],
+    },
+    {
+      name: 'tag',
       type: 'string',
-      title: 'Destribute',
+      title: 'Tag',
+    },
+    {
+      title: 'Last study date',
+      name: 'lastStudyDate',
+      type: 'date',
+      options: {
+        dateFormat: 'YYYY-MM-DD',
+      },
     },
   ],
 }
