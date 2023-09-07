@@ -1,24 +1,10 @@
 import { createClient } from "@sanity/client";
+console.log();
 
 export const client = createClient({
-  projectId: "your-project-id",
-  dataset: "your-dataset-name",
+  projectId: process.env.SANITY_PROJECT_ID,
+  dataset: process.env.SANITY_DATASET,
   useCdn: true,
-  apiVersion: "2023-05-03",
+  apiVersion: "2023-09-07",
   token: process.env.SANITY_SECRET_TOKEN,
 });
-
-export async function getPosts() {
-  const posts = await client.fetch('*[_type == "post"]');
-  return posts;
-}
-
-export async function createPost(post: Post) {
-  const result = client.create(post);
-  return result;
-}
-
-export async function updateDocumentTitle(_id, title) {
-  const result = client.patch(_id).set({ title });
-  return result;
-}
