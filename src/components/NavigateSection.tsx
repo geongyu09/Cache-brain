@@ -1,5 +1,6 @@
 import React from "react";
 import NavListComponent from "./NavListComponent";
+import { Brain } from "./ui/icon";
 
 export type NavList = {
   title: string;
@@ -27,9 +28,9 @@ export default function NavigateSection() {
   };
   return (
     <section className="w-80 bg-slate-100 flex flex-col justify-betweenv border-r-2">
-      <div className="flex w-full justify-between p-5">
-        <div className="bg-purple-600">icon</div>
-        <div className="bg-purple-600"> ... </div>
+      <div className="flex w-full gap-7 p-5">
+        <Brain />
+        <h1>Cache Brain</h1>
       </div>
       <NavListComponent content={Navigation} />
       <NavListComponent content={Bookmarks} />
