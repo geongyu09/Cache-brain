@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
 import NavListComponent from "./NavListComponent";
-import { Brain } from "./ui/icon";
+import { Book, Brain, Complete, Instudy, Own } from "./ui/icon";
 import { useSession } from "next-auth/react";
 
 export type NavList = {
   title: string;
-  list: { text: string; url: string }[];
+  list: { text: string; url: string; icon?: React.ReactElement }[];
 };
 
 export default function NavigateSection() {
@@ -15,10 +15,10 @@ export default function NavigateSection() {
   const Navigation: NavList = {
     title: "Navigation",
     list: [
-      { text: "All cards", url: `/${username}/` },
-      { text: "Own cards", url: `/${username}/own` },
-      { text: "in study", url: `/${username}/instudy` },
-      { text: "준비중...", url: `/${username}/` },
+      { text: "All cards", url: `/${username}/`, icon: <Book /> },
+      { text: "Own cards", url: `/${username}/own`, icon: <Own /> },
+      { text: "in study", url: `/${username}/instudy`, icon: <Instudy /> },
+      { text: "complete", url: `/${username}/complete`, icon: <Complete /> },
     ],
   };
   //서버에서 북마크 정보 가지고 올 것.
