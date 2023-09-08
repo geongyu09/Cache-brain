@@ -1,5 +1,6 @@
 import React from "react";
 import { NavList } from "./NavigateSection";
+import Link from "next/link";
 
 type Props = {
   content: NavList & {
@@ -14,10 +15,12 @@ export default function NavListComponent({ content }: Props) {
       <h4 className="text-gray-400 mb-2 text-sm">{title}</h4>
       <ul>
         {list.map((item, index) => (
-          <li key={index} className="flex mb-1   ">
-            <div className="mr-2">icon</div>
-            {item.text}
-          </li>
+          <Link key={index} href={`${item.url}`}>
+            <li className="flex mb-1   ">
+              <div className="mr-2">icon</div>
+              {item.text}
+            </li>
+          </Link>
         ))}
       </ul>
     </div>

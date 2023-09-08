@@ -1,29 +1,34 @@
+"use client";
 import React from "react";
 import NavListComponent from "./NavListComponent";
 import { Brain } from "./ui/icon";
+import { useSession } from "next-auth/react";
 
 export type NavList = {
   title: string;
-  list: { text: string }[];
+  list: { text: string; url: string }[];
 };
 
 export default function NavigateSection() {
+  const session = useSession();
+  const username = session.data?.user.username;
   const Navigation: NavList = {
     title: "Navigation",
     list: [
-      { text: "All cards" },
-      { text: "Own cards" },
-      { text: "in study" },
-      { text: "준비중..." },
+      { text: "All cards", url: `/${username}/` },
+      { text: "Own cards", url: `/${username}/own` },
+      { text: "in study", url: `/${username}/instudy` },
+      { text: "준비중...", url: `/${username}/` },
     ],
   };
+  //서버에서 북마크 정보 가지고 올 것.
   const Bookmarks: NavList = {
     title: "Bookmarks",
     list: [
-      { text: "abcd" },
-      { text: "efghijkl" },
-      { text: "in study" },
-      { text: "준비중..." },
+      { text: "abcd", url: "/${username}/card/${cardid}" },
+      { text: "efghijkl", url: "/${username}/card/${cardid}" },
+      { text: "in study", url: "/${username}/card/${cardid}" },
+      { text: "준비중...", url: "/${username}/card/${cardid}" },
     ],
   };
   return (
