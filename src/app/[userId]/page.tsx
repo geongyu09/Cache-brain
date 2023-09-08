@@ -6,5 +6,5 @@ export default async function UserDetailPage() {
   const session = await getServerSession(authOptions);
   const user = session?.user;
 
-  return <div></div>;
+  return <section className="bg-slate-100 "></section>;
 }

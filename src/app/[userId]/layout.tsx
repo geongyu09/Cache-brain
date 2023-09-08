@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="flex w-full h-full">
+    <section className=" flex w-full h-full ">
       <NavigateSection />
       <section className="w-full">
         <Header />
