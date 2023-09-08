@@ -3,6 +3,7 @@ import React from "react";
 import NavListComponent from "./NavListComponent";
 import { Book, Brain, Complete, Instudy, Own } from "./ui/icon";
 import { useSession } from "next-auth/react";
+import Hero from "./Hero";
 
 export type NavList = {
   title: string;
@@ -39,7 +40,7 @@ export default function NavigateSection() {
       </div>
       <NavListComponent content={Navigation} />
       <NavListComponent content={Bookmarks} style="grow" />
-      <div>user</div>
+      <Hero />
     </section>
   );
 }

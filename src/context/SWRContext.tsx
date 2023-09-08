@@ -6,5 +6,6 @@ export default function SWRContext({
 }: {
   children: React.ReactElement;
 }) {
-  return <SWRConfig>{children}</SWRConfig>;
+  const fetcher = (url: string) => fetch(url).then((res) => res.json());
+  return <SWRConfig value={{ fetcher }}>{children}</SWRConfig>;
 }
