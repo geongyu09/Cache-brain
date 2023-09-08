@@ -32,13 +32,13 @@ export default function NavigateSection() {
     ],
   };
   return (
-    <section className="w-80 bg-slate-100 flex flex-col justify-betweenv border-r-2">
+    <section className="w-80 bg-slate-100 flex flex-col justify-between border-r-2">
       <div className="flex w-full gap-7 p-5">
         <Brain />
         <h1>Cache Brain</h1>
       </div>
       <NavListComponent content={Navigation} />
-      <NavListComponent content={Bookmarks} />
+      <NavListComponent content={Bookmarks} style="grow" />
       <div>user</div>
     </section>
   );

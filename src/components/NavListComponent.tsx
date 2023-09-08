@@ -3,13 +3,12 @@ import { NavList } from "./NavigateSection";
 import Link from "next/link";
 
 type Props = {
-  content: NavList & {
-    style?: string;
-  };
+  style?: string;
+  content: NavList & {};
 };
 
-export default function NavListComponent({ content }: Props) {
-  const { style, title, list } = content;
+export default function NavListComponent({ content, style }: Props) {
+  const { title, list } = content;
   return (
     <div className={`my-10 mx-5 ${style}`}>
       <h4 className="text-gray-400 mb-2 text-sm">{title}</h4>
