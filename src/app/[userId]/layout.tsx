@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import NavigateSection from "@/components/NavigateSection";
+import SWRContext from "@/context/SWRContext";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -13,12 +14,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className=" flex w-full h-full ">
-      <NavigateSection />
-      <section className="w-full">
-        <Header />
-        {children}
+    <SWRContext>
+      <section className=" flex w-full h-full ">
+        <NavigateSection />
+        <section className="w-full">
+          <Header />
+          {children}
+        </section>
       </section>
-    </section>
+    </SWRContext>
   );
 }
