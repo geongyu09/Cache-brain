@@ -5,11 +5,9 @@ export async function getCards({
   ownList,
   userId,
 }: CheckCardListTypeParam): Promise<Card[]> {
-  const query = `
-    *[_type=="card" ${ownList ? `&& owner._ref == "${userId}"` : ""}]{
-      "id" : _id,title,description,tags ,"createdAt":_createdAt,"updatedAt":_updatedAt,owner->{name}}
-    `;
-  console.log(query);
+  const query = `*[_type=="card"${
+    ownList ? `&&owner._ref=="${userId}"` : ""
+  }]{"id" : _id,title,description,tags ,"createdAt":_createdAt,"updatedAt":_updatedAt,owner->{name}}`;
   return await client.fetch(query);
 }
 

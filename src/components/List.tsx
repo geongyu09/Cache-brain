@@ -16,10 +16,20 @@ export default function List({ card, modify }: Props) {
       onClick={onClick}
     >
       <div>
-        <h4>{`${card.title} / ${card.owner?.name}`}</h4>
-        <p>{card.description}</p>
+        <h4 className="text-lg">{`${card.title} / ${card.owner?.name}`}</h4>
+        <div className="flex gap-3 my-3">
+          {card.tags?.map((item, index) => (
+            <div
+              key={index}
+              className="bg-emerald-400 px-2 rounded-2xl text-sm"
+            >
+              {item}
+            </div>
+          ))}
+        </div>
+        <p className="text-gray-400">{card.description}</p>
       </div>
-      <div>{">"} </div>
+      <div>{">"}</div>
     </li>
   );
 }

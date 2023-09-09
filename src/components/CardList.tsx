@@ -9,7 +9,7 @@ type Props = {
 
 export default function CardList({ cards, modify }: Props) {
   return (
-    <ul className="grow">
+    <ul className="grow w-full h-5/6 mx-5 overflow-y-auto">
       {cards.map((card) => (
         <List
           key={card.id}

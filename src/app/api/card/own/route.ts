@@ -11,6 +11,5 @@ export async function GET(_: Request) {
     });
   const user = session?.user;
   const data = await getCards({ ownList: true, userId: user.id });
-  console.log(data);
   return NextResponse.json(data);
 }

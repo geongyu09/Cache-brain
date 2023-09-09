@@ -17,8 +17,6 @@ export default function CardListContent({ typeOwn }: Props) {
 
   return (
     <section className="flex flex-col w-full h-full">
-      <h3 className="mb-4">{`${typeOwn ? "내" : "전체"}`} 카드 보기</h3>
-      <hr />
       <div className="h-full md:flex">
         <CardList cards={cards} modify={setFocus} />
         <CardDetail id={focus} />
