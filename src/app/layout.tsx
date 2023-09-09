@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" className={inter.className}>
-      <body className="flex flex-col w-[100vw] h-[100vh] max-w-screen-2xl mx-auto bg-slate-700">
+      <body className="flex flex-col w-[100vw] h-[100vh] max-w-screen-2xl mx-auto">
         <AuthProvider>
           <main className="grow w-full ">{children}</main>
         </AuthProvider>

@@ -17,7 +17,7 @@ export default async function UserDetailPage({ params: { userId } }: Props) {
 
   return (
     <>
-      <CardListContent typeOwn={false} />
+      <CardListContent typeOwn={true} />
     </>
   );
 }

@@ -9,6 +9,11 @@ export default {
       title: 'Name',
     },
     {
+      name: 'image',
+      type: 'string',
+      title: 'Image',
+    },
+    {
       name: 'username',
       type: 'string',
       titel: 'Username',
@@ -20,7 +25,7 @@ export default {
       of: [
         {
           type: 'reference',
-          to: [{type: 'user'}],
+          to: [{type: 'card'}],
         },
       ],
     },
