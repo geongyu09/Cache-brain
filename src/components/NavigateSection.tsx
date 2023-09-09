@@ -1,4 +1,5 @@
 "use client";
+import useSWR from "swr";
 import React from "react";
 import NavListComponent from "./NavListComponent";
 import { Book, Brain, Complete, Instudy, Own } from "./ui/icon";
@@ -22,6 +23,7 @@ export default function NavigateSection() {
       { text: "complete", url: `/${username}/complete`, icon: <Complete /> },
     ],
   };
+
   //서버에서 북마크 정보 가지고 올 것.
   const Bookmarks: NavList = {
     title: "Bookmarks",
