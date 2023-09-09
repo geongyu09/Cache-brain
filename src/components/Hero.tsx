@@ -13,8 +13,12 @@ export default function Hero() {
   return (
     <>
       {user && (
-        <section className="border-t-2">
-          <div>{user.username}</div>
+        <section className="flex items-center gap-5 p-6">
+          <img src={user.image} className="w-12 h-12 rounded-full" />
+          <div>
+            <h4 className="text-lg">{user.name}</h4>
+            <p className="text-sm text-gray-400">{user.username}</p>
+          </div>
         </section>
       )}
     </>
