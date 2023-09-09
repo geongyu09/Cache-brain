@@ -2,6 +2,7 @@ import { DetailCard } from "@/model/card";
 import React from "react";
 import useSWR from "swr";
 import StyledButton from "./ui/StyledButton";
+import StudyButton from "./StudyButton";
 
 type Props = {
   id: string;
@@ -21,7 +22,7 @@ export default function CardDetail({ id }: Props) {
               {/* <div className="px-4 py-2 bg-indigo-600 rounded-2xl">
                 학습하기
               </div> */}
-              <StyledButton text="학습하기" style="mb-2" />
+              <StudyButton cardId={card.id} />
             </div>
             <hr className="my-1" />
             <p>{card?.description}</p>

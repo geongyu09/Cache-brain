@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 export default function NewCardButton() {
   const naviate = useRouter();
   const onClick = () => {
-    console.log("hi");
     naviate.push("/new");
   };
   return <StyledButton text={"+ new card"} handler={() => onClick()} />;

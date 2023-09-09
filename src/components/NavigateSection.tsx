@@ -28,10 +28,10 @@ export default function NavigateSection() {
   const Bookmarks: NavList = {
     title: "Bookmarks",
     list: [
-      { text: "abcd", url: "/${username}/card/${cardid}" },
-      { text: "efghijkl", url: "/${username}/card/${cardid}" },
-      { text: "in study", url: "/${username}/card/${cardid}" },
-      { text: "준비중...", url: "/${username}/card/${cardid}" },
+      { text: "abcd", url: "/study/${cardid}" },
+      { text: "efghijkl", url: "/study/${cardid}" },
+      { text: "in study", url: "/study/${cardid}" },
+      { text: "준비중...", url: "/study/${cardid}" },
     ],
   };
   return (
