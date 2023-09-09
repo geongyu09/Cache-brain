@@ -9,9 +9,9 @@ export default {
       title: 'Title',
     },
     {
-      name: 'destribute',
+      name: 'description',
       type: 'string',
-      title: 'Destribute',
+      title: 'Description',
     },
     {
       name: 'content',
@@ -30,22 +30,19 @@ export default {
       ],
     },
     {
-      title: 'Release date',
-      name: 'releaseDate',
-      type: 'date',
-      options: {
-        dateFormat: 'YYYY-MM-DD',
-      },
-    },
-    {
       name: 'owner',
       type: 'reference',
       to: [{type: 'user'}],
     },
     {
-      name: 'tag',
-      type: 'string',
-      title: 'Tag',
+      name: 'tags',
+      type: 'array',
+      title: 'Tags',
+      of: [
+        {
+          type: 'string',
+        },
+      ],
     },
   ],
 }
