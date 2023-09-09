@@ -6,9 +6,10 @@ export async function getCards({
   userId,
 }: CheckCardListTypeParam): Promise<Card[]> {
   const query = `
-    *[_type=="card" ${ownList ? "&& owner._ref == " + userId : ""}]{
+    *[_type=="card" ${ownList ? `&& owner._ref == "${userId}"` : ""}]{
       "id" : _id,title,description,tags ,"createdAt":_createdAt,"updatedAt":_updatedAt,owner->{name}}
     `;
+  console.log(query);
   return await client.fetch(query);
 }
 

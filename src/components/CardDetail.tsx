@@ -10,16 +10,19 @@ export default function CardDetail({ id }: Props) {
   const GET_CARD_URL = `/api/card/detail/${id}`;
   const { data: card, isLoading, error } = useSWR<DetailCard>(GET_CARD_URL);
   return (
-    <section className="bg-slate-100 w-full max-w-sm h-full">
-      <div>
-        <h4>{card?.title}</h4>
-        <p>{card?.description}</p>
-      </div>
-      <ul>
-        {card?.content.map((item) => (
-          <li key={item.id}>{`${item.problem} / ${item.answer}`}</li>
-        ))}
-      </ul>
-    </section>
+    <>
+      <section className="bg-slate-100 w-full max-w-sm h-full">
+        {isLoading && <p>Loading...</p>}
+        <div>
+          <h4>{card?.title}</h4>
+          <p>{card?.description}</p>
+        </div>
+        <ul>
+          {card?.content.map((item) => (
+            <li key={item.id}>{`${item.problem} / ${item.answer}`}</li>
+          ))}
+        </ul>
+      </section>
+    </>
   );
 }
