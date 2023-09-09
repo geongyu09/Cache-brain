@@ -4,7 +4,19 @@ import React from "react";
 import { HomeUser } from "@/model/user";
 
 export default function Hero() {
-  const { data, isLoading, error } = useSWR<HomeUser>("/api/user/loggedInUser");
+  const {
+    data: user,
+    isLoading,
+    error,
+  } = useSWR<HomeUser>("/api/user/loggedInUser");
 
-  return <section></section>;
+  return (
+    <>
+      {user && (
+        <section className="border-t-2">
+          <div>{user.username}</div>
+        </section>
+      )}
+    </>
+  );
 }

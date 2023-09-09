@@ -27,6 +27,6 @@ export async function getUserInfo(
 ): Promise<HomeUser> {
   const query = `*[_type == "user" && username == "${username}"]{"id":_id,name,username,image,${
     own ? `own[]->,` : ""
-  }${learning ? `learning[]->` : ""}}`;
+  }${learning ? `learning[]->` : ""}}[0]`;
   return await client.fetch(query);
 }
