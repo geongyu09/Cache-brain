@@ -1,5 +1,6 @@
 import { User } from "next-auth";
 import { client } from "./sanity";
+import { HomeUser } from "@/model/user";
 
 /**
  * 유저의 정보를 받아서, 만약 기존에 없던 유저라면 sanity에 저장
@@ -23,21 +24,9 @@ export async function makeNewUser({ name, email, id, image }: User) {
 export async function getUserInfo(
   username: string,
   { own = false, learning = false }: { own: boolean; learning: boolean }
-) {
-  // const query = `*[_type == "user" && username == "${username}"]{"id":_id,name,username,image,${
-  //   own ? `own[]->,` : ""
-  // }${learning ? `learning[]->` : ""}}`;
-
-  console.log("aa");
-  const data =
-    await client.fetch(`*[_type == "user" && username == "geongyu09"]{
-    "id" : _id,
-      name,
-      username,
-      image,
-      own[]->,
-      learning[]->
-  }`);
-  console.log(data);
-  return data;
+): Promise<HomeUser> {
+  const query = `*[_type == "user" && username == "${username}"]{"id":_id,name,username,image,${
+    own ? `own[]->,` : ""
+  }${learning ? `learning[]->` : ""}}`;
+  return await client.fetch(query);
 }

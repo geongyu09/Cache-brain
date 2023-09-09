@@ -1,10 +1,10 @@
 "use client";
 import useSWR from "swr";
 import React from "react";
+import { HomeUser } from "@/model/user";
 
 export default function Hero() {
-  const { data, isLoading, error } = useSWR("/api/user/loggedInUser");
-  console.log(data);
-  console.log(error);
-  return <section>data</section>;
+  const { data, isLoading, error } = useSWR<HomeUser>("/api/user/loggedInUser");
+
+  return <section></section>;
 }
