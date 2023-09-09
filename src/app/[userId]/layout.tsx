@@ -15,9 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <SWRContext>
-      <section className=" flex w-full h-full ">
+      <section className=" flex w-full h-full overflow-hidden">
         <NavigateSection />
-        <section className="w-full">
+        <section className="w-full max-h-[100vh]">
           <Header />
           {children}
         </section>
