@@ -6,7 +6,7 @@ import { Text } from "../LoginButton";
 type Props = {
   text: string;
   style?: string;
-  handler?: () => {};
+  handler?: () => void;
 };
 
 export default function StyledButton({ text, handler, style }: Props) {

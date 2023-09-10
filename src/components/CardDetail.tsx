@@ -2,6 +2,7 @@ import { DetailCard } from "@/model/card";
 import React from "react";
 import useSWR from "swr";
 import StyledButton from "./ui/StyledButton";
+import StudyButton from "./StudyButton";
 
 type Props = {
   id: string;
@@ -11,7 +12,7 @@ export default function CardDetail({ id }: Props) {
   const GET_CARD_URL = `/api/card/detail/${id}`;
   const { data: card, isLoading, error } = useSWR<DetailCard>(GET_CARD_URL);
   return (
-    <section className="bg-slate-100 w-full max-w-sm h-5/6 overflow-auto ">
+    <section className="bg-slate-100 w-full max-w-sm h-[90%] overflow-auto ">
       {isLoading && id !== "" ? <p>Loading...</p> : null}
       {card && (
         <section className="flex flex-col h-full p-5">
@@ -21,7 +22,7 @@ export default function CardDetail({ id }: Props) {
               {/* <div className="px-4 py-2 bg-indigo-600 rounded-2xl">
                 학습하기
               </div> */}
-              <StyledButton text="학습하기" style="mb-2" />
+              <StudyButton cardId={card.id} />
             </div>
             <hr className="my-1" />
             <p>{card?.description}</p>

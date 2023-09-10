@@ -1,18 +1,18 @@
-"use client";
 import React from "react";
 import NavListComponent from "./NavListComponent";
 import { Book, Brain, Complete, Instudy, Own } from "./ui/icon";
-import { useSession } from "next-auth/react";
 import Hero from "./Hero";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/service/auth";
 
 export type NavList = {
   title: string;
   list: { text: string; url: string; icon?: React.ReactElement }[];
 };
 
-export default function NavigateSection() {
-  const session = useSession();
-  const username = session.data?.user.username;
+export default async function NavigateSection() {
+  const session = await getServerSession(authOptions);
+  const username = session?.user.username;
   const Navigation: NavList = {
     title: "Navigation",
     list: [
@@ -22,14 +22,15 @@ export default function NavigateSection() {
       { text: "complete", url: `/${username}/complete`, icon: <Complete /> },
     ],
   };
+
   //서버에서 북마크 정보 가지고 올 것.
   const Bookmarks: NavList = {
     title: "Bookmarks",
     list: [
-      { text: "abcd", url: "/${username}/card/${cardid}" },
-      { text: "efghijkl", url: "/${username}/card/${cardid}" },
-      { text: "in study", url: "/${username}/card/${cardid}" },
-      { text: "준비중...", url: "/${username}/card/${cardid}" },
+      { text: "준비중...", url: "/study/${cardid}" },
+      { text: "준비중...", url: "/study/${cardid}" },
+      { text: "준비중...", url: "/study/${cardid}" },
+      { text: "준비중...", url: "/study/${cardid}" },
     ],
   };
   return (
