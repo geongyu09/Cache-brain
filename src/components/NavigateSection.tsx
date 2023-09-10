@@ -1,19 +1,18 @@
-"use client";
-import useSWR from "swr";
 import React from "react";
 import NavListComponent from "./NavListComponent";
 import { Book, Brain, Complete, Instudy, Own } from "./ui/icon";
-import { useSession } from "next-auth/react";
 import Hero from "./Hero";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/service/auth";
 
 export type NavList = {
   title: string;
   list: { text: string; url: string; icon?: React.ReactElement }[];
 };
 
-export default function NavigateSection() {
-  const session = useSession();
-  const username = session.data?.user.username;
+export default async function NavigateSection() {
+  const session = await getServerSession(authOptions);
+  const username = session?.user.username;
   const Navigation: NavList = {
     title: "Navigation",
     list: [
@@ -28,9 +27,9 @@ export default function NavigateSection() {
   const Bookmarks: NavList = {
     title: "Bookmarks",
     list: [
-      { text: "abcd", url: "/study/${cardid}" },
-      { text: "efghijkl", url: "/study/${cardid}" },
-      { text: "in study", url: "/study/${cardid}" },
+      { text: "준비중...", url: "/study/${cardid}" },
+      { text: "준비중...", url: "/study/${cardid}" },
+      { text: "준비중...", url: "/study/${cardid}" },
       { text: "준비중...", url: "/study/${cardid}" },
     ],
   };

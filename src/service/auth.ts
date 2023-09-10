@@ -14,8 +14,7 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async signIn({ user }) {
-      await makeNewUser(user);
-      const isAllowedToSignIn = true;
+      const isAllowedToSignIn = await makeNewUser(user);
       if (isAllowedToSignIn) {
         return true;
       } else {
