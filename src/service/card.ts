@@ -11,9 +11,9 @@ export async function getCards({
   return await client.fetch(query);
 }
 
-export async function getCardDetail(id: string): Promise<DetailCard> {
+export async function getCardDetail(cardId: string): Promise<DetailCard> {
   return await client.fetch(`
-  *[_type=="card" && _id == "${id}"][0]{
+  *[_type=="card" && _id == "${cardId}"][0]{
     content[]{"id":_key,problem,answer}, "createdAt":_createdAt,description,"id":_id,owner->{name},title,tags[]
   }
     `);

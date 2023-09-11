@@ -16,7 +16,7 @@ export default function RootLayout({
     <section className=" flex w-full h-full overflow-hidden">
       <NavigateSection />
       <section className="w-full max-h-[100vh]">
-        <Header />
+        <Header position="detail" />
         {children}
       </section>
     </section>

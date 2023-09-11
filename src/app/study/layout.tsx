@@ -1,5 +1,4 @@
 import Header from "@/components/Header";
-import NavigateSection from "@/components/NavigateSection";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -13,9 +12,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className=" ">
-      <Header />
-      {children}
+    <section className="w-full h-full overflow-hidden">
+      <Header position="study" />
+      <section className="w-full h-full flex">
+        <div className="w-10 h-full bg-slate-100 border-r-2"></div>
+        {children}
+      </section>
     </section>
   );
 }

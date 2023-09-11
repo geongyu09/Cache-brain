@@ -1,3 +1,4 @@
+import StudyComponent from "@/components/StudyComponent";
 import React from "react";
 
 type Props = {
@@ -5,7 +6,6 @@ type Props = {
 };
 
 export default function page({ params: { id } }: Props) {
-  //학습 카드를 만들기. => 서버상에서 동작해서 만들어줌
-  //이후에 데이터를 받아옴.
-  return <div>study {id}</div>;
+  //서버 : 학습 카드를 만들기(post), 유저에 해당 id 레퍼런스 추가하기, detail내용 받아오기,
+  return <StudyComponent params={id} />;
 }
