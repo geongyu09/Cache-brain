@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { AuthProvider } from "@/context/AuthContext";
+import SWRContext from "@/context/SWRContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,9 @@ export default function RootLayout({
     <html lang="ko" className={inter.className}>
       <body className="flex flex-col w-[100vw] h-[100vh] max-w-screen-2xl mx-auto">
         <AuthProvider>
-          <main className="grow w-full ">{children}</main>
+          <SWRContext>
+            <main className="grow w-full ">{children}</main>
+          </SWRContext>
         </AuthProvider>
       </body>
     </html>
