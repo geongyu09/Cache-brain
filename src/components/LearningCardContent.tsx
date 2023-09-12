@@ -1,13 +1,23 @@
 "use client";
-import { LearningCardContent } from "@/model/learningCard";
+import { Content, LearningCardContent } from "@/model/learningCard";
 import React from "react";
 import useSWR from "swr";
 import ContentList from "./ContentList";
 import { Filter } from "./StudyComponent";
 
-type Props = { params: string; filter: Filter };
+type Props = {
+  params: string;
+  filter: Filter;
+  selected: Content[];
+  selectedModify: (selected: Content, remove?: boolean) => void;
+};
 
-export default function LearningCardContent({ params, filter }: Props) {
+export default function LearningCardContent({
+  params,
+  filter,
+  selected,
+  selectedModify,
+}: Props) {
   const GET_CONTENT_URL = `/api/study/${params}`;
   const { data, isLoading, error } =
     useSWR<LearningCardContent>(GET_CONTENT_URL);
@@ -28,16 +38,46 @@ export default function LearningCardContent({ params, filter }: Props) {
         <ul className="h-full lg:overflow-auto">
           {filter == "all" ? (
             <>
-              <ContentList title="learned" learned={learned} />
-              <ContentList title="learning" learned={learning} />
-              <ContentList title="unlearned" learned={unlearned} />
+              <ContentList
+                title="learned"
+                learned={learned}
+                selected={selected}
+                selectedModify={selectedModify}
+              />
+              <ContentList
+                title="learning"
+                learned={learning}
+                selected={selected}
+                selectedModify={selectedModify}
+              />
+              <ContentList
+                title="unlearned"
+                learned={unlearned}
+                selected={selected}
+                selectedModify={selectedModify}
+              />
             </>
           ) : filter == "learned" ? (
-            <ContentList title="learned" learned={learned} />
+            <ContentList
+              title="learned"
+              learned={learned}
+              selected={selected}
+              selectedModify={selectedModify}
+            />
           ) : filter == "learning" ? (
-            <ContentList title="learning" learned={learning} />
+            <ContentList
+              title="learning"
+              learned={learning}
+              selected={selected}
+              selectedModify={selectedModify}
+            />
           ) : filter == "unlearned" ? (
-            <ContentList title="unlearned" learned={unlearned} />
+            <ContentList
+              title="unlearned"
+              learned={unlearned}
+              selected={selected}
+              selectedModify={selectedModify}
+            />
           ) : null}
         </ul>
       )}

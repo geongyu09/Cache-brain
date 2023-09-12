@@ -4,16 +4,23 @@ import React from "react";
 import useSWR from "swr";
 import { Filter } from "./StudyComponent";
 import FilterComponent from "./FilterComponent";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import StartButton from "./StartButton";
+import { Content } from "@/model/learningCard";
 
 type Props = {
   params: string;
   modify: (filter: Filter) => void;
   filter: Filter;
+  selected: Content[];
 };
 
-export default function LearningCardDetail({ params, modify, filter }: Props) {
+export default function LearningCardDetail({
+  params,
+  modify,
+  filter,
+  selected,
+}: Props) {
   const GET_CARD_DETAIL_URL = `/api/card/detail/${params}`;
   const router = useRouter();
   const {

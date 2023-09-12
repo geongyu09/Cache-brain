@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import LearningCardDetail from "./LearningCardDetail";
 import LearningCardContent from "./LearningCardContent";
+import { Content } from "@/model/learningCard";
 
 type Process = "unlearned" | "learned" | "learning";
 export type Filter = "all" | Process;
@@ -9,6 +10,7 @@ export type Filter = "all" | Process;
 export default function StudyComponent({ params }: { params: string }) {
   const MAKE_NEW_LEARNINGCARD = "/api/study";
   const [filter, setFilter] = useState<Filter>("all");
+  const [selected, setSelected] = useState<Content[]>([]);
 
   useEffect(() => {
     fetch(MAKE_NEW_LEARNINGCARD, {
@@ -23,8 +25,22 @@ export default function StudyComponent({ params }: { params: string }) {
         params={params}
         filter={filter}
         modify={(filter: Filter) => setFilter(filter)}
+        selected={selected}
       />
-      <LearningCardContent params={params} filter={filter} />
+      <LearningCardContent
+        params={params}
+        filter={filter}
+        selected={selected}
+        selectedModify={(selected: Content, remove?: boolean) => {
+          if (remove) {
+            setSelected((prev) =>
+              prev.filter((item) => item._key !== selected._key)
+            );
+            return;
+          }
+          setSelected((prev) => [...prev, selected]);
+        }}
+      />
     </section>
   );
 }
