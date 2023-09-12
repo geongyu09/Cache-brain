@@ -1,3 +1,4 @@
+import StudyComponent from "@/components/StudyComponent";
 import React from "react";
 
 type Props = {
@@ -5,5 +6,5 @@ type Props = {
 };
 
 export default function page({ params: { id } }: Props) {
-  return <div>study {id}</div>;
+  return <StudyComponent params={id} />;
 }

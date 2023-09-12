@@ -1,9 +1,10 @@
 import React from "react";
 import NavListComponent from "./NavListComponent";
-import { Book, Brain, Complete, Instudy, Own } from "./ui/icon";
+import { Book, Complete, Instudy, Own } from "./ui/icon";
 import Hero from "./Hero";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/service/auth";
+import MainIcon from "./MainIcon";
 
 export type NavList = {
   title: string;
@@ -26,19 +27,11 @@ export default async function NavigateSection() {
   //서버에서 북마크 정보 가지고 올 것.
   const Bookmarks: NavList = {
     title: "Bookmarks",
-    list: [
-      { text: "준비중...", url: "/study/${cardid}" },
-      { text: "준비중...", url: "/study/${cardid}" },
-      { text: "준비중...", url: "/study/${cardid}" },
-      { text: "준비중...", url: "/study/${cardid}" },
-    ],
+    list: [{ text: "준비중...", url: "/study/${cardid}" }],
   };
   return (
     <section className="w-80 bg-slate-100 flex flex-col justify-between border-r-2">
-      <div className="flex w-full gap-7 p-5">
-        <Brain />
-        <h1>Cache Brain</h1>
-      </div>
+      <MainIcon position="nav" />
       <NavListComponent content={Navigation} />
       <NavListComponent content={Bookmarks} style="grow" />
       <Hero />

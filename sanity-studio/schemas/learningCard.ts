@@ -14,8 +14,8 @@ export default {
       to: [{type: 'card'}],
     },
     {
-      name: 'process',
-      title: 'Process',
+      name: 'content',
+      title: 'Content',
       type: 'array',
       of: [
         {
@@ -25,7 +25,7 @@ export default {
           fields: [
             {name: 'problem', type: 'string', title: 'Problem'},
             {name: 'answer', type: 'string', title: 'Answer'},
-            {name: 'completeness', type: 'string', title: 'Completeness'},
+            {name: 'process', type: 'number', title: 'Process'},
           ],
         },
       ],
