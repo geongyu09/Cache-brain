@@ -35,7 +35,5 @@ export async function getLearningCard({
   userId: string;
 }): Promise<LearningCard> {
   const query = `*[_type=="learningCard"&& originCard._ref=="${cardId}" && learner._ref=="${userId}"][0]{content[],"updatedAt":_updatedAt}`;
-  const learnCard: LearningCard = await client.fetch(query);
-  const { title, description } = await getCardDetail(cardId);
-  return { ...learnCard, title, description };
+  return await client.fetch(query);
 }
