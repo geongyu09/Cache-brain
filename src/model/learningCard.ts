@@ -1,4 +1,4 @@
-type Content = {
+export type Content = {
   problem: string;
   answer: string;
   process: number;
