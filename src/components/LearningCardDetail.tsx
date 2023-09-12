@@ -2,8 +2,16 @@
 import { DetailCard } from "@/model/card";
 import React from "react";
 import useSWR from "swr";
+import { Filter } from "./StudyComponent";
+import FilterComponent from "./FilterComponent";
 
-export default function LearningCardDetail({ params }: { params: string }) {
+type Props = {
+  params: string;
+  modify: (filter: Filter) => void;
+  filter: Filter;
+};
+
+export default function LearningCardDetail({ params, modify, filter }: Props) {
   const GET_CARD_DETAIL_URL = `/api/card/detail/${params}`;
   const {
     data: card,
@@ -20,6 +28,7 @@ export default function LearningCardDetail({ params }: { params: string }) {
           <p>{card?.description}</p>
         </>
       )}
+      <FilterComponent modify={modify} filter={filter} />
     </section>
   );
 }

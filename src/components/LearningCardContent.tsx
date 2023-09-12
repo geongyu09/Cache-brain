@@ -3,8 +3,11 @@ import { LearningCardContent } from "@/model/learningCard";
 import React from "react";
 import useSWR from "swr";
 import ContentList from "./ContentList";
+import { Filter } from "./StudyComponent";
 
-export default function LearningCardContent({ params }: { params: string }) {
+type Props = { params: string; filter: Filter };
+
+export default function LearningCardContent({ params, filter }: Props) {
   const GET_CONTENT_URL = `/api/study/${params}`;
   const { data, isLoading, error } =
     useSWR<LearningCardContent>(GET_CONTENT_URL);
@@ -12,22 +15,30 @@ export default function LearningCardContent({ params }: { params: string }) {
   const learned = data?.content.filter((item) => {
     if (item.process == 2) return item;
   });
-  const learning =
-    data?.content.filter((item) => {
-      if (item.process == 2) return item;
-    }) || [];
-  const unlearned =
-    data?.content.filter((item) => {
-      if (item.process == 2) return item;
-    }) || [];
+  const learning = data?.content.filter((item) => {
+    if (item.process == 1) return item;
+  });
+  const unlearned = data?.content.filter((item) => {
+    if (item.process == 0) return item;
+  });
 
   return (
     <section className="w-full overflow-y-auto h-screen px-10 pt-4 pb-[70px]">
       {data && (
         <ul className="h-full lg:overflow-auto">
-          <ContentList title="learned" learned={learned} />
-          <ContentList title="learning" learned={learning} />
-          <ContentList title="unlearned" learned={unlearned} />
+          {filter == "all" ? (
+            <>
+              <ContentList title="learned" learned={learned} />
+              <ContentList title="learning" learned={learning} />
+              <ContentList title="unlearned" learned={unlearned} />
+            </>
+          ) : filter == "learned" ? (
+            <ContentList title="learned" learned={learned} />
+          ) : filter == "learning" ? (
+            <ContentList title="learning" learned={learning} />
+          ) : filter == "unlearned" ? (
+            <ContentList title="unlearned" learned={unlearned} />
+          ) : null}
         </ul>
       )}
     </section>
