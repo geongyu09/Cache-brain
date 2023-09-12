@@ -12,7 +12,7 @@ export default function LearningCardDetail({ params }: { params: string }) {
   } = useSWR<DetailCard>(GET_CARD_DETAIL_URL);
 
   return (
-    <section className="w-80 h-full bg-slate-100 px-5">
+    <section className="bg-slate-100 px-5 h-screen">
       <div className="w-full border-b-2"> {`<-`}</div>
       {card && (
         <>

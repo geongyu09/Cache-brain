@@ -12,12 +12,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="w-full h-full overflow-hidden">
+    <section className="w-full h-[100vh] overflow-hidden">
       <Header position="study" />
-      <section className="w-full h-full flex">
-        <div className="w-10 h-full bg-slate-100 border-r-2"></div>
-        {children}
-      </section>
+      {/* <div className="w-10 h-full bg-slate-100 border-r-2"></div> */}
+      {children}
     </section>
   );
 }

@@ -13,7 +13,7 @@ export default function StudyComponent({ params }: { params: string }) {
   }, [params]);
 
   return (
-    <section className="flex">
+    <section className="grid grid-cols-[4fr_11fr]">
       <LearningCardDetail params={params} />
       <LearningCardContent params={params} />
     </section>
