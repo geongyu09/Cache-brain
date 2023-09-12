@@ -9,31 +9,42 @@ type Props = {
 
 export default function FilterComponent({ modify, filter }: Props) {
   return (
-    <ul>
-      <li
-        onClick={() => modify("all")}
-        className={`${filter == "all" ? "text-purple-600" : ""}`}
-      >
-        all
-      </li>
-      <li
-        onClick={() => modify("learned")}
-        className={`${filter == "learned" ? "text-purple-600" : ""}`}
-      >
-        learned
-      </li>
-      <li
-        onClick={() => modify("learning")}
-        className={`${filter == "learning" ? "text-purple-600" : ""}`}
-      >
-        learning
-      </li>
-      <li
-        onClick={() => modify("unlearned")}
-        className={`${filter == "unlearned" ? "text-purple-600" : ""}`}
-      >
-        unlearned
-      </li>
-    </ul>
+    <section className="pt-20 grow">
+      <h3 className="mb-5">모아 보기</h3>
+      <ul className="flex flex-col gap-2">
+        <li
+          onClick={() => modify("all")}
+          className={`cursor-pointer ${
+            filter == "all" ? "text-purple-600" : ""
+          }`}
+        >
+          all
+        </li>
+        <li
+          onClick={() => modify("learned")}
+          className={`cursor-pointer ${
+            filter == "learned" ? "text-purple-600" : ""
+          }`}
+        >
+          learned
+        </li>
+        <li
+          onClick={() => modify("learning")}
+          className={`cursor-pointer ${
+            filter == "learning" ? "text-purple-600" : ""
+          }`}
+        >
+          learning
+        </li>
+        <li
+          onClick={() => modify("unlearned")}
+          className={`cursor-pointer ${
+            filter == "unlearned" ? "text-purple-600" : ""
+          }`}
+        >
+          unlearned
+        </li>
+      </ul>
+    </section>
   );
 }
