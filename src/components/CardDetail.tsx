@@ -1,7 +1,6 @@
 import { DetailCard } from "@/model/card";
 import React from "react";
 import useSWR from "swr";
-import StyledButton from "./ui/StyledButton";
 import StudyButton from "./StudyButton";
 
 type Props = {
@@ -19,9 +18,6 @@ export default function CardDetail({ id }: Props) {
           <div>
             <div className="flex justify-between items-center">
               <h4 className="text-lg">{card?.title}</h4>
-              {/* <div className="px-4 py-2 bg-indigo-600 rounded-2xl">
-                학습하기
-              </div> */}
               <StudyButton cardId={card.id} />
             </div>
             <hr className="my-1" />
@@ -35,7 +31,6 @@ export default function CardDetail({ id }: Props) {
               </li>
             ))}
           </ul>
-          {/* <span>생성일 : {card.}</span> */}
         </section>
       )}
     </section>
