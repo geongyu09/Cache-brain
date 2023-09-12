@@ -4,8 +4,9 @@ import LearningCardDetail from "./LearningCardDetail";
 import LearningCardContent from "./LearningCardContent";
 
 export default function StudyComponent({ params }: { params: string }) {
+  const MAKE_NEW_LEARNINGCARD = "/api/study";
   useEffect(() => {
-    fetch("/api/study", {
+    fetch(MAKE_NEW_LEARNINGCARD, {
       method: "POST",
       body: JSON.stringify({ cardId: params }),
     });
