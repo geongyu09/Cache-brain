@@ -1,11 +1,12 @@
+"use client";
 import { Content } from "@/model/learningCard";
 import React from "react";
 type Props = {
   params: string;
   item: Content;
 };
-export default async function Assessment({ item, params }: Props) {
-  const data = await fetch(`/api/study/${params}`, {
+export default function Assessment({ item, params }: Props) {
+  fetch(`/api/study/${params}`, {
     method: "PUT",
     body: JSON.stringify({ content: item, progress: 2 }),
   });

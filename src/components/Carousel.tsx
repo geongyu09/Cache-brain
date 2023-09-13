@@ -1,13 +1,14 @@
 "use client";
 import { Content } from "@/model/learningCard";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import StudyContent from "./StudyContent";
 type Props = {
   selected: Content[];
   params: string;
 };
+
 export default function Carousel({ selected, params }: Props) {
-  let level = 0;
+  const [level, setLevel] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
 
   const scroolCard = (targetId: string) => {
@@ -15,17 +16,23 @@ export default function Carousel({ selected, params }: Props) {
     target?.scrollIntoView({ behavior: "smooth" });
   };
   const onClick = (event: React.MouseEvent<HTMLElement>) => {
-    setShowAnswer(false);
     const handle = event.currentTarget.id === "prev" ? false : true;
+    let fakeLevel = level;
+    setShowAnswer(false);
     if (handle) {
-      level++;
-      if (level > selected.length - 1) level--;
-      scroolCard(level.toString());
+      fakeLevel++;
+      setLevel(fakeLevel);
+
+      if (level > selected.length - 1) setLevel(selected.length - 1);
+      scroolCard(fakeLevel.toString());
+      console.log(level);
       return;
     }
-    level--;
-    if (level < 0) level++;
-    scroolCard(level.toString());
+    fakeLevel--;
+    setLevel(fakeLevel);
+    if (level < 0) setLevel(0);
+    scroolCard(fakeLevel.toString());
+    console.log(level);
   };
 
   return (
@@ -45,7 +52,9 @@ export default function Carousel({ selected, params }: Props) {
       ))}
       <button
         onClick={onClick}
-        className="px-4 py-2 bg-lime-400 absolute top-1/2 left-32 -translate-y-1/2"
+        className={`px-4 py-2 bg-lime-400 absolute top-1/2 left-32 -translate-y-1/2  ${
+          level <= 0 ? "hidden" : ""
+        }`}
         id="prev"
       >
         {`<`}
@@ -53,7 +62,9 @@ export default function Carousel({ selected, params }: Props) {
 
       <button
         onClick={onClick}
-        className="px-4 py-2 bg-lime-400 absolute top-1/2 right-32 -translate-y-1/2"
+        className={`px-4 py-2 bg-lime-400 absolute top-1/2 right-32 -translate-y-1/2 ${
+          level >= selected.length - 1 ? "hidden" : ""
+        }`}
       >
         {`>`}
       </button>
