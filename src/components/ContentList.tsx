@@ -14,7 +14,6 @@ export default function ContentList({
   selectedModify,
 }: Props) {
   const onClick = (item: Content, isSelected: boolean) => {
-    console.log(isSelected);
     selectedModify(item, isSelected);
   };
   return (

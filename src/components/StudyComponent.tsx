@@ -12,6 +12,7 @@ export default function StudyComponent({ params }: { params: string }) {
   const MAKE_NEW_LEARNINGCARD = "/api/study";
   const [filter, setFilter] = useState<Filter>("all");
   const [selected, setSelected] = useState<Content[]>([]);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     fetch(MAKE_NEW_LEARNINGCARD, {
@@ -26,7 +27,7 @@ export default function StudyComponent({ params }: { params: string }) {
         params={params}
         filter={filter}
         modify={(filter: Filter) => setFilter(filter)}
-        selected={selected}
+        handleShowModal={() => setShowModal(true)}
       />
       <LearningCardContent
         params={params}
@@ -42,7 +43,11 @@ export default function StudyComponent({ params }: { params: string }) {
           setSelected((prev) => [...prev, selected]);
         }}
       />
-      <CreatePortal />
+      <CreatePortal
+        showModal={showModal}
+        handleShowModal={() => setShowModal(false)}
+        selected={selected}
+      />
     </section>
   );
 }
