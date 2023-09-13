@@ -4,6 +4,7 @@ type Props = {
   title: string;
   learned: Content[] | undefined;
   selected: Content[];
+  showModal: boolean;
   selectedModify: (selected: Content, remove?: boolean) => void;
 };
 
@@ -11,6 +12,7 @@ export default function ContentList({
   learned,
   title,
   selected,
+  showModal,
   selectedModify,
 }: Props) {
   const onClick = (item: Content, isSelected: boolean) => {
@@ -34,7 +36,7 @@ export default function ContentList({
                 onClick={() => onClick(item, Boolean(isSelected))}
               >
                 <h4 className="mb-2 ">{item.problem}</h4>
-                <p>{item.answer}</p>
+                {!showModal ? <p>{item.answer}</p> : null}
               </li>
             );
           })}

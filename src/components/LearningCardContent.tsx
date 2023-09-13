@@ -9,6 +9,7 @@ type Props = {
   params: string;
   filter: Filter;
   selected: Content[];
+  showModal: boolean;
   selectedModify: (selected: Content, remove?: boolean) => void;
 };
 
@@ -16,6 +17,7 @@ export default function LearningCardContent({
   params,
   filter,
   selected,
+  showModal,
   selectedModify,
 }: Props) {
   const GET_CONTENT_URL = `/api/study/${params}`;
@@ -43,18 +45,21 @@ export default function LearningCardContent({
                 learned={learned}
                 selected={selected}
                 selectedModify={selectedModify}
+                showModal={showModal}
               />
               <ContentList
                 title="learning"
                 learned={learning}
                 selected={selected}
                 selectedModify={selectedModify}
+                showModal={showModal}
               />
               <ContentList
                 title="unlearned"
                 learned={unlearned}
                 selected={selected}
                 selectedModify={selectedModify}
+                showModal={showModal}
               />
             </>
           ) : filter == "learned" ? (
@@ -63,6 +68,7 @@ export default function LearningCardContent({
               learned={learned}
               selected={selected}
               selectedModify={selectedModify}
+              showModal={showModal}
             />
           ) : filter == "learning" ? (
             <ContentList
@@ -70,6 +76,7 @@ export default function LearningCardContent({
               learned={learning}
               selected={selected}
               selectedModify={selectedModify}
+              showModal={showModal}
             />
           ) : filter == "unlearned" ? (
             <ContentList
@@ -77,6 +84,7 @@ export default function LearningCardContent({
               learned={unlearned}
               selected={selected}
               selectedModify={selectedModify}
+              showModal={showModal}
             />
           ) : null}
         </ul>

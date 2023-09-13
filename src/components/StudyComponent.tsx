@@ -33,6 +33,7 @@ export default function StudyComponent({ params }: { params: string }) {
         params={params}
         filter={filter}
         selected={selected}
+        showModal={showModal}
         selectedModify={(selected: Content, remove?: boolean) => {
           if (remove) {
             setSelected((prev) =>
