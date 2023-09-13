@@ -6,8 +6,14 @@ type Props = {
   showModal: boolean;
   handleShowModal: () => void;
   selected: Content[];
+  params: string;
 };
-export default function Modal({ showModal, handleShowModal, selected }: Props) {
+export default function Modal({
+  showModal,
+  handleShowModal,
+  selected,
+  params,
+}: Props) {
   return (
     <>
       {showModal && (
@@ -23,7 +29,7 @@ export default function Modal({ showModal, handleShowModal, selected }: Props) {
           >
             X
           </div>
-          <Carousel selected={selected} />
+          <Carousel selected={selected} params={params} />
         </section>
       )}
     </>

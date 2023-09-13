@@ -37,3 +37,5 @@ export async function getLearningCard({
   const query = `*[_type=="learningCard"&& originCard._ref=="${cardId}" && learner._ref=="${userId}"][0]{content[],"updatedAt":_updatedAt}`;
   return await client.fetch(query);
 }
+
+export async function putProgress() {}

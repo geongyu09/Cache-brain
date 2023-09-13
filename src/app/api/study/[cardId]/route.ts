@@ -17,3 +17,16 @@ export async function GET(_: Request, { params: { cardId } }: Props) {
   const data = await getLearningCard({ cardId, userId });
   return NextResponse.json(data);
 }
+
+export async function PUT(request: Request) {
+  const session = await getServerSession(authOptions);
+  const body = await request.json();
+  if (!session)
+    return new Response(JSON.stringify({ message: "Authentication error!" }), {
+      status: 401,
+    });
+  if (body == undefined)
+    return new Response(JSON.stringify({ message: "Bad request" }), {
+      status: 404,
+    });
+}

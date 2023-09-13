@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import StudyContent from "./StudyContent";
 type Props = {
   selected: Content[];
+  params: string;
 };
-export default function Carousel({ selected }: Props) {
+export default function Carousel({ selected, params }: Props) {
   let level = 0;
   const [showAnswer, setShowAnswer] = useState(false);
 
@@ -18,10 +19,12 @@ export default function Carousel({ selected }: Props) {
     const handle = event.currentTarget.id === "prev" ? false : true;
     if (handle) {
       level++;
+      if (level > selected.length - 1) level--;
       scroolCard(level.toString());
       return;
     }
     level--;
+    if (level < 0) level++;
     scroolCard(level.toString());
   };
 
@@ -35,6 +38,7 @@ export default function Carousel({ selected }: Props) {
           key={index}
           item={item}
           index={index}
+          params={params}
           showAnswer={showAnswer}
           setShowAnswer={setShowAnswer}
         />

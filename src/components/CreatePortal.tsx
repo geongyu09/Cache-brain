@@ -6,11 +6,13 @@ type Props = {
   showModal: boolean;
   handleShowModal: () => void;
   selected: Content[];
+  params: string;
 };
 export default function CreatePortal({
   showModal,
   handleShowModal,
   selected,
+  params,
 }: Props) {
   return (
     <>
@@ -19,6 +21,7 @@ export default function CreatePortal({
           showModal={showModal}
           handleShowModal={handleShowModal}
           selected={selected}
+          params={params}
         />,
         document.body
       )}
