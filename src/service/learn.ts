@@ -18,7 +18,7 @@ export async function postLearningCard({
       problem,
       answer,
       _key: id,
-      process: 0,
+      progress: 0,
     })),
     learner: { _ref: userId },
     title,

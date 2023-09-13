@@ -5,8 +5,8 @@ import LearningCardContent from "./LearningCardContent";
 import { Content } from "@/model/learningCard";
 import CreatePortal from "./CreatePortal";
 
-type Process = "unlearned" | "learned" | "learning";
-export type Filter = "all" | Process;
+type Progress = "unlearned" | "learned" | "learning";
+export type Filter = "all" | Progress;
 
 export default function StudyComponent({ params }: { params: string }) {
   const MAKE_NEW_LEARNINGCARD = "/api/study";
@@ -48,6 +48,7 @@ export default function StudyComponent({ params }: { params: string }) {
         showModal={showModal}
         handleShowModal={() => setShowModal(false)}
         selected={selected}
+        params={params}
       />
     </section>
   );

@@ -25,13 +25,13 @@ export default function LearningCardContent({
     useSWR<LearningCardContent>(GET_CONTENT_URL);
 
   const learned = data?.content.filter((item) => {
-    if (item.process == 2) return item;
+    if (item.progress == 2) return item;
   });
   const learning = data?.content.filter((item) => {
-    if (item.process == 1) return item;
+    if (item.progress == 1) return item;
   });
   const unlearned = data?.content.filter((item) => {
-    if (item.process == 0) return item;
+    if (item.progress == 0) return item;
   });
 
   return (

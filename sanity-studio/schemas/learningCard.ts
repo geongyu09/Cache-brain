@@ -25,7 +25,7 @@ export default {
           fields: [
             {name: 'problem', type: 'string', title: 'Problem'},
             {name: 'answer', type: 'string', title: 'Answer'},
-            {name: 'process', type: 'number', title: 'Process'},
+            {name: 'progress', type: 'number', title: 'Progress'},
           ],
         },
       ],

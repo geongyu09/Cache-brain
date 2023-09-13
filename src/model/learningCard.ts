@@ -1,7 +1,7 @@
 export type Content = {
   problem: string;
   answer: string;
-  process: number;
+  progress: number;
   _key: string;
 };
 export type LearningCard = LearningCardContent & {

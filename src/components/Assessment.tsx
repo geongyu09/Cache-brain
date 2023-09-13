@@ -7,7 +7,7 @@ type Props = {
 export default async function Assessment({ item, params }: Props) {
   const data = await fetch(`/api/study/${params}`, {
     method: "PUT",
-    body: JSON.stringify({ content: item, process: 2 }),
+    body: JSON.stringify({ content: item, progress: 2 }),
   });
   return (
     <div className="flex gap-5 items-center ml-5">
