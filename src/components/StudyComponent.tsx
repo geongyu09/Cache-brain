@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import LearningCardDetail from "./LearningCardDetail";
 import LearningCardContent from "./LearningCardContent";
 import { Content } from "@/model/learningCard";
+import CreatePortal from "./CreatePortal";
 
 type Process = "unlearned" | "learned" | "learning";
 export type Filter = "all" | Process;
@@ -41,6 +42,7 @@ export default function StudyComponent({ params }: { params: string }) {
           setSelected((prev) => [...prev, selected]);
         }}
       />
+      <CreatePortal />
     </section>
   );
 }
