@@ -5,7 +5,7 @@ import LearningCardContent from "./LearningCardContent";
 import { Content } from "@/model/learningCard";
 import CreatePortal from "./CreatePortal";
 
-type Progress = "unlearned" | "learned" | "learning";
+export type Progress = "unlearned" | "learned" | "learning";
 export type Filter = "all" | Progress;
 
 export default function StudyComponent({ params }: { params: string }) {

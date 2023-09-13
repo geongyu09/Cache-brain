@@ -1,5 +1,5 @@
 import { authOptions } from "@/service/auth";
-import { getLearningCard } from "@/service/learn";
+import { getLearningCard, putProgress } from "@/service/learn";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
@@ -18,7 +18,7 @@ export async function GET(_: Request, { params: { cardId } }: Props) {
   return NextResponse.json(data);
 }
 
-export async function PUT(request: Request) {
+export async function PUT(request: Request, { params: { cardId } }: Props) {
   const session = await getServerSession(authOptions);
   const body = await request.json();
   if (!session)
@@ -29,4 +29,8 @@ export async function PUT(request: Request) {
     return new Response(JSON.stringify({ message: "Bad request" }), {
       status: 404,
     });
+  const userId = session.user.id;
+  const { content, progress } = body;
+  await putProgress({ cardId, userId, content, progress });
+  return NextResponse.json({ message: "good response" });
 }

@@ -1,4 +1,4 @@
-import { LearningCard } from "@/model/learningCard";
+import { Content, LearningCard } from "@/model/learningCard";
 import { getCardDetail } from "./card";
 import { client } from "./sanity";
 
@@ -11,7 +11,7 @@ export async function postLearningCard({
 }) {
   const { title, content } = await getCardDetail(cardId);
   const doc = {
-    _id: cardId.slice(0, 10) + userId.slice(0, 10),
+    _id: makeLearningCardId(cardId, userId),
     _type: "learningCard",
     originCard: { _ref: cardId },
     content: content.map(({ problem, answer, id }) => ({
@@ -38,4 +38,26 @@ export async function getLearningCard({
   return await client.fetch(query);
 }
 
-export async function putProgress() {}
+export async function putProgress({
+  cardId,
+  userId,
+  content,
+  progress,
+}: {
+  cardId: string;
+  userId: string;
+  content: Content;
+  progress: number;
+}) {
+  const learningCardId = makeLearningCardId(cardId, userId);
+  const contents = (await getLearningCard({ cardId, userId })).content;
+  const resultContents = contents.map((item) => {
+    if (item._key == content._key) return { ...content, progress: progress };
+    return item;
+  });
+  return client.patch(learningCardId).set({ content: resultContents }).commit();
+}
+
+function makeLearningCardId(cardId: string, userId: string) {
+  return cardId.slice(0, 10) + userId.slice(0, 10);
+}

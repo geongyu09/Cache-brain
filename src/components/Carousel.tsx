@@ -22,17 +22,14 @@ export default function Carousel({ selected, params }: Props) {
     if (handle) {
       fakeLevel++;
       setLevel(fakeLevel);
-
       if (level > selected.length - 1) setLevel(selected.length - 1);
       scroolCard(fakeLevel.toString());
-      console.log(level);
       return;
     }
     fakeLevel--;
     setLevel(fakeLevel);
     if (level < 0) setLevel(0);
     scroolCard(fakeLevel.toString());
-    console.log(level);
   };
 
   return (
