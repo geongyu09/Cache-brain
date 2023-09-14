@@ -16,16 +16,19 @@ export default function useStudy(params: string) {
   const { data, isLoading, error, mutate } =
     useSWR<LearningCardContent>(GET_CONTENT_URL);
 
-  const updateProgress = useCallback((content: Content, progress: number) => {
-    const newContents =
-      data?.content?.map((item) => {
-        if (item._key == content._key) return { ...item, progress };
-        return item;
-      }) || [];
-    mutate(setProgress(content, progress, GET_CONTENT_URL), {
-      optimisticData: { content: newContents },
-    });
-  });
+  const updateProgress = useCallback(
+    (content: Content, progress: number) => {
+      const newContents =
+        data?.content?.map((item) => {
+          if (item._key == content._key) return { ...item, progress };
+          return item;
+        }) || [];
+      mutate(setProgress(content, progress, GET_CONTENT_URL), {
+        optimisticData: { content: newContents },
+      });
+    },
+    [GET_CONTENT_URL, data?.content, mutate]
+  );
 
   return { data, isLoading, error, updateProgress };
 }
