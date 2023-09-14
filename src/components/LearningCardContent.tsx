@@ -4,6 +4,7 @@ import React from "react";
 import useSWR from "swr";
 import ContentList from "./ContentList";
 import { Filter } from "./StudyComponent";
+import useStudy from "@/hooks/useStudy";
 
 type Props = {
   params: string;
@@ -20,10 +21,7 @@ export default function LearningCardContent({
   showModal,
   selectedModify,
 }: Props) {
-  const GET_CONTENT_URL = `/api/study/${params}`;
-  const { data, isLoading, error } =
-    useSWR<LearningCardContent>(GET_CONTENT_URL);
-
+  const { data, isLoading, error } = useStudy(params);
   const learned = data?.content.filter((item) => {
     if (item.progress == 2) return item;
   });

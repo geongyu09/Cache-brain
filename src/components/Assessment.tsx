@@ -1,4 +1,5 @@
 "use client";
+import useStudy from "@/hooks/useStudy";
 import { Content } from "@/model/learningCard";
 import React, { useState } from "react";
 
@@ -6,43 +7,41 @@ type Props = {
   params: string;
   item: Content;
 };
-type Status = "" | "good" | "soso" | "again";
 
 export default function Assessment({ item, params }: Props) {
-  const [clicked, setClicked] = useState<Status>("");
+  const [clicked, setClicked] = useState(-1);
+  const { updateProgress } = useStudy(params);
   const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setClicked(event.currentTarget.id as Status);
-    fetch(`/api/study/${params}`, {
-      method: "PUT",
-      body: JSON.stringify({ content: item, progress: 2 }),
-    });
+    const updateNumber = +event.currentTarget.id;
+    setClicked(updateNumber);
+    updateProgress(item, updateNumber);
   };
   return (
     <div className="flex gap-5 items-center ml-5">
       <button
         className={`border-2 px-2 py-1 rounded-xl ${
-          clicked == "good" ? "bg-indigo-600" : ""
+          clicked == 2 ? "bg-indigo-600" : ""
         }`}
         onClick={onClick}
-        id="good"
+        id="2"
       >
         good
       </button>
       <button
         className={`border-2 px-2 py-1 rounded-xl ${
-          clicked == "soso" ? "bg-indigo-600" : ""
+          clicked == 1 ? "bg-indigo-600" : ""
         }`}
         onClick={onClick}
-        id="soso"
+        id="1"
       >
         soso
       </button>
       <button
         className={`border-2 px-2 py-1 rounded-xl ${
-          clicked == "again" ? "bg-indigo-600" : ""
+          clicked == 0 ? "bg-indigo-600" : ""
         }`}
         onClick={onClick}
-        id="again"
+        id="0"
       >
         again
       </button>

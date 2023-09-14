@@ -11,5 +11,4 @@ export type LearningCard = LearningCardContent & {
 
 export type LearningCardContent = {
   content: Content[];
-  updateAt: string;
 };
