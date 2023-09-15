@@ -16,30 +16,27 @@ export default function Carousel({ selected, params }: Props) {
     target?.scrollIntoView({ behavior: "smooth" });
   };
   const onClick = (event: React.MouseEvent<HTMLElement>) => {
-    const handle = event.currentTarget.id === "prev" ? false : true;
+    const handle = event.currentTarget.id !== "prev";
     let fakeLevel = level;
     setShowAnswer(false);
     if (handle) {
       fakeLevel++;
+      if (fakeLevel > selected.length - 1) setLevel(selected.length - 1);
       setLevel(fakeLevel);
-      if (level > selected.length - 1) setLevel(selected.length - 1);
       scroolCard(fakeLevel.toString());
       return;
     }
     fakeLevel--;
+    if (fakeLevel < 0) setLevel(0);
     setLevel(fakeLevel);
-    if (level < 0) setLevel(0);
     scroolCard(fakeLevel.toString());
   };
 
   return (
-    <div
-      className="w-full overflow-x-hidden flex gap-[800px] opa"
-      id="carousel"
-    >
+    <div className="w-full overflow-x-hidden flex gap-[800px]" id="carousel">
       {selected.map((item, index) => (
         <StudyContent
-          key={index}
+          key={item._key}
           item={item}
           index={index}
           params={params}

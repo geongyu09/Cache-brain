@@ -1,7 +1,19 @@
 "use client";
+import { Review } from "@/components/\bAssessment";
+import { Progress } from "@/components/StudyComponent";
 import { Content, LearningCardContent } from "@/model/learningCard";
 import React, { useCallback } from "react";
 import useSWR from "swr";
+
+function chagneProcessMesure(progress: Review) {
+  return progress == "again"
+    ? 0
+    : progress == "soso"
+    ? 1
+    : progress == "good"
+    ? 2
+    : -1;
+}
 
 async function setProgress(item: Content, progress: number, url: string) {
   await fetch(url, {
@@ -17,13 +29,14 @@ export default function useStudy(params: string) {
     useSWR<LearningCardContent>(GET_CONTENT_URL);
 
   const updateProgress = useCallback(
-    (content: Content, progress: number) => {
+    (content: Content, progress: Review) => {
+      const processMesure = chagneProcessMesure(progress);
       const newContents =
         data?.content?.map((item) => {
-          if (item._key == content._key) return { ...item, progress };
+          if (item._key == content._key) return { ...item, processMesure };
           return item;
         }) || [];
-      mutate(setProgress(content, progress, GET_CONTENT_URL), {
+      mutate(setProgress(content, processMesure, GET_CONTENT_URL), {
         optimisticData: { content: newContents },
       });
     },
