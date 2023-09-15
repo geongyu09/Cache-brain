@@ -2,7 +2,6 @@
 import useStudy from "@/hooks/useStudy";
 import { Content } from "@/model/learningCard";
 import React, { useState } from "react";
-import ReviewButton from "./ReviewButton";
 
 type Props = {
   params: string;
@@ -13,19 +12,40 @@ export type Review = "none" | "good" | "soso" | "again";
 export default function Assessment({ item, params }: Props) {
   const [clicked, setClicked] = useState<Review>("none");
   const { updateProgress } = useStudy(params);
-  const onClick = (text: Review) => {
-    setClicked(text);
-    updateProgress(item, text);
+  const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const updateNumber = event.currentTarget.id as Review;
+    setClicked(updateNumber);
+    updateProgress(item, updateNumber);
   };
   return (
     <div className="flex gap-5 items-center ml-5">
-      <ReviewButton
-        clicked={clicked}
-        onClick={(text) => onClick(text)}
-        text="good"
-      />
-      <ReviewButton clicked={clicked} onClick={onClick} text="soso" />
-      <ReviewButton clicked={clicked} onClick={onClick} text="again" />
+      <button
+        className={`border-2 px-2 py-1 rounded-xl ${
+          clicked == "good" ? "bg-indigo-600" : ""
+        }`}
+        onClick={onClick}
+        id="good"
+      >
+        good
+      </button>
+      <button
+        className={`border-2 px-2 py-1 rounded-xl ${
+          clicked == "soso" ? "bg-indigo-600" : ""
+        }`}
+        onClick={onClick}
+        id="soso"
+      >
+        soso
+      </button>
+      <button
+        className={`border-2 px-2 py-1 rounded-xl ${
+          clicked == "again" ? "bg-indigo-600" : ""
+        }`}
+        onClick={onClick}
+        id="again"
+      >
+        again
+      </button>
     </div>
   );
 }
