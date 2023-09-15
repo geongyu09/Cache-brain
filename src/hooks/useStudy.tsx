@@ -1,6 +1,5 @@
 "use client";
 import { Review } from "@/components/\bAssessment";
-import { Progress } from "@/components/StudyComponent";
 import { Content, LearningCardContent } from "@/model/learningCard";
 import React, { useCallback } from "react";
 import useSWR from "swr";
@@ -36,6 +35,7 @@ export default function useStudy(params: string) {
           if (item._key == content._key) return { ...item, processMesure };
           return item;
         }) || [];
+      console.log(newContents);
       mutate(setProgress(content, processMesure, GET_CONTENT_URL), {
         optimisticData: { content: newContents },
       });
