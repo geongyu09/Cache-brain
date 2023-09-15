@@ -103,10 +103,9 @@ export default function HomeFilterSection() {
     setSelected((prev) => [...prev, selected]);
   };
   return (
-    <section className="grid grid-cols-[4fr_11fr]">
+    <section className="grid grid-cols-[4fr_11fr] border-2 bg-white rounded-xl overflow-hidden">
       <section className="flex flex-col bg-slate-100 px-5 h-full pb-[100px]">
         <div>
-          <div className="w-full border-b-2">{`<-`}</div>
           <h2 className="my-4 text-lg ">카드 이름</h2>
           <p>카드 설명 부분 입니다.</p>
         </div>

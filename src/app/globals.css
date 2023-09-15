@@ -8,3 +8,6 @@ h1 {
 h3 {
   @apply text-lg;
 }
+svg {
+  @apply bg-indigo-600;
+}
