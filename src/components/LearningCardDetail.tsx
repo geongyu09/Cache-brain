@@ -12,6 +12,7 @@ type Props = {
   params: string;
   modify: (filter: Filter) => void;
   filter: Filter;
+  selected: Content[];
   handleShowModal: () => void;
 };
 
@@ -20,6 +21,7 @@ export default function LearningCardDetail({
   modify,
   filter,
   handleShowModal,
+  selected,
 }: Props) {
   const GET_CARD_DETAIL_URL = `/api/card/detail/${params}`;
   const router = useRouter();
@@ -41,7 +43,7 @@ export default function LearningCardDetail({
         </>
       )}
       <FilterComponent modify={modify} filter={filter} />
-      <StartButton handleShowModal={handleShowModal} />
+      <StartButton handleShowModal={handleShowModal} selected={selected} />
     </section>
   );
 }

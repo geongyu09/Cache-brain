@@ -26,6 +26,7 @@ export default function StudyComponent({ params }: { params: string }) {
       <LearningCardDetail
         params={params}
         filter={filter}
+        selected={selected}
         modify={(filter: Filter) => setFilter(filter)}
         handleShowModal={() => setShowModal(true)}
       />
