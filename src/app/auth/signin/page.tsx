@@ -1,7 +1,6 @@
 import LoginSection from "@/components/LoginSection";
 import { authOptions } from "@/service/auth";
 import { getServerSession } from "next-auth";
-import { getProviders } from "next-auth/react";
 import { redirect } from "next/navigation";
 import React from "react";
 

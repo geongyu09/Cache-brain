@@ -5,19 +5,13 @@ import NewCardButton from "./NewCardButton";
 import MainIcon from "./MainIcon";
 
 type Props = {
-  position: "study" | "detail";
+  position: "study" | "detail" | "new";
 };
 
 export default function Header({ position }: Props) {
   return (
     <header className="w-full flex justify-between items-center px-4 py-4 border-b-2">
-      {position == "detail" ? (
-        <>
-          <HeaderForm />
-        </>
-      ) : (
-        <MainIcon position="header" />
-      )}
+      {position == "detail" ? <HeaderForm /> : <MainIcon position="header" />}
       <nav className="flex w-full max-w-lg justify-between items-center">
         <Link href={"/"}>
           <h3>home</h3>
@@ -26,7 +20,13 @@ export default function Header({ position }: Props) {
           <h3>connect</h3>
         </Link>
         <h3>surpport</h3>
-        <NewCardButton />
+        {position !== "new" ? (
+          <NewCardButton />
+        ) : (
+          <Link href={"/"}>
+            <h3>Cards</h3>
+          </Link>
+        )}
       </nav>
     </header>
   );

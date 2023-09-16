@@ -19,10 +19,7 @@ export default function List({ card, modify }: Props) {
         <h4 className="text-lg">{`${card.title} / ${card.owner?.name}`}</h4>
         <div className="flex gap-3 my-3">
           {card.tags?.map((item, index) => (
-            <div
-              key={index}
-              className="bg-emerald-400 px-2 rounded-2xl text-sm"
-            >
+            <div key={index} className="bg-teal-200 px-2 rounded-2xl text-sm">
               {item}
             </div>
           ))}

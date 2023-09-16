@@ -1,6 +1,6 @@
+import Link from "next/link";
 import React from "react";
 import { NavList } from "./NavigateSection";
-import Link from "next/link";
 
 type Props = {
   style?: string;
@@ -15,7 +15,7 @@ export default function NavListComponent({ content, style }: Props) {
       <ul>
         {list.map((item, index) => (
           <Link key={index} href={`${item.url}`}>
-            <li className="flex mb-1 gap-3 items-center">
+            <li className={`flex mb-1 gap-3 items-center `}>
               {item.icon}
               {item.text}
             </li>
