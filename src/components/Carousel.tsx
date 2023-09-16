@@ -2,6 +2,7 @@
 import { Content } from "@/model/learningCard";
 import React, { useEffect, useState } from "react";
 import StudyContent from "./StudyContent";
+import { ArrowLeft, ArrowRight } from "./ui/icon";
 type Props = {
   selected: Content[];
   params: string;
@@ -46,21 +47,21 @@ export default function Carousel({ selected, params }: Props) {
       ))}
       <button
         onClick={onClick}
-        className={`px-4 py-2 bg-lime-400 absolute top-1/2 left-32 -translate-y-1/2  ${
+        className={`absolute top-1/2 left-32 -translate-y-1/2  ${
           level <= 0 ? "hidden" : ""
         }`}
         id="prev"
       >
-        {`<`}
+        <ArrowLeft />
       </button>
 
       <button
         onClick={onClick}
-        className={`px-4 py-2 bg-lime-400 absolute top-1/2 right-32 -translate-y-1/2 ${
+        className={`absolute top-1/2 right-32 -translate-y-1/2 ${
           level >= selected.length - 1 ? "hidden" : ""
         }`}
       >
-        {`>`}
+        <ArrowRight />
       </button>
     </div>
   );

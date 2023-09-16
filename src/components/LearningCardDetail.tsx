@@ -7,6 +7,7 @@ import FilterComponent from "./FilterComponent";
 import { useRouter } from "next/navigation";
 import StartButton from "./StartButton";
 import { Content } from "@/model/learningCard";
+import { BackArrow } from "./ui/icon";
 
 type Props = {
   params: string;
@@ -34,7 +35,7 @@ export default function LearningCardDetail({
   return (
     <section className="flex flex-col bg-slate-100 px-5 h-screen pb-[100px]">
       <div onClick={() => router.back()} className="w-full border-b-2">
-        {`<-`}
+        <BackArrow />
       </div>
       {card && (
         <>
