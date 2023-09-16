@@ -25,9 +25,7 @@ export default function Header({ position }: Props) {
         <Link href={"/connect"}>
           <h3>connect</h3>
         </Link>
-        {/* <Link href={"/"}> */}
         <h3>surpport</h3>
-        {/* </Link> */}
         <NewCardButton />
       </nav>
     </header>

@@ -18,6 +18,10 @@ export default function StartButton({ handleShowModal, selected }: Props) {
       />
     );
   return (
-    <StyledButton text="학습하기" style="w-full" handler={handleShowModal} />
+    <StyledButton
+      text="학습하기"
+      style="w-full bg-indigo-600"
+      handler={handleShowModal}
+    />
   );
 }

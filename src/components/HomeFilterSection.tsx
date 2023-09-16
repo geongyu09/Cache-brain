@@ -151,7 +151,7 @@ export default function HomeFilterSection() {
           style={`w-full ${
             selected.length == 0
               ? "pointer-events-none bg-gray-300 text-gray-600"
-              : ""
+              : "bg-indigo-600"
           }`}
         />
       </section>

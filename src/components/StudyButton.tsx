@@ -12,6 +12,10 @@ export default function StudyButton({ cardId }: Props) {
     naviate.push(`/study/${cardId}`);
   };
   return (
-    <StyledButton text="학습하기" style="mb-2" handler={() => onClick()} />
+    <StyledButton
+      text="학습하기"
+      style="mb-2 bg-indigo-600"
+      handler={() => onClick()}
+    />
   );
 }

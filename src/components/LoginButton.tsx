@@ -18,18 +18,8 @@ export default function LoginButton() {
   const handleRoute = () => router.push(`/${user?.username}`);
   return (
     <>
-      <StyledButton
-        style="group-hover:bg-indigo-800"
-        text={text}
-        handler={handleLogin}
-      />
-      {user && (
-        <StyledButton
-          style="group-hover:bg-indigo-800"
-          text="학습 페이지로 가기"
-          handler={handleRoute}
-        />
-      )}
+      <StyledButton text={text} handler={handleLogin} />
+      {user && <StyledButton text="학습 페이지로 가기" handler={handleRoute} />}
     </>
   );
 }
