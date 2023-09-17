@@ -8,5 +8,5 @@ export default function RouteBackButton() {
   const onClick = () => {
     router.back();
   };
-  return <StyledButton text="뒤로가기" handler={onClick} />;
+  return <StyledButton text="만들기" handler={onClick} />;
 }
