@@ -3,6 +3,7 @@ import HeaderForm from "./HeaderForm";
 import Link from "next/link";
 import NewCardButton from "./NewCardButton";
 import MainIcon from "./MainIcon";
+import RouteBackButton from "./RouteBackButton";
 
 type Props = {
   position: "study" | "detail" | "new";
@@ -20,13 +21,7 @@ export default function Header({ position }: Props) {
           <h3>connect</h3>
         </Link>
         <h3>surpport</h3>
-        {position !== "new" ? (
-          <NewCardButton />
-        ) : (
-          <Link href={"/"}>
-            <h3>Cards</h3>
-          </Link>
-        )}
+        {position !== "new" ? <NewCardButton /> : <RouteBackButton />}
       </nav>
     </header>
   );
