@@ -16,14 +16,16 @@ export type Card = {
   owner: {
     name: string;
   };
-  createdAt: string;
-  updatedAt: string;
+  createdAt?: string;
+  updatedAt?: string;
+};
+
+export type CardContent = {
+  _key: string;
+  problem: string;
+  answer: string;
 };
 
 export type DetailCard = Card & {
-  content: {
-    id: string;
-    problem: string;
-    answer: string;
-  }[];
+  content: CardContent[];
 };
