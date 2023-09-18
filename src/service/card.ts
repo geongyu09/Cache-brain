@@ -18,3 +18,35 @@ export async function getCardDetail(cardId: string): Promise<DetailCard> {
   }
     `);
 }
+
+export async function makeNewCard() {
+  const doc = {
+    // _id: "34e8ccb9-d991-42bd-92af-76b7fea5e2a9",
+    _type: "card",
+    content: [],
+    description: "",
+    owner: {
+      _ref: "",
+      _type: "reference",
+    },
+    tags: [],
+    title: "",
+  };
+
+  client.create(doc).then((res) => {
+    console.log(`Bike was created, document ID is ${res._id}`);
+  });
+}
+
+/*
+{
+  id: "",
+  title: "",
+  description: "",
+  tags: [],
+  owner: {
+    name: "",
+  },
+  content: [],
+}
+*/

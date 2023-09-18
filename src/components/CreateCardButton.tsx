@@ -1,10 +1,16 @@
 import React from "react";
 import StyledButton from "./ui/StyledButton";
-import { DetailCard } from "@/model/card";
+import { CardState } from "@/model/card";
 
 type Props = {
-  card: DetailCard;
+  card: CardState;
 };
 export default function CreateCardButton({ card }: Props) {
-  return <StyledButton text="create" />;
+  const makeNewCard = (card: CardState) => {
+    fetch("/api/card/create", {
+      method: "POST",
+      body: JSON.stringify({ card }),
+    });
+  };
+  return <StyledButton text="create" handler={() => makeNewCard(card)} />;
 }

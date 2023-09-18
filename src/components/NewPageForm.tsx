@@ -1,11 +1,11 @@
 import React from "react";
 import NewCardInput from "./NewCardInput";
-import { DetailCard } from "@/model/card";
+import { CardState } from "@/model/card";
 import NewCardResult from "./NewCardResult";
 
 type Props = {
-  card: DetailCard;
-  setCard: React.Dispatch<React.SetStateAction<DetailCard>>;
+  card: CardState;
+  setCard: React.Dispatch<React.SetStateAction<CardState>>;
 };
 
 export default function NewPageForm({ card, setCard }: Props) {

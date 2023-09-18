@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import StyledButton from "./ui/StyledButton";
-import { CardContent, DetailCard } from "@/model/card";
+import { CardContent, CardState } from "@/model/card";
 import NewCardTextarea from "./NewCardTextarea";
 
 type Props = {
-  card: DetailCard;
-  setCard: React.Dispatch<React.SetStateAction<DetailCard>>;
+  card: CardState;
+  setCard: React.Dispatch<React.SetStateAction<CardState>>;
 };
 
 const DEFAULT_CONTENT: CardContent = {

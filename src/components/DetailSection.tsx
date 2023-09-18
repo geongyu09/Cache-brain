@@ -1,8 +1,8 @@
-import { DetailCard } from "@/model/card";
+import { CardState } from "@/model/card";
 import React from "react";
 
 type Props = {
-  card: DetailCard;
+  card: CardState;
   btn?: React.ReactElement;
 };
 

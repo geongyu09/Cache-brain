@@ -1,10 +1,10 @@
-import { DetailCard } from "@/model/card";
+import { CardState } from "@/model/card";
 import React from "react";
 import DetailSection from "./DetailSection";
 import CreateCardButton from "./CreateCardButton";
 
 type Props = {
-  card: DetailCard;
+  card: CardState;
 };
 
 export default function NewCardResult({ card }: Props) {
