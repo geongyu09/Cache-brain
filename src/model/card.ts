@@ -1,3 +1,5 @@
+import { Content } from "./learningCard";
+
 type OwnerListParam = {
   ownList: true;
   userId: string;
@@ -27,5 +29,12 @@ export type CardContent = {
 };
 
 export type DetailCard = Card & {
+  content: CardContent[];
+};
+
+export type CardState = {
+  title: string;
+  description: string;
+  tags: Array<string>;
   content: CardContent[];
 };
