@@ -1,22 +1,26 @@
 "use client";
 import React, { useState } from "react";
 import StyledButton from "./ui/StyledButton";
-import { CardContent, CardState } from "@/model/card";
+import { CardStateContent, CardState } from "@/model/card";
 import NewCardTextarea from "./NewCardTextarea";
 
 type Props = {
   card: CardState;
   setCard: React.Dispatch<React.SetStateAction<CardState>>;
+  isLoading: boolean;
 };
 
-const DEFAULT_CONTENT: CardContent = {
-  _key: "",
+const DEFAULT_CONTENT: CardStateContent = {
   problem: "",
   answer: "",
 };
 
-export default function NewCardContentForm({ card, setCard }: Props) {
-  const [content, setContent] = useState<CardContent>(DEFAULT_CONTENT);
+export default function NewCardStateContentForm({
+  card,
+  setCard,
+  isLoading,
+}: Props) {
+  const [content, setContent] = useState<CardStateContent>(DEFAULT_CONTENT);
   const textareaItem = [
     {
       title: "문제",
@@ -35,7 +39,7 @@ export default function NewCardContentForm({ card, setCard }: Props) {
   ];
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const newContentArray = [...card.content, content];
+    const newContentArray = [...card.content, { ...content, _key: Date.now() }];
     setCard((prev) => ({ ...prev, content: newContentArray }));
     setContent(DEFAULT_CONTENT);
   };

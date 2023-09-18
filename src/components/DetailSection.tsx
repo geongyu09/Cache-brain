@@ -1,8 +1,8 @@
-import { CardState } from "@/model/card";
+import { CardState, DetailCard } from "@/model/card";
 import React from "react";
 
 type Props = {
-  card: CardState;
+  card: DetailCard | CardState;
   btn?: React.ReactElement;
 };
 
@@ -20,8 +20,8 @@ export default function DetailSection({ card, btn }: Props) {
         <p>{card?.description}</p>
       </div>
       <ul className="grow">
-        {card?.content.map((item) => (
-          <li key={item._key} className="bg-slate-200 rounded-xl p-4 my-2">
+        {card?.content.map((item, index) => (
+          <li key={index} className="bg-slate-200 rounded-xl p-4 my-2">
             <p className="mb-1">{`Q : ${item.problem}`}</p>
             <p>{`A : ${item.answer}`}</p>
           </li>

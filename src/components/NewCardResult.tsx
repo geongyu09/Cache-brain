@@ -5,8 +5,14 @@ import CreateCardButton from "./CreateCardButton";
 
 type Props = {
   card: CardState;
+  setIsLoading: (isLoading: boolean) => void;
 };
 
-export default function NewCardResult({ card }: Props) {
-  return <DetailSection card={card} btn={<CreateCardButton card={card} />} />;
+export default function NewCardResult({ card, setIsLoading }: Props) {
+  return (
+    <DetailSection
+      card={card}
+      btn={<CreateCardButton card={card} setIsLoading={setIsLoading} />}
+    />
+  );
 }

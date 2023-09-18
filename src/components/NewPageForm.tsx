@@ -6,9 +6,10 @@ import NewCardResult from "./NewCardResult";
 type Props = {
   card: CardState;
   setCard: React.Dispatch<React.SetStateAction<CardState>>;
+  setIsLoading: (isLoading: boolean) => void;
 };
 
-export default function NewPageForm({ card, setCard }: Props) {
+export default function NewPageForm({ card, setCard, setIsLoading }: Props) {
   const inputItem = [
     {
       title: "카드 이름",
@@ -47,7 +48,7 @@ export default function NewPageForm({ card, setCard }: Props) {
           setCard={inputItem[2].modify}
         />
       </form>
-      <NewCardResult card={card} />
+      <NewCardResult card={card} setIsLoading={setIsLoading} />
     </section>
   );
 }

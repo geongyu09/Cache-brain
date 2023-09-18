@@ -4,13 +4,23 @@ import { CardState } from "@/model/card";
 
 type Props = {
   card: CardState;
+  setIsLoading: (isLoading: boolean) => void;
 };
-export default function CreateCardButton({ card }: Props) {
+export default function CreateCardButton({ card, setIsLoading }: Props) {
+  const MAKE_NEW_CARD_URL = "/api/card/create";
   const makeNewCard = (card: CardState) => {
-    fetch("/api/card/create", {
+    fetch(MAKE_NEW_CARD_URL, {
       method: "POST",
       body: JSON.stringify({ card }),
     });
   };
-  return <StyledButton text="create" handler={() => makeNewCard(card)} />;
+  return (
+    <StyledButton
+      text="create"
+      handler={() => {
+        makeNewCard(card);
+        setIsLoading(true);
+      }}
+    />
+  );
 }

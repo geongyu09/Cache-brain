@@ -36,5 +36,9 @@ export type CardState = {
   title: string;
   description: string;
   tags: Array<string>;
-  content: CardContent[];
+  content: CardStateContent[];
+};
+export type CardStateContent = {
+  problem: string;
+  answer: string;
 };

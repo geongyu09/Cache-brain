@@ -1,4 +1,9 @@
-import { Card, CheckCardListTypeParam, DetailCard } from "@/model/card";
+import {
+  Card,
+  CardState,
+  CheckCardListTypeParam,
+  DetailCard,
+} from "@/model/card";
 import { client } from "./sanity";
 
 export async function getCards({
@@ -19,34 +24,20 @@ export async function getCardDetail(cardId: string): Promise<DetailCard> {
     `);
 }
 
-export async function makeNewCard() {
+export async function makeNewCard(
+  { content, description, tags, title }: CardState,
+  userId: string
+) {
   const doc = {
-    // _id: "34e8ccb9-d991-42bd-92af-76b7fea5e2a9",
     _type: "card",
-    content: [],
-    description: "",
+    content,
+    description,
     owner: {
-      _ref: "",
+      _ref: userId,
       _type: "reference",
     },
-    tags: [],
-    title: "",
+    tags,
+    title,
   };
-
-  client.create(doc).then((res) => {
-    console.log(`Bike was created, document ID is ${res._id}`);
-  });
+  return await client.create(doc);
 }
-
-/*
-{
-  id: "",
-  title: "",
-  description: "",
-  tags: [],
-  owner: {
-    name: "",
-  },
-  content: [],
-}
-*/
