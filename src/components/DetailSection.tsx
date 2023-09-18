@@ -3,7 +3,7 @@ import React from "react";
 
 type Props = {
   card: DetailCard;
-  btn: React.ReactElement;
+  btn?: React.ReactElement;
 };
 
 export default function DetailSection({ card, btn }: Props) {
