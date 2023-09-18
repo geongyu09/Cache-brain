@@ -29,8 +29,8 @@ export default function NewPageForm({ card, setCard }: Props) {
     },
   ];
   return (
-    <section className="h-full overflow-auto">
-      <form className="flex flex-col gap-2 w-full pr-4 pb-4 border-r-2">
+    <section className="h-full overflow-auto pr-4 border-r-2">
+      <form className="flex flex-col gap-2 w-full pb-4">
         <NewCardInput
           title={inputItem[0].title}
           text={inputItem[0].text as string}

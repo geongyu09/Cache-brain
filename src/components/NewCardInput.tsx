@@ -13,7 +13,7 @@ export default function NewCardInput({ title, text, setCard }: Props) {
     setCard(typedText);
   };
   return (
-    <>
+    <div className="px-1">
       <h3>{title}</h3>
       <input
         type="text"
@@ -21,6 +21,6 @@ export default function NewCardInput({ title, text, setCard }: Props) {
         onChange={onChange}
         className="w-full p-3 ring-1 ring-indigo-50 rounded-lg outline-none mb-4 focus:ring-2 focus:ring-indigo-600"
       />
-    </>
+    </div>
   );
 }

@@ -25,7 +25,7 @@ export default function CardDetail({ id }: Props) {
           </div>
           <ul className="grow">
             {card?.content.map((item) => (
-              <li key={item.id} className="bg-slate-200 rounded-xl p-4 my-2">
+              <li key={item._key} className="bg-slate-200 rounded-xl p-4 my-2">
                 <p className="mb-1">{`Q : ${item.problem}`}</p>
                 <p>{`A : ${item.answer}`}</p>
               </li>
