@@ -12,13 +12,7 @@ const DEFAULT_CARD: DetailCard = {
   owner: {
     name: "",
   },
-  content: [
-    {
-      _key: "",
-      problem: "",
-      answer: "",
-    },
-  ],
+  content: [],
 };
 
 export default function NewPageSection() {

@@ -12,7 +12,9 @@ export default function DetailSection({ card, btn }: Props) {
       <div>
         <div className="flex justify-between items-center">
           <h4 className="text-lg">{card?.title}</h4>
-          {btn}
+          {card.content.length !== 0 && card.title && card.description
+            ? btn
+            : null}
         </div>
         <hr className="my-1" />
         <p>{card?.description}</p>

@@ -37,6 +37,7 @@ export default function NewCardContentForm({ card, setCard }: Props) {
     e.preventDefault();
     const newContentArray = [...card.content, content];
     setCard((prev) => ({ ...prev, content: newContentArray }));
+    setContent(DEFAULT_CONTENT);
   };
   return (
     <form
@@ -54,7 +55,7 @@ export default function NewCardContentForm({ card, setCard }: Props) {
         style="grow"
         contentMofify={textareaItem[1].contentMofify}
       />
-      <StyledButton text="추가하기" />
+      <StyledButton text="add problem" />
     </form>
   );
 }
