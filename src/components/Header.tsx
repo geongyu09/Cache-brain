@@ -17,8 +17,8 @@ export default function Header({ position }: Props) {
         <Link href={"/"}>
           <h3>home</h3>
         </Link>
-        <Link href={"/connect"}>
-          <h3>connect</h3>
+        <Link href={"/contact"}>
+          <h3>contact</h3>
         </Link>
         <h3>surpport</h3>
         {position !== "new" ? <NewCardButton /> : <RouteBackButton />}
