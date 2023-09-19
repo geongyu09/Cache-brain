@@ -3,9 +3,11 @@ import React, { useState } from "react";
 import StyledButton from "./ui/StyledButton";
 import { CardStateContent, CardState } from "@/model/card";
 import NewCardTextarea from "./NewCardTextarea";
+import AddProblemButton from "./AddProblemButton";
 
 type Props = {
   card: CardState;
+  isDone: boolean;
   setCard: React.Dispatch<React.SetStateAction<CardState>>;
   isLoading: boolean;
 };
@@ -17,6 +19,7 @@ const DEFAULT_CONTENT: CardStateContent = {
 
 export default function NewCardStateContentForm({
   card,
+  isDone,
   setCard,
   isLoading,
 }: Props) {
@@ -52,14 +55,16 @@ export default function NewCardStateContentForm({
         title={textareaItem[0].title}
         text={textareaItem[0].text}
         contentMofify={textareaItem[0].contentMofify}
+        readOnly={Boolean(isDone || isLoading)}
       />
       <NewCardTextarea
         title={textareaItem[1].title}
         text={textareaItem[1].text}
         style="grow"
         contentMofify={textareaItem[1].contentMofify}
+        readOnly={Boolean(isDone || isLoading)}
       />
-      <StyledButton text="add problem" />
+      <AddProblemButton isLoading={isLoading} isDone={isDone} />
     </form>
   );
 }

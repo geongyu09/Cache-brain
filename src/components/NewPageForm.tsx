@@ -5,11 +5,21 @@ import NewCardResult from "./NewCardResult";
 
 type Props = {
   card: CardState;
+  isDone: boolean;
+  isLoading: boolean;
   setCard: React.Dispatch<React.SetStateAction<CardState>>;
-  setIsLoading: (isLoading: boolean) => void;
+  setLoading: (loading: boolean) => void;
+  setDone: (done: boolean) => void;
 };
 
-export default function NewPageForm({ card, setCard, setIsLoading }: Props) {
+export default function NewPageForm({
+  card,
+  isDone,
+  isLoading,
+  setCard,
+  setLoading,
+  setDone,
+}: Props) {
   const inputItem = [
     {
       title: "카드 이름",
@@ -36,19 +46,27 @@ export default function NewPageForm({ card, setCard, setIsLoading }: Props) {
           title={inputItem[0].title}
           text={inputItem[0].text as string}
           setCard={inputItem[0].modify}
+          readOnly={Boolean(isDone || isLoading)}
         />
         <NewCardInput
           title={inputItem[1].title}
           text={inputItem[1].text as string}
           setCard={inputItem[1].modify}
+          readOnly={Boolean(isDone || isLoading)}
         />
         <NewCardInput
           title={inputItem[2].title}
           text={inputItem[2].text as string}
           setCard={inputItem[2].modify}
+          readOnly={Boolean(isDone || isLoading)}
         />
       </form>
-      <NewCardResult card={card} setIsLoading={setIsLoading} />
+      <NewCardResult
+        card={card}
+        isDone={isDone}
+        setLoading={setLoading}
+        setDone={setDone}
+      />
     </section>
   );
 }

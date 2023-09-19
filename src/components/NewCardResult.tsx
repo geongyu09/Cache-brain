@@ -2,17 +2,35 @@ import { CardState } from "@/model/card";
 import React from "react";
 import DetailSection from "./DetailSection";
 import CreateCardButton from "./CreateCardButton";
+import GoStudyButton from "./GoStudyButton";
 
 type Props = {
   card: CardState;
-  setIsLoading: (isLoading: boolean) => void;
+  isDone: boolean;
+  setLoading: (loading: boolean) => void;
+  setDone: (done: boolean) => void;
 };
 
-export default function NewCardResult({ card, setIsLoading }: Props) {
+export default function NewCardResult({
+  card,
+  isDone,
+  setLoading,
+  setDone,
+}: Props) {
   return (
     <DetailSection
       card={card}
-      btn={<CreateCardButton card={card} setIsLoading={setIsLoading} />}
+      btn={
+        !isDone ? (
+          <CreateCardButton
+            card={card}
+            setLoading={setLoading}
+            setDone={setDone}
+          />
+        ) : (
+          <GoStudyButton />
+        )
+      }
     />
   );
 }

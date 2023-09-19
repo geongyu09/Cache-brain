@@ -14,20 +14,35 @@ const DEFAULT_CARD: CardState = {
 export default function NewPageSection() {
   const [card, setCard] = useState<CardState>(DEFAULT_CARD);
   const [isLoading, setIsLoading] = useState(false);
-  const [done, setDone] = useState(false);
+  const [isDone, setIsDone] = useState(false);
+
+  const setLoading = (loading: boolean) => {
+    setIsLoading(loading);
+  };
+  const setDone = (done: boolean) => {
+    setIsDone(done);
+  };
 
   return (
     <section
       className={`w-full h-5/6 bg-slate-100 grid grid-cols-[1fr_2fr] p-7 rounded-xl ${
-        isLoading ? "nonw" : ""
+        isLoading ? "opacity-30 cursor-wait" : ""
       }`}
     >
       <NewPageForm
         card={card}
+        isDone={isDone}
+        isLoading={isLoading}
         setCard={setCard}
-        setIsLoading={(isLoading: boolean) => setIsLoading(isLoading)}
+        setDone={(done: boolean) => setDone(done)}
+        setLoading={(loading: boolean) => setLoading(loading)}
       />
-      <NewCardContentForm card={card} setCard={setCard} isLoading={isLoading} />
+      <NewCardContentForm
+        card={card}
+        isDone={isDone}
+        isLoading={isLoading}
+        setCard={setCard}
+      />
     </section>
   );
 }
