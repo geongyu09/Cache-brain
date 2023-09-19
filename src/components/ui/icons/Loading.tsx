@@ -1,6 +1,18 @@
 import React from "react";
 import { FadeLoader } from "react-spinners";
 
-export default function Loading() {
-  return <FadeLoader color="#36d7b7" />;
+type Props = {
+  style?: string;
+};
+
+export default function Loading({ style }: Props) {
+  return (
+    <div
+      className={`w-full h-full flex  ${
+        style ? style : "justify-center items-center"
+      }`}
+    >
+      <FadeLoader color="#36d7b7" />;
+    </div>
+  );
 }

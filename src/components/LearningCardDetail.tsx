@@ -7,7 +7,7 @@ import FilterComponent from "./FilterComponent";
 import { useRouter } from "next/navigation";
 import StartButton from "./StartButton";
 import { Content } from "@/model/learningCard";
-import { BackArrow } from "./ui/icon";
+import { BackArrow, Loading } from "./ui/icon";
 
 type Props = {
   params: string;
@@ -37,6 +37,7 @@ export default function LearningCardDetail({
       <div onClick={() => router.back()} className="w-full border-b-2">
         <BackArrow />
       </div>
+      {isLoading && <Loading />}
       {card && (
         <>
           <h2 className="my-4 text-lg ">{card?.title}</h2>
