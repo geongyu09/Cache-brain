@@ -1,6 +1,5 @@
 "use client";
 import { Review } from "@/components/\bAssessment";
-import { Progress } from "@/components/StudyComponent";
 import { Content, LearningCardContent } from "@/model/learningCard";
 import React, { useCallback } from "react";
 import useSWR from "swr";

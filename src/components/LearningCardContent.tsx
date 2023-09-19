@@ -1,7 +1,6 @@
 "use client";
-import { Content, LearningCardContent } from "@/model/learningCard";
+import { Content } from "@/model/learningCard";
 import React from "react";
-import useSWR from "swr";
 import ContentList from "./ContentList";
 import { Filter } from "./StudyComponent";
 import useStudy from "@/hooks/useStudy";

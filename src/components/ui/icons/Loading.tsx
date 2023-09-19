@@ -12,7 +12,7 @@ export default function Loading({ style }: Props) {
         style ? style : "justify-center items-center"
       }`}
     >
-      <FadeLoader color="#36d7b7" />;
+      <FadeLoader color="rgb(79 70 229)" />
     </div>
   );
 }

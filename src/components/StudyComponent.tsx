@@ -15,10 +15,13 @@ export default function StudyComponent({ params }: { params: string }) {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    fetch(MAKE_NEW_LEARNINGCARD, {
-      method: "POST",
-      body: JSON.stringify({ cardId: params }),
-    });
+    const fetching = async () => {
+      await fetch(MAKE_NEW_LEARNINGCARD, {
+        method: "POST",
+        body: JSON.stringify({ cardId: params }),
+      });
+    };
+    fetching();
   }, [params]);
 
   return (
