@@ -5,6 +5,7 @@ import useSWR from "swr";
 import ContentList from "./ContentList";
 import { Filter } from "./StudyComponent";
 import useStudy from "@/hooks/useStudy";
+import { Loading } from "./ui/icon";
 
 type Props = {
   params: string;
@@ -34,6 +35,7 @@ export default function LearningCardContent({
 
   return (
     <section className="w-full overflow-y-auto h-screen px-10 pt-4 pb-[70px]">
+      {isLoading && <Loading />}
       {data && (
         <ul className="h-full lg:overflow-auto">
           {filter == "all" ? (

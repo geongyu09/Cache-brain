@@ -1,3 +1,5 @@
+import { Content } from "./learningCard";
+
 type OwnerListParam = {
   ownList: true;
   userId: string;
@@ -16,14 +18,27 @@ export type Card = {
   owner: {
     name: string;
   };
-  createdAt: string;
-  updatedAt: string;
+  createdAt?: string;
+  updatedAt?: string;
+};
+
+export type CardContent = {
+  _key: string;
+  problem: string;
+  answer: string;
 };
 
 export type DetailCard = Card & {
-  content: {
-    id: string;
-    problem: string;
-    answer: string;
-  }[];
+  content: CardContent[];
+};
+
+export type CardState = {
+  title: string;
+  description: string;
+  tags: Array<string>;
+  content: CardStateContent[];
+};
+export type CardStateContent = {
+  problem: string;
+  answer: string;
 };

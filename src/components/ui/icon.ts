@@ -6,3 +6,4 @@ export { default as Complete } from "./icons/Complete";
 export { default as ArrowLeft } from "./icons/ArrowLeft";
 export { default as ArrowRight } from "./icons/ArrowRight";
 export { default as BackArrow } from "./icons/BackArrow";
+export { default as Loading } from "./icons/Loading";
