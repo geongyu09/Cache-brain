@@ -13,6 +13,7 @@ type Props = {
 };
 
 const DEFAULT_CONTENT: CardStateContent = {
+  _key: "",
   problem: "",
   answer: "",
 };
@@ -42,7 +43,10 @@ export default function NewCardStateContentForm({
   ];
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const newContentArray = [...card.content, { ...content, _key: Date.now() }];
+    const newContentArray = [
+      ...card.content,
+      { ...content, _key: Date.now().toString() },
+    ];
     setCard((prev) => ({ ...prev, content: newContentArray }));
     setContent(DEFAULT_CONTENT);
   };

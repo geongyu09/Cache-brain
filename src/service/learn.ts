@@ -14,17 +14,16 @@ export async function postLearningCard({
     _id: makeLearningCardId(cardId, userId),
     _type: "learningCard",
     originCard: { _ref: cardId },
-    content: content.map(({ problem, answer, id }) => ({
+    content: content.map(({ problem, answer, _key }) => ({
+      _key,
       problem,
       answer,
-      _key: id,
       progress: 0,
     })),
     learner: { _ref: userId },
     title,
   };
-
-  return await client.createIfNotExists(doc);
+  return await client.create(doc);
 }
 
 export async function getLearningCard({

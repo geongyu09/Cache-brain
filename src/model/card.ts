@@ -39,6 +39,7 @@ export type CardState = {
   content: CardStateContent[];
 };
 export type CardStateContent = {
+  _key: string;
   problem: string;
   answer: string;
 };

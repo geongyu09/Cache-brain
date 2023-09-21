@@ -15,13 +15,22 @@ export default function ContentList({
   showModal,
   selectedModify,
 }: Props) {
+  const handleSelectAll = () => {
+    learned?.forEach((item) => {
+      const isSelectedAll = learned?.length === selected.length;
+      selectedModify(item, true);
+      selectedModify(item, isSelectedAll);
+    });
+  };
   const onClick = (item: Content, isSelected: boolean) => {
     selectedModify(item, isSelected);
   };
   return (
     <>
       <section>
-        <h3 className="font-semibold my-4">{title}</h3>
+        <h3 className="font-semibold my-4" onClick={() => handleSelectAll()}>
+          {title}
+        </h3>
         {learned &&
           learned.map((item) => {
             const isSelected = Boolean(
@@ -35,7 +44,7 @@ export default function ContentList({
                 }`}
                 onClick={() => onClick(item, Boolean(isSelected))}
               >
-                <h4 className="mb-2 ">{item.problem}</h4>
+                <h4 className="mb-2">{item.problem}</h4>
                 {!showModal ? <p>{item.answer}</p> : null}
               </li>
             );
