@@ -1,6 +1,7 @@
 import React from "react";
 import Carousel from "./Carousel";
 import { Content } from "@/model/learningCard";
+import { Close } from "./ui/icon";
 
 type Props = {
   showModal: boolean;
@@ -27,7 +28,7 @@ export default function Modal({
             className="absolute top-10 right-16 text-2xl"
             onClick={handleShowModal}
           >
-            X
+            <Close />
           </div>
           <Carousel selected={selected} params={params} />
         </section>

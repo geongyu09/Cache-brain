@@ -7,3 +7,4 @@ export { default as ArrowLeft } from "./icons/ArrowLeft";
 export { default as ArrowRight } from "./icons/ArrowRight";
 export { default as BackArrow } from "./icons/BackArrow";
 export { default as Loading } from "./icons/Loading";
+export { default as Close } from "./icons/Close";
