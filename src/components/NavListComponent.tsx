@@ -15,7 +15,11 @@ export default function NavListComponent({ content, style }: Props) {
       <ul>
         {list.map((item, index) => (
           <Link key={index} href={`${item.url}`}>
-            <li className={`flex mb-1 gap-3 items-center `}>
+            <li
+              className={`flex mb-1 gap-3 items-center ${
+                item.isOnUrl ? "text-indigo-600" : ""
+              } `}
+            >
               {item.icon}
               {item.text}
             </li>

@@ -1,26 +1,52 @@
+"use client";
 import React from "react";
 import NavListComponent from "./NavListComponent";
 import { Book, Complete, Instudy, Own } from "./ui/icon";
 import Hero from "./Hero";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/service/auth";
 import MainIcon from "./MainIcon";
+import { useSession } from "next-auth/react";
 
 export type NavList = {
   title: string;
-  list: { text: string; url: string; icon?: React.ReactElement }[];
+  list: {
+    text: string;
+    url: string;
+    icon?: React.ReactElement;
+    isOnUrl?: boolean;
+  }[];
 };
 
-export default async function NavigateSection() {
-  const session = await getServerSession(authOptions);
-  const username = session?.user.username;
+export default function NavigateSection() {
+  const session = useSession();
+  const username = session?.data?.user.username;
+  const route = window.location.href.split("/");
   const Navigation: NavList = {
     title: "Navigation",
     list: [
-      { text: "All cards", url: `/${username}/`, icon: <Book /> },
-      { text: "Own cards", url: `/${username}/own`, icon: <Own /> },
-      { text: "in study", url: `/${username}/instudy`, icon: <Instudy /> },
-      { text: "complete", url: `/${username}/complete`, icon: <Complete /> },
+      {
+        text: "All cards",
+        url: `/${username}/`,
+        icon: <Book />,
+        isOnUrl: route[route.length - 1] == username,
+      },
+      {
+        text: "Own cards",
+        url: `/${username}/own`,
+        icon: <Own />,
+        isOnUrl: route[route.length - 1] == "own",
+      },
+      {
+        text: "in study",
+        url: `/${username}/instudy`,
+        icon: <Instudy />,
+        isOnUrl: route[route.length - 1] == "instudy",
+      },
+      {
+        text: "complete",
+        url: `/${username}/complete`,
+        icon: <Complete />,
+        isOnUrl: route[route.length - 1] == "complete",
+      },
     ],
   };
 
