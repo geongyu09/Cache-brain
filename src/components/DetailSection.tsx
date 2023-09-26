@@ -1,8 +1,9 @@
 import { CardState, DetailCard } from "@/model/card";
 import React from "react";
+import EditButton from "./EditButton";
 
 type Props = {
-  card: DetailCard | CardState;
+  card: DetailCard;
   btn?: React.ReactElement;
 };
 
@@ -27,6 +28,7 @@ export default function DetailSection({ card, btn }: Props) {
           </li>
         ))}
       </ul>
+      <EditButton cardId={card.id} />
     </section>
   );
 }
