@@ -17,6 +17,7 @@ export type Card = {
   tags: Array<string>;
   owner: {
     name: string;
+    username: string;
   };
   createdAt?: string;
   updatedAt?: string;

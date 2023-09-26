@@ -1,13 +1,14 @@
-import { CardState, DetailCard } from "@/model/card";
+import { DetailCard } from "@/model/card";
 import React from "react";
 import EditButton from "./EditButton";
 
 type Props = {
   card: DetailCard;
+  username: string;
   btn?: React.ReactElement;
 };
 
-export default function DetailSection({ card, btn }: Props) {
+export default function DetailSection({ card, btn, username }: Props) {
   return (
     <section className="flex flex-col h-full p-5">
       <div>
@@ -28,7 +29,7 @@ export default function DetailSection({ card, btn }: Props) {
           </li>
         ))}
       </ul>
-      <EditButton cardId={card.id} />
+      {username == card.owner.username && <EditButton cardId={card.id} />}
     </section>
   );
 }

@@ -7,16 +7,21 @@ import { Loading } from "./ui/icon";
 
 type Props = {
   id: string;
+  username: string;
 };
 
-export default function CardDetail({ id }: Props) {
+export default function CardDetail({ id, username }: Props) {
   const GET_CARD_URL = `/api/card/detail/${id}`;
   const { data: card, isLoading, error } = useSWR<DetailCard>(GET_CARD_URL);
   return (
     <section className="bg-slate-100 w-full max-w-sm h-[90%] overflow-auto ">
       {isLoading && <Loading />}
       {card && (
-        <DetailSection card={card} btn={<StudyButton cardId={card.id} />} />
+        <DetailSection
+          card={card}
+          username={username}
+          btn={<StudyButton cardId={card.id} />}
+        />
       )}
     </section>
   );
