@@ -15,9 +15,5 @@ export default async function UserDetailPage({ params: { userId } }: Props) {
   const user = session?.user;
   if (!session || user?.username !== userId) redirect("/");
 
-  return (
-    <>
-      <CardListContent typeOwn={true} />
-    </>
-  );
+  return <CardListContent typeOwn={true} username={user.username} />;
 }

@@ -17,11 +17,13 @@ export async function getCards({
 }
 
 export async function getCardDetail(cardId: string): Promise<DetailCard> {
-  return await client.fetch(`
+  const data = await client.fetch(`
   *[_type=="card" && _id == "${cardId}"][0]{
     content[]{_key,problem,answer}, "createdAt":_createdAt,description,"id":_id,owner->{name,username},title,tags[]
   }
     `);
+  console.log(data);
+  return data;
 }
 
 export async function makeNewCard(

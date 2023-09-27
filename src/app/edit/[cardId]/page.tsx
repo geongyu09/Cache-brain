@@ -7,5 +7,5 @@ type Props = {
 };
 
 export default function page({ params: { cardId } }: Props) {
-  return <div>{cardId}</div>;
+  return <section className="grid grid-cols-[4fr_11fr]"></section>;
 }
