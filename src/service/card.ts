@@ -22,7 +22,6 @@ export async function getCardDetail(cardId: string): Promise<DetailCard> {
     content[]{_key,problem,answer}, "createdAt":_createdAt,description,"id":_id,owner->{name,username},title,tags[]
   }
     `);
-  console.log(data);
   return data;
 }
 

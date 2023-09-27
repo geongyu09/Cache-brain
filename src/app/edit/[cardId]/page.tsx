@@ -1,3 +1,4 @@
+import EditPageSection from "@/components/EditPageSection";
 import React from "react";
 
 type Props = {
@@ -7,5 +8,5 @@ type Props = {
 };
 
 export default function page({ params: { cardId } }: Props) {
-  return <section className="grid grid-cols-[4fr_11fr]"></section>;
+  return <EditPageSection cardId={cardId} />;
 }
