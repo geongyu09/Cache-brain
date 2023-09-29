@@ -54,7 +54,7 @@ export default function EditContentsSection({
           </li>
         ))}
       </ul>
-      <AddContentButton setEditCard={setEditCard} />
+      <AddContentButton setEditCard={setEditCard} content={editCard.content} />
     </section>
   );
 }
