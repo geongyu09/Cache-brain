@@ -42,3 +42,5 @@ export async function makeNewCard(
   };
   return await client.create(doc);
 }
+
+export async function editCard() {}

@@ -37,7 +37,9 @@ export default function AddContentButton({ content, setEditCard }: Props) {
     <StyledButton
       text="Add content"
       style={`${
-        !isOkToCreate ? "bg-gray-600 hover:opacity-100 cursor-not-allowed" : ""
+        !isOkToCreate
+          ? "bg-gray-600 hover:opacity-100 cursor-not-allowed shrink-0"
+          : "shrink-0 bg-indigo-600"
       }`}
       handler={onClick}
     />

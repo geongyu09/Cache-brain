@@ -1,14 +1,27 @@
-import { DetailCard } from "@/model/card";
+import { CardState, DetailCard } from "@/model/card";
 import React from "react";
 import EditButton from "./EditButton";
 
-type Props = {
-  card: DetailCard;
-  username: string;
-  btn?: React.ReactElement;
-};
+type Props =
+  | {
+      card: DetailCard;
+      username: string;
+      btn?: React.ReactElement;
+      isNewPage: false;
+    }
+  | {
+      card: CardState;
+      username?: string;
+      btn?: React.ReactElement;
+      isNewPage: true;
+    };
 
-export default function DetailSection({ card, btn, username }: Props) {
+export default function DetailSection({
+  card,
+  btn,
+  username,
+  isNewPage,
+}: Props) {
   return (
     <section className="flex flex-col h-full p-5">
       <div>
@@ -29,7 +42,9 @@ export default function DetailSection({ card, btn, username }: Props) {
           </li>
         ))}
       </ul>
-      {username == card.owner.username && <EditButton cardId={card.id} />}
+      {!isNewPage && username == card.owner?.username && (
+        <EditButton cardId={card.id} />
+      )}
     </section>
   );
 }

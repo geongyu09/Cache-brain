@@ -1,5 +1,6 @@
 import { DetailCard } from "@/model/card";
 import React from "react";
+import EditSaveButton from "./EditSaveButton";
 
 type Props = {
   card: DetailCard;
@@ -26,7 +27,7 @@ export default function EditDetailSection({
     });
   };
   return (
-    <section className="w-full h-[100vh] bg-slate-100 px-2">
+    <section className="flex flex-col w-full h-[100vh] bg-slate-100 px-2 pb-[80px]">
       <input
         className="w-full p-2 bg-inherit outline-none text-lg my-3"
         value={editCard.title}
@@ -36,12 +37,14 @@ export default function EditDetailSection({
       />
       <hr />
       <textarea
-        className="w-full h-full outline-none bg-inherit text-lg mt-6"
+        className="w-full outline-none bg-inherit text-lg mt-6 resize-none grow"
         value={editCard.description}
         onChange={(e) => {
           onChange(e.target.value, "description");
         }}
+        rows={7}
       />
+      <EditSaveButton editCard={editCard} />
     </section>
   );
 }

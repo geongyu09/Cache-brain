@@ -19,7 +19,7 @@ export default function StyledButton({
     <button
       onClick={handler}
       disabled={disabled}
-      className={`px-4 py-2 rounded-lg ring-1 ring-slate-400 hover:opacity-80 text-slate-200 overflow-hidden ${
+      className={`px-4 py-2 rounded-lg ring-1 ring-slate-600 hover:opacity-80 text-slate-200 overflow-hidden ${
         style ? `${style}` : "bg-indigo-600"
       }`}
     >

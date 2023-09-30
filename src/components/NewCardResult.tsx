@@ -20,6 +20,7 @@ export default function NewCardResult({
   return (
     <DetailSection
       card={card}
+      isNewPage={true}
       btn={
         !isDone ? (
           <CreateCardButton
