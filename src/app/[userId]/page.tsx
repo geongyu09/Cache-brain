@@ -14,6 +14,5 @@ export default async function UserDetailPage({ params: { userId } }: Props) {
   const session = await getServerSession(authOptions);
   const user = session?.user;
   if (!session || user?.username !== userId) redirect("/");
-
   return <CardListContent typeOwn={false} username={user.username} />;
 }
