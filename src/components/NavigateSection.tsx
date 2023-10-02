@@ -5,6 +5,7 @@ import NavListComponent from "./NavListComponent";
 import { useSession } from "next-auth/react";
 import MainIcon from "./MainIcon";
 import Hero from "./Hero";
+import { usePathname } from "next/navigation";
 
 export type NavBarList = {
   text: string;
@@ -46,8 +47,7 @@ const DefaultList = [
 export default function NavigateSection() {
   const session = useSession();
   const username = session?.data?.user.username;
-  const [url, setUrl] = useState(window.location.href.split("/"));
-  const lastWordOfUrl = url[url.length - 1];
+  const URL = usePathname().split("/").pop();
   const [Navigation, setNavigation] = useState<NavBar>({
     title: "Navigation",
     list: DefaultList,
@@ -56,17 +56,14 @@ export default function NavigateSection() {
     setNavigation((prev) => ({
       ...prev,
       list: prev.list.map((item, index) => {
-        if (index == 0) return { ...item, isOnUrl: lastWordOfUrl == username };
-        if (index == 1) return { ...item, isOnUrl: lastWordOfUrl == "own" };
-        if (index == 2) return { ...item, isOnUrl: lastWordOfUrl == "instudy" };
-        if (index == 3)
-          return { ...item, isOnUrl: lastWordOfUrl == "complete" };
+        if (index == 0) return { ...item, isOnUrl: URL == username };
+        if (index == 1) return { ...item, isOnUrl: URL == "own" };
+        if (index == 2) return { ...item, isOnUrl: URL == "instudy" };
+        if (index == 3) return { ...item, isOnUrl: URL == "complete" };
         return item;
       }),
     }));
-    setUrl(window?.location.href.split("/"));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [username, lastWordOfUrl]);
+  }, [username, URL]);
   //서버에서 북마크 정보 가지고 올 것.
   const Bookmarks: NavBar = {
     title: "Bookmarks",
