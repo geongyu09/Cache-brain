@@ -19,6 +19,7 @@ export default function CardDetail({ id, username }: Props) {
       {card && (
         <DetailSection
           card={card}
+          isNewPage={false}
           username={username}
           btn={<StudyButton cardId={card.id} />}
         />

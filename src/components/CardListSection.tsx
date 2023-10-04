@@ -12,7 +12,7 @@ type Props = {
 };
 
 export default function CardListContent({ typeOwn, username }: Props) {
-  const [focus, setFocus] = useState("");
+  const [focus, setFocus] = useState(""); //cardId
   const GET_ALL_CARD_URL = `/api/card/${typeOwn ? "own" : "all"}`;
   const { data: cards, isLoading, error } = useSWR<Card[]>(GET_ALL_CARD_URL);
 
