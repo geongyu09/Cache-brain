@@ -45,7 +45,7 @@ export default function NewCardStateContentForm({
     e.preventDefault();
     const newContentArray = [
       ...card.content,
-      { ...content, _key: Date.now().toString() },
+      { ...content, _key: Date.now().toString(), progress: 0 },
     ];
     setCard((prev) => ({ ...prev, content: newContentArray }));
     setContent(DEFAULT_CONTENT);

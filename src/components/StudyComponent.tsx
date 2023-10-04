@@ -4,40 +4,20 @@ import LearningCardDetail from "./LearningCardDetail";
 import LearningCardContent from "./LearningCardContent";
 import { Content } from "@/model/learningCard";
 import CreatePortal from "./CreatePortal";
-import useSWR from "swr";
-import { DetailCard } from "@/model/card";
+import useCard from "@/hooks/useCard";
 export type Progress = "unlearned" | "learned" | "learning";
 export type Filter = "all" | Progress;
 
 export default function StudyComponent({ params }: { params: string }) {
-  // const MAKE_NEW_LEARNINGCARD = "/api/study";
-
   const [filter, setFilter] = useState<Filter>("all");
   const [selected, setSelected] = useState<Content[]>([]);
   const [showModal, setShowModal] = useState(false);
-  const GET_CARD_DETAIL_URL = `/api/card/detail/${params}`;
-  const {
-    data: card,
-    isLoading,
-    error,
-  } = useSWR<DetailCard>(GET_CARD_DETAIL_URL);
-
-  // useEffect(() => {
-  //   const fetching = async () => {
-  //     await fetch(MAKE_NEW_LEARNINGCARD, {
-  //       method: "POST",
-  //       body: JSON.stringify({ cardId: params }),
-  //     });
-  //   };
-  //   fetching();
-  // }, [params]);
-
+  const { data: card, isLoading, error } = useCard(params);
   return (
     <section className="grid grid-cols-[4fr_11fr]">
       {card && (
         <>
           <LearningCardDetail
-            // params={params}
             card={card}
             isLoading={isLoading}
             error={error}
@@ -47,7 +27,9 @@ export default function StudyComponent({ params }: { params: string }) {
             handleShowModal={() => setShowModal(true)}
           />
           <LearningCardContent
-            params={params}
+            content={card.content}
+            isLoading={isLoading}
+            error={error}
             filter={filter}
             selected={selected}
             showModal={showModal}

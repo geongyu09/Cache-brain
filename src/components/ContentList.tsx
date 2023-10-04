@@ -1,23 +1,24 @@
+import { CardContent } from "@/model/card";
 import { Content } from "@/model/learningCard";
 import React from "react";
 type Props = {
   title: string;
-  learned: Content[] | undefined;
-  selected: Content[];
+  content: CardContent[];
+  selected: CardContent[];
   showModal: boolean;
   selectedModify: (selected: Content, remove?: boolean) => void;
 };
 
 export default function ContentList({
-  learned,
+  content,
   title,
   selected,
   showModal,
   selectedModify,
 }: Props) {
   const handleSelectAll = () => {
-    learned?.forEach((item) => {
-      const isSelectedAll = learned?.length === selected.length;
+    content?.forEach((item) => {
+      const isSelectedAll = content?.length === selected.length;
       selectedModify(item, true);
       selectedModify(item, isSelectedAll);
     });
@@ -31,8 +32,8 @@ export default function ContentList({
         <h3 className="font-semibold my-4" onClick={() => handleSelectAll()}>
           {title}
         </h3>
-        {learned &&
-          learned.map((item) => {
+        {content &&
+          content.map((item) => {
             const isSelected = Boolean(
               selected.find((i) => i._key == item._key)
             );

@@ -27,6 +27,7 @@ export type CardContent = {
   _key: string;
   problem: string;
   answer: string;
+  progress: number;
 };
 
 export type DetailCard = Card & {
