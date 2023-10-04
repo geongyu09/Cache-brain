@@ -7,9 +7,9 @@ type Props = {
   cardId: string;
 };
 export default function StudyButton({ cardId }: Props) {
-  const naviate = useRouter();
+  const navigate = useRouter();
   const onClick = () => {
-    naviate.push(`/study/${cardId}`);
+    navigate.push(`/study/${cardId}`);
   };
   return (
     <StyledButton

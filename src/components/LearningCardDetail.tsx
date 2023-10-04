@@ -10,27 +10,33 @@ import { Content } from "@/model/learningCard";
 import { BackArrow, Loading } from "./ui/icon";
 
 type Props = {
-  params: string;
+  // params: string;
   modify: (filter: Filter) => void;
   filter: Filter;
   selected: Content[];
   handleShowModal: () => void;
+  isLoading: boolean;
+  card: DetailCard;
+  error: any;
 };
 
 export default function LearningCardDetail({
-  params,
+  // params,
+  isLoading,
+  card,
+  error,
   modify,
   filter,
   handleShowModal,
   selected,
 }: Props) {
-  const GET_CARD_DETAIL_URL = `/api/card/detail/${params}`;
   const router = useRouter();
-  const {
-    data: card,
-    isLoading,
-    error,
-  } = useSWR<DetailCard>(GET_CARD_DETAIL_URL);
+  // const GET_CARD_DETAIL_URL = `/api/card/detail/${params}`;
+  // const {
+  //   data: card,
+  //   isLoading,
+  //   error,
+  // } = useSWR<DetailCard>(GET_CARD_DETAIL_URL);
 
   return (
     <section className="flex flex-col bg-slate-100 px-5 h-screen pb-[100px]">
