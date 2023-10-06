@@ -32,7 +32,8 @@ export default function useCard(cardId: string) {
       const processMesure = chagneProcessMesure(progress);
       const newContents =
         data?.content?.map((item) => {
-          if (item._key == content._key) return { ...item, processMesure };
+          if (item._key == content._key)
+            return { ...item, progress: processMesure };
           return item;
         }) || [];
       mutate(setProgress(content, processMesure, GET_CARD_URL), {

@@ -1,6 +1,4 @@
-import { authOptions } from "@/service/auth";
 import { getCardDetail, putProgress } from "@/service/card";
-import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
 type Props = {
