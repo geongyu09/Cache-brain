@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import StyledButton from "./ui/StyledButton";
 import { CardStateContent, CardState } from "@/model/card";
 import NewCardTextarea from "./NewCardTextarea";
 import AddProblemButton from "./AddProblemButton";

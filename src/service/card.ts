@@ -1,5 +1,6 @@
 import {
   Card,
+  CardContent,
   CardState,
   CheckCardListTypeParam,
   DetailCard,
@@ -41,6 +42,23 @@ export async function makeNewCard(
     title,
   };
   return await client.create(doc);
+}
+
+export async function putProgress({
+  cardId,
+  content,
+  progress,
+}: {
+  cardId: string;
+  content: CardContent;
+  progress: number;
+}) {
+  const contents = (await getCardDetail(cardId)).content;
+  const resultContents = contents.map((item) => {
+    if (item._key == content._key) return { ...content, progress: progress };
+    return item;
+  });
+  return client.patch(cardId).set({ content: resultContents }).commit();
 }
 
 export async function editCard() {}
