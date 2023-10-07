@@ -1,12 +1,11 @@
 import { CardContent } from "@/model/card";
-import { Content } from "@/model/learningCard";
 import React from "react";
 type Props = {
   title: string;
   content: CardContent[];
   selected: CardContent[];
   showModal: boolean;
-  selectedModify: (selected: Content, remove?: boolean) => void;
+  selectedModify: (selected: CardContent, remove?: boolean) => void;
 };
 
 export default function ContentList({
@@ -23,7 +22,7 @@ export default function ContentList({
       selectedModify(item, isSelectedAll);
     });
   };
-  const onClick = (item: Content, isSelected: boolean) => {
+  const onClick = (item: CardContent, isSelected: boolean) => {
     selectedModify(item, isSelected);
   };
   return (

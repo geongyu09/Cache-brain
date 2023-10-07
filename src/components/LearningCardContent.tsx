@@ -1,19 +1,18 @@
 "use client";
-import { Content } from "@/model/learningCard";
 import React from "react";
 import ContentList from "./ContentList";
 import { Filter } from "./StudyComponent";
 import { Loading } from "./ui/icon";
-import { CardContent, DetailCard } from "@/model/card";
+import { CardContent } from "@/model/card";
 
 type Props = {
   filter: Filter;
-  selected: Content[];
+  selected: CardContent[];
   showModal: boolean;
   content: CardContent[];
   isLoading: boolean;
   error: any;
-  selectedModify: (selected: Content, remove?: boolean) => void;
+  selectedModify: (selected: CardContent, remove?: boolean) => void;
 };
 
 export default function LearningCardContent({

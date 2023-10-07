@@ -1,12 +1,12 @@
 import React from "react";
 import Carousel from "./Carousel";
-import { Content } from "@/model/learningCard";
 import { Close } from "./ui/icon";
+import { CardContent } from "@/model/card";
 
 type Props = {
   showModal: boolean;
   handleShowModal: () => void;
-  selected: Content[];
+  selected: CardContent[];
   params: string;
 };
 export default function Modal({

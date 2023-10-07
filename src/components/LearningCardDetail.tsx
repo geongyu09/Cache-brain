@@ -1,18 +1,17 @@
 "use client";
-import { DetailCard } from "@/model/card";
+import { CardContent, DetailCard } from "@/model/card";
 import React from "react";
 import useSWR from "swr";
 import { Filter } from "./StudyComponent";
 import FilterComponent from "./FilterComponent";
 import { useRouter } from "next/navigation";
 import StartButton from "./StartButton";
-import { Content } from "@/model/learningCard";
 import { BackArrow, Loading } from "./ui/icon";
 
 type Props = {
   modify: (filter: Filter) => void;
   filter: Filter;
-  selected: Content[];
+  selected: CardContent[];
   handleShowModal: () => void;
   isLoading: boolean;
   card: DetailCard;

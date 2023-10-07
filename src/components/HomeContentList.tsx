@@ -1,10 +1,10 @@
-import { Content } from "@/model/learningCard";
+import { CardContent } from "@/model/card";
 import React from "react";
 type Props = {
   title: string;
-  learned: Content[] | undefined;
-  selected: Content[];
-  selectedModify: (selected: Content, remove?: boolean) => void;
+  learned: CardContent[] | undefined;
+  selected: CardContent[];
+  selectedModify: (selected: CardContent, remove?: boolean) => void;
 };
 
 export default function HomeContentList({
@@ -13,7 +13,7 @@ export default function HomeContentList({
   selected,
   selectedModify,
 }: Props) {
-  const onClick = (item: Content, isSelected: boolean) => {
+  const onClick = (item: CardContent, isSelected: boolean) => {
     selectedModify(item, isSelected);
   };
   return (

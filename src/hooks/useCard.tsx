@@ -1,7 +1,6 @@
 "use client";
 import { Review } from "@/components/\bAssessment";
-import { DetailCard } from "@/model/card";
-import { Content } from "@/model/learningCard";
+import { CardContent, DetailCard } from "@/model/card";
 import { useCallback } from "react";
 import useSWR from "swr";
 
@@ -15,7 +14,7 @@ function chagneProcessMesure(progress: Review) {
     : -1;
 }
 
-async function setProgress(item: Content, progress: number, url: string) {
+async function setProgress(item: CardContent, progress: number, url: string) {
   await fetch(url, {
     method: "PUT",
     body: JSON.stringify({ content: item, progress: progress }),
@@ -28,7 +27,7 @@ export default function useCard(cardId: string) {
   const { data, isLoading, error, mutate } = useSWR<DetailCard>(GET_CARD_URL);
 
   const updateProgress = useCallback(
-    (content: Content, progress: Review) => {
+    (content: CardContent, progress: Review) => {
       const processMesure = chagneProcessMesure(progress);
       const newContents =
         data?.content?.map((item) => {

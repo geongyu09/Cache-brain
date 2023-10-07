@@ -1,11 +1,11 @@
 "use client";
 import useCard from "@/hooks/useCard";
-import { Content } from "@/model/learningCard";
+import { CardContent } from "@/model/card";
 import React, { useState } from "react";
 
 type Props = {
   params: string;
-  item: Content;
+  item: CardContent;
 };
 export type Review = "none" | "good" | "soso" | "again";
 

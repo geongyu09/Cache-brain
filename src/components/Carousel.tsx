@@ -1,10 +1,10 @@
 "use client";
-import { Content } from "@/model/learningCard";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import StudyContent from "./StudyContent";
 import { ArrowLeft, ArrowRight } from "./ui/icon";
+import { CardContent } from "@/model/card";
 type Props = {
-  selected: Content[];
+  selected: CardContent[];
   params: string;
 };
 
