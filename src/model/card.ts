@@ -1,5 +1,3 @@
-import { Content } from "./learningCard";
-
 type OwnerListParam = {
   ownList: true;
   userId: string;
@@ -18,6 +16,7 @@ export type Card = {
   owner: {
     name: string;
     username: string;
+    id: string;
   };
   createdAt?: string;
   updatedAt?: string;

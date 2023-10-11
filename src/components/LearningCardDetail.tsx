@@ -1,12 +1,13 @@
 "use client";
 import { CardContent, DetailCard } from "@/model/card";
 import React from "react";
-import useSWR from "swr";
 import { Filter } from "./StudyComponent";
 import FilterComponent from "./FilterComponent";
 import { useRouter } from "next/navigation";
 import StartButton from "./StartButton";
 import { BackArrow, Loading } from "./ui/icon";
+import { useSession } from "next-auth/react";
+import ImportButton from "./ImportButton";
 
 type Props = {
   modify: (filter: Filter) => void;
@@ -28,6 +29,9 @@ export default function LearningCardDetail({
   selected,
 }: Props) {
   const router = useRouter();
+  const session = useSession();
+  const userId = session.data?.user.id;
+  const isOwn = card.owner.id == userId;
 
   return (
     <section className="flex flex-col bg-slate-100 px-5 h-screen pb-[100px]">
@@ -42,7 +46,11 @@ export default function LearningCardDetail({
         </>
       )}
       <FilterComponent modify={modify} filter={filter} />
-      <StartButton handleShowModal={handleShowModal} selected={selected} />
+      {isOwn ? (
+        <StartButton handleShowModal={handleShowModal} selected={selected} />
+      ) : (
+        <ImportButton cardId={card.id} />
+      )}
     </section>
   );
 }

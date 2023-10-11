@@ -6,6 +6,7 @@ import {
   DetailCard,
 } from "@/model/card";
 import { client } from "./sanity";
+import { getUserById } from "./user";
 
 export async function getCards({
   ownList,
@@ -20,7 +21,7 @@ export async function getCards({
 export async function getCardDetail(cardId: string): Promise<DetailCard> {
   const data = await client.fetch(`
   *[_type=="card" && _id == "${cardId}"][0]{
-    content[]{_key,problem,answer,progress}, "createdAt":_createdAt,description,"id":_id,owner->{name,username},title,tags[]
+    content[]{_key,problem,answer,progress}, "createdAt":_createdAt,description,"id":_id,owner->{name,username,"id":_id},title,tags[]
   }
     `);
   return data;
@@ -61,4 +62,35 @@ export async function putProgress({
   return client.patch(cardId).set({ content: resultContents }).commit();
 }
 
+export async function importCard(userId: string, cardId: string) {
+  const { title, tags, description, owner, content } = await getCardDetail(
+    cardId
+  );
+  const { id } = await getUserById(userId);
+  const isAlreadyOwn = await isAlreadyImport(cardId, userId);
+  if (!isAlreadyOwn) return;
+
+  const newCard = {
+    _type: "card",
+    description:
+      description +
+      `
+      "${owner.name} 의 카드로부터 가져옴"`,
+    owner: { _ref: id, _type: "reference" },
+    title: title,
+    content: content,
+    tags: tags,
+    origin: { _ref: cardId, _type: "reference" },
+  };
+  return await client.create(newCard);
+}
+
 export async function editCard() {}
+
+export async function isAlreadyImport(cardId: string, userId?: string) {
+  if (!userId) return false;
+  const { cardId: target } = await client.fetch(`
+  *[_type == "card" && owner._ref == "${userId}"]{"cardId" : origin._ref}[0]
+  `);
+  return target !== cardId;
+}

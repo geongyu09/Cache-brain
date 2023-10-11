@@ -2,15 +2,15 @@
 import React, { useState } from "react";
 import LearningCardDetail from "./LearningCardDetail";
 import LearningCardContent from "./LearningCardContent";
-import { Content } from "@/model/learningCard";
 import CreatePortal from "./CreatePortal";
 import useCard from "@/hooks/useCard";
+import { CardContent } from "@/model/card";
 export type Progress = "unlearned" | "learned" | "learning";
 export type Filter = "all" | Progress;
 
 export default function StudyComponent({ params }: { params: string }) {
   const [filter, setFilter] = useState<Filter>("all");
-  const [selected, setSelected] = useState<Content[]>([]);
+  const [selected, setSelected] = useState<CardContent[]>([]);
   const [showModal, setShowModal] = useState(false);
   const { data: card, isLoading, error } = useCard(params);
   return (
@@ -33,7 +33,7 @@ export default function StudyComponent({ params }: { params: string }) {
             filter={filter}
             selected={selected}
             showModal={showModal}
-            selectedModify={(selected: Content, remove?: boolean) => {
+            selectedModify={(selected: CardContent, remove?: boolean) => {
               if (remove) {
                 setSelected((prev) =>
                   prev.filter((item) => item._key !== selected._key)

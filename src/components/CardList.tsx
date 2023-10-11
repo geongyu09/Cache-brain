@@ -1,7 +1,6 @@
 import React from "react";
 import List from "./List";
 import { Card } from "@/model/card";
-import NewCardButton from "./NewCardButton";
 import Link from "next/link";
 
 type Props = {

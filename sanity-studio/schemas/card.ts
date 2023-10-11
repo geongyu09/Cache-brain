@@ -45,5 +45,11 @@ export default {
         },
       ],
     },
+    {
+      name: 'origin',
+      type: 'reference',
+      title: 'Origin',
+      to: [{type: 'card'}],
+    },
   ],
 }
