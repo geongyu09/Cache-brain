@@ -4,14 +4,18 @@ import EditDetailSection from "./EditDetailSection";
 import EditContentsSection from "./EditContentsSection";
 import useSWR from "swr";
 import { DetailCard } from "@/model/card";
+import { GET_CARD_URL } from "@/service/urls";
 
 type Props = {
   cardId: string;
 };
 
 export default function EditPageSection({ cardId }: Props) {
-  const GET_CARD_URL = `/api/card/detail/${cardId}`;
-  const { data: card, isLoading, error } = useSWR<DetailCard>(GET_CARD_URL);
+  const {
+    data: card,
+    isLoading,
+    error,
+  } = useSWR<DetailCard>(GET_CARD_URL + cardId);
   const [editCard, setEditCard] = useState<DetailCard>();
   useEffect(() => {
     setEditCard(card);

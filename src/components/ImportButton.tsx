@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import StyledButton from "./ui/StyledButton";
+import { IMPORT_URL } from "@/service/urls";
 
 type Props = {
   cardId: string;
@@ -7,7 +8,6 @@ type Props = {
 
 export default function ImportButton({ cardId }: Props) {
   const [isLoading, setIsLoading] = useState(false);
-  const IMPORT_URL = "/api/card/importCard";
   const text = isLoading ? "Loading..." : "import";
   const onClick = () => {
     const postCard = async () => {

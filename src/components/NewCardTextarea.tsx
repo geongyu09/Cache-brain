@@ -16,7 +16,7 @@ export default function NewCardTextarea({
   readOnly,
 }: Props) {
   const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const typedText = e.target.value as string;
+    const typedText = e.target.value;
     contentMofify(typedText);
   };
   return (
