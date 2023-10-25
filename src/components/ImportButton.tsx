@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+"use client";
+import { useState } from "react";
 import StyledButton from "./ui/StyledButton";
-import { IMPORT_URL } from "@/service/urls";
+import { importCardToOwn } from "@/service/apis";
 
 type Props = {
   cardId: string;
@@ -10,22 +11,14 @@ export default function ImportButton({ cardId }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const text = isLoading ? "Loading..." : "import";
   const onClick = () => {
-    const postCard = async () => {
-      setIsLoading(true);
-      await fetch(IMPORT_URL, {
-        method: "POST",
-        body: JSON.stringify({ cardId }),
-      });
-      setIsLoading(false);
-    };
-    postCard();
+    importCardToOwn(cardId, setIsLoading);
   };
   return (
     <StyledButton
+      handler={onClick}
       text={text}
       style={`${isLoading ? "w-full bg-gray-600 " : ""}`}
-      handler={onClick}
-      disabled={!isLoading}
+      disabled={isLoading}
     />
   );
 }

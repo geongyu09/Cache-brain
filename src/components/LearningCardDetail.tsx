@@ -1,6 +1,5 @@
 "use client";
 import { CardContent, DetailCard } from "@/model/card";
-import React from "react";
 import { Filter } from "./StudyComponent";
 import FilterComponent from "./FilterComponent";
 import { useRouter } from "next/navigation";
@@ -22,7 +21,7 @@ type Props = {
 export default function LearningCardDetail({
   isLoading,
   card,
-  error,
+  // error,
   modify,
   filter,
   handleShowModal,

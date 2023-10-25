@@ -66,7 +66,6 @@ export async function importCard(userId: string, cardId: string) {
   const { title, tags, description, owner, content } = await getCardDetail(
     cardId
   );
-  const { id } = await getUserById(userId);
   const isAlreadyOwn = await isAlreadyImport(cardId, userId);
   if (!isAlreadyOwn) return;
 
@@ -76,21 +75,21 @@ export async function importCard(userId: string, cardId: string) {
       description +
       `
       "${owner.name} 의 카드로부터 가져옴"`,
-    owner: { _ref: id, _type: "reference" },
-    title: title,
-    content: content,
-    tags: tags,
+    owner: { _ref: userId, _type: "reference" },
+    title,
+    content,
+    tags,
     origin: { _ref: cardId, _type: "reference" },
   };
   return await client.create(newCard);
 }
 
-export async function editCard() {}
-
-export async function isAlreadyImport(cardId: string, userId?: string) {
-  if (!userId) return false;
-  const { cardId: target } = await client.fetch(`
-  *[_type == "card" && owner._ref == "${userId}"]{"cardId" : origin._ref}[0]
+export async function isAlreadyImport(cardId: string, userId: string) {
+  const target = await client.fetch(`
+    *[_type == "card" && owner._ref == "${userId}"]{"cardId" : origin._ref}[0]
   `);
+  console.log(target);
   return target !== cardId;
 }
+
+export async function editCard() {}
