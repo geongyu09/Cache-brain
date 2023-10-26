@@ -2,7 +2,7 @@
 import useSWR from "swr";
 import React from "react";
 import { HomeUser } from "@/model/user";
-import { GET_LOGEDIN_INFO } from "@/service/urls";
+import { GET_LOGEDIN_INFO } from "@/utils/urls";
 
 export default function Hero() {
   const {

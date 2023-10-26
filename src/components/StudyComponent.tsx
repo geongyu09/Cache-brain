@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import LearningCardDetail from "./LearningCardDetail";
 import LearningCardContent from "./LearningCardContent";
 import CreatePortal from "./CreatePortal";

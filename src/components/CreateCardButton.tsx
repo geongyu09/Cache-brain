@@ -1,4 +1,3 @@
-import React from "react";
 import StyledButton from "./ui/StyledButton";
 import { CardState } from "@/model/card";
 import { useSWRConfig } from "swr";
@@ -6,7 +5,7 @@ import {
   GET_ALL_CARDS_URL,
   GET_OWN_CARDS_URL,
   MAKE_NEW_CARD_URL,
-} from "@/service/urls";
+} from "@/utils/urls";
 
 type Props = {
   card: CardState;

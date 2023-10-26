@@ -63,11 +63,11 @@ export async function putProgress({
 }
 
 export async function importCard(userId: string, cardId: string) {
+  const isAlreadyOwn = await isAlreadyImport(cardId, userId);
+  if (!isAlreadyOwn) return;
   const { title, tags, description, owner, content } = await getCardDetail(
     cardId
   );
-  const isAlreadyOwn = await isAlreadyImport(cardId, userId);
-  if (!isAlreadyOwn) return;
 
   const newCard = {
     _type: "card",
@@ -88,7 +88,6 @@ export async function isAlreadyImport(cardId: string, userId: string) {
   const target = await client.fetch(`
     *[_type == "card" && owner._ref == "${userId}"]{"cardId" : origin._ref}[0]
   `);
-  console.log(target);
   return target !== cardId;
 }
 

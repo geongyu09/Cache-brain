@@ -4,7 +4,7 @@ import EditDetailSection from "./EditDetailSection";
 import EditContentsSection from "./EditContentsSection";
 import useSWR from "swr";
 import { DetailCard } from "@/model/card";
-import { GET_CARD_URL } from "@/service/urls";
+import { GET_CARD_URL } from "@/utils/urls";
 
 type Props = {
   cardId: string;

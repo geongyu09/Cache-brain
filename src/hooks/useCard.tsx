@@ -1,6 +1,8 @@
 "use client";
+import { updateProgress } from "@/apis/card";
 import { Review } from "@/components/\bAssessment";
 import { CardContent, DetailCard } from "@/model/card";
+import { GET_CARD_URL } from "@/utils/urls";
 import { useCallback } from "react";
 import useSWR from "swr";
 
@@ -14,17 +16,20 @@ function chagneProcessMesure(progress: Review) {
     : -1;
 }
 
-async function setProgress(item: CardContent, progress: number, url: string) {
-  await fetch(url, {
-    method: "PUT",
-    body: JSON.stringify({ content: item, progress: progress }),
-  });
-  return await fetch(url).then((res) => res.json());
+async function setProgress(
+  item: CardContent,
+  progress: number,
+  url: string,
+  optimisticData: DetailCard
+) {
+  await updateProgress(url, item, progress);
+  return optimisticData;
 }
 
 export default function useCard(cardId: string) {
-  const GET_CARD_URL = `/api/card/detail/${cardId}`;
-  const { data, isLoading, error, mutate } = useSWR<DetailCard>(GET_CARD_URL);
+  const { data, isLoading, error, mutate } = useSWR<DetailCard>(
+    GET_CARD_URL + cardId
+  );
 
   const updateProgress = useCallback(
     (content: CardContent, progress: Review) => {
@@ -35,11 +40,15 @@ export default function useCard(cardId: string) {
             return { ...item, progress: processMesure };
           return item;
         }) || [];
-      mutate(setProgress(content, processMesure, GET_CARD_URL), {
-        optimisticData: { ...data!, content: newContents },
-      });
+      const optimisticData = { ...data!, content: newContents };
+      mutate(
+        setProgress(content, processMesure, GET_CARD_URL, optimisticData),
+        {
+          optimisticData,
+        }
+      );
     },
-    [GET_CARD_URL, data, mutate]
+    [data, mutate]
   );
 
   return { data, isLoading, error, updateProgress };

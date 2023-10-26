@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import StyledButton from "./ui/StyledButton";
-import { importCardToOwn } from "@/service/apis";
+import { importCardToOwn } from "@/apis/card";
 
 type Props = {
   cardId: string;
