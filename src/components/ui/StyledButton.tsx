@@ -1,7 +1,3 @@
-"use client";
-
-import React from "react";
-
 type Props = {
   text: string;
   style?: string;
@@ -11,8 +7,8 @@ type Props = {
 
 export default function StyledButton({
   text,
-  handler,
   style,
+  handler,
   disabled,
 }: Props) {
   return (

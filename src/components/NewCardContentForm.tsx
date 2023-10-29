@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import StyledButton from "./ui/StyledButton";
 import { CardStateContent, CardState } from "@/model/card";
 import NewCardTextarea from "./NewCardTextarea";
 import AddProblemButton from "./AddProblemButton";
@@ -45,7 +44,7 @@ export default function NewCardStateContentForm({
     e.preventDefault();
     const newContentArray = [
       ...card.content,
-      { ...content, _key: Date.now().toString() },
+      { ...content, _key: Date.now().toString(), progress: 0 },
     ];
     setCard((prev) => ({ ...prev, content: newContentArray }));
     setContent(DEFAULT_CONTENT);

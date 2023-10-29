@@ -3,16 +3,11 @@ import React from "react";
 import EditSaveButton from "./EditSaveButton";
 
 type Props = {
-  card: DetailCard;
   editCard: DetailCard;
   setEditCard: React.Dispatch<React.SetStateAction<DetailCard | undefined>>;
 };
 
-export default function EditDetailSection({
-  card,
-  editCard,
-  setEditCard,
-}: Props) {
+export default function EditDetailSection({ editCard, setEditCard }: Props) {
   const onChange = (value: string, target: "title" | "description") => {
     setEditCard((prev) => {
       if (target == "title")

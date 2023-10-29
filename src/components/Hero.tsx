@@ -2,13 +2,14 @@
 import useSWR from "swr";
 import React from "react";
 import { HomeUser } from "@/model/user";
+import { GET_LOGEDIN_INFO } from "@/utils/urls";
 
 export default function Hero() {
   const {
     data: user,
-    isLoading,
-    error,
-  } = useSWR<HomeUser>("/api/user/loggedInUser");
+    // isLoading,
+    // error,
+  } = useSWR<HomeUser>(GET_LOGEDIN_INFO);
 
   return (
     <>

@@ -1,7 +1,11 @@
-import React from "react";
 import StyledButton from "./ui/StyledButton";
 import { CardState } from "@/model/card";
 import { useSWRConfig } from "swr";
+import {
+  GET_ALL_CARDS_URL,
+  GET_OWN_CARDS_URL,
+  MAKE_NEW_CARD_URL,
+} from "@/utils/urls";
 
 type Props = {
   card: CardState;
@@ -9,11 +13,7 @@ type Props = {
   setDone: (done: boolean) => void;
 };
 export default function CreateCardButton({ card, setLoading, setDone }: Props) {
-  const MAKE_NEW_CARD_URL = "/api/card/create";
-  const GET_ALL_CARD_URL = "/api/card/all";
-  const GET_OWN_CARD_URL = "/api/card/own";
   const { mutate } = useSWRConfig();
-
   const makeNewCard = (card: CardState) => {
     fetch(MAKE_NEW_CARD_URL, {
       method: "POST",
@@ -21,8 +21,8 @@ export default function CreateCardButton({ card, setLoading, setDone }: Props) {
     }).then(() => {
       setLoading(false);
       setDone(true);
-      mutate(GET_ALL_CARD_URL);
-      mutate(GET_OWN_CARD_URL);
+      mutate(GET_ALL_CARDS_URL);
+      mutate(GET_OWN_CARDS_URL);
     });
   };
   return (

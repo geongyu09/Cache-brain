@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import LoginButton from "./LoginButton";
-import { useSession } from "next-auth/react";
 
 export default function HomeLoginComponent() {
   const [show, setShow] = useState(false);

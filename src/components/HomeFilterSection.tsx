@@ -2,13 +2,13 @@
 import React, { useState } from "react";
 import { Filter } from "./StudyComponent";
 import StyledButton from "./ui/StyledButton";
-import { Content } from "@/model/learningCard";
 import HomeContentList from "./HomeContentList";
+import { CardContent } from "@/model/card";
 
 export default function HomeFilterSection() {
   const [filter, setFilter] = useState<Filter>("all");
-  const [selected, setSelected] = useState<Content[]>([]);
-  const content: Content[] = [
+  const [selected, setSelected] = useState<CardContent[]>([]);
+  const content: CardContent[] = [
     {
       problem: "WIP",
 
@@ -95,7 +95,7 @@ export default function HomeFilterSection() {
   const unlearned = content.filter((item) => {
     if (item.progress == 0) return item;
   });
-  const selectedModify = (selected: Content, remove?: boolean) => {
+  const selectedModify = (selected: CardContent, remove?: boolean) => {
     if (remove) {
       setSelected((prev) => prev.filter((item) => item._key !== selected._key));
       return;

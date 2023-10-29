@@ -1,18 +1,12 @@
 import { DetailCard } from "@/model/card";
-import React from "react";
 import AddContentButton from "./AddContentButton";
 
 type Props = {
-  card: DetailCard;
   editCard: DetailCard;
   setEditCard: React.Dispatch<React.SetStateAction<DetailCard | undefined>>;
 };
 
-export default function EditContentsSection({
-  card,
-  editCard,
-  setEditCard,
-}: Props) {
+export default function EditContentsSection({ editCard, setEditCard }: Props) {
   const onChange = (
     key: string,
     value: string,
@@ -31,7 +25,7 @@ export default function EditContentsSection({
   };
   return (
     <section className="h-[100vh] flex flex-col p-5 pb-[80px] ">
-      <ul className="w-full max-h-screen grow overflow-auto">
+      <ul className="w-full max-h-screen grow overflow-y-scroll ">
         {editCard.content.map((item) => (
           <li key={item._key} className="bg-slate-200 mb-5 p-5 rounded-lg">
             <input

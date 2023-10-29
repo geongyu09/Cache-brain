@@ -30,3 +30,10 @@ export async function getUserInfo(
   }${learning ? `learning[]->` : ""}}[0]`;
   return await client.fetch(query);
 }
+
+export async function getUserById(userId: string): Promise<HomeUser> {
+  const query = `*[_type == "user" && _id == "${userId}"]{"id":_id,name,username,image}[0]`;
+  const data = await client.fetch(query);
+  console.log(data);
+  return data;
+}

@@ -1,8 +1,8 @@
-import { Content } from "@/model/learningCard";
 import React from "react";
 import Assessment from "./\bAssessment";
+import { CardContent } from "@/model/card";
 type Props = {
-  item: Content;
+  item: CardContent;
   index: number;
   params: string;
   showAnswer: boolean;

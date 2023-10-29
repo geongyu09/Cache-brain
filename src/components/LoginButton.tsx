@@ -15,7 +15,7 @@ export default function LoginButton() {
 
   if (user) text = "로그아웃";
   const handleLogin = user ? () => signOut() : () => signIn();
-  const handleRoute = () => router.push(`/${user?.username}`);
+  const handleRoute = () => router.push(`/cards`);
   return (
     <>
       <StyledButton text={text} handler={handleLogin} />

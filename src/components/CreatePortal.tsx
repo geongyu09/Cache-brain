@@ -1,11 +1,12 @@
 import React from "react";
 import { createPortal } from "react-dom";
 import Modal from "./Modal";
-import { Content } from "@/model/learningCard";
+import { CardContent } from "@/model/card";
+
 type Props = {
   showModal: boolean;
   handleShowModal: () => void;
-  selected: Content[];
+  selected: CardContent[];
   params: string;
 };
 export default function CreatePortal({

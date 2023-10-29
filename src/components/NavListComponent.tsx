@@ -5,14 +5,12 @@ import { NavBar } from "./NavigateSection";
 type Props = {
   style?: string;
   content: NavBar;
-  username?: string;
   setNavigation: React.Dispatch<React.SetStateAction<NavBar>>;
 };
 
 export default function NavListComponent({
   content,
   style,
-  username,
   setNavigation,
 }: Props) {
   const { title, list } = content;
@@ -34,7 +32,7 @@ export default function NavListComponent({
         {list.map((item, index) => (
           <Link
             key={index}
-            href={`/${username}${item.url}`}
+            href={`/cards${item.url}`}
             onClick={() => handleClick(index)}
           >
             <li

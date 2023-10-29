@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 import StyledButton from "./ui/StyledButton";
-import { Content } from "@/model/learningCard";
+import { CardContent } from "@/model/card";
 
 type Props = {
-  selected: Content[];
+  selected: CardContent[];
   handleShowModal: () => void;
 };
 

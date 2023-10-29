@@ -27,7 +27,12 @@ export default function AddContentButton({ content, setEditCard }: Props) {
           ...prev!,
           content: [
             ...prev!.content,
-            { _key: Date.now().toString(), problem: "", answer: "" },
+            {
+              _key: Date.now().toString(),
+              problem: "",
+              answer: "",
+              progress: 0,
+            },
           ],
         };
       return { ...prev! };

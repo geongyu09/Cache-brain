@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { Book, Complete, Instudy, Own } from "./ui/icon";
 import NavListComponent from "./NavListComponent";
-import { useSession } from "next-auth/react";
 import MainIcon from "./MainIcon";
 import Hero from "./Hero";
 import { usePathname } from "next/navigation";
@@ -45,8 +44,6 @@ const DefaultList = [
 ];
 
 export default function NavigateSection() {
-  const session = useSession();
-  const username = session?.data?.user.username;
   const URL = usePathname().split("/").pop();
   const [Navigation, setNavigation] = useState<NavBar>({
     title: "Navigation",
@@ -56,14 +53,14 @@ export default function NavigateSection() {
     setNavigation((prev) => ({
       ...prev,
       list: prev.list.map((item, index) => {
-        if (index == 0) return { ...item, isOnUrl: URL == username };
+        if (index == 0) return { ...item, isOnUrl: URL == "cards" };
         if (index == 1) return { ...item, isOnUrl: URL == "own" };
         if (index == 2) return { ...item, isOnUrl: URL == "instudy" };
         if (index == 3) return { ...item, isOnUrl: URL == "complete" };
         return item;
       }),
     }));
-  }, [username, URL]);
+  }, [URL]);
   //서버에서 북마크 정보 가지고 올 것.
   const Bookmarks: NavBar = {
     title: "Bookmarks",
@@ -72,16 +69,11 @@ export default function NavigateSection() {
   return (
     <section className="w-80 bg-slate-100 flex flex-col justify-between border-r-2">
       <MainIcon position="nav" />
-      <NavListComponent
-        content={Navigation}
-        setNavigation={setNavigation}
-        username={username}
-      />
+      <NavListComponent content={Navigation} setNavigation={setNavigation} />
       <NavListComponent
         content={Bookmarks}
         style="grow"
         setNavigation={setNavigation}
-        username={username}
       />
       <Hero />
     </section>

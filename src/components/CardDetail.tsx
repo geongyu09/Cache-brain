@@ -1,9 +1,8 @@
-import { DetailCard } from "@/model/card";
 import React from "react";
-import useSWR from "swr";
 import StudyButton from "./StudyButton";
 import DetailSection from "./DetailSection";
 import { Loading } from "./ui/icon";
+import useCard from "@/hooks/useCard";
 
 type Props = {
   id: string;
@@ -11,14 +10,14 @@ type Props = {
 };
 
 export default function CardDetail({ id, username }: Props) {
-  const GET_CARD_URL = `/api/card/detail/${id}`;
-  const { data: card, isLoading, error } = useSWR<DetailCard>(GET_CARD_URL);
+  const { data: card, isLoading, error } = useCard(id);
   return (
     <section className="bg-slate-100 w-full max-w-sm h-[90%] overflow-auto ">
       {isLoading && <Loading />}
       {card && (
         <DetailSection
           card={card}
+          isNewPage={false}
           username={username}
           btn={<StudyButton cardId={card.id} />}
         />

@@ -1,17 +1,17 @@
 "use client";
-import useStudy from "@/hooks/useStudy";
-import { Content } from "@/model/learningCard";
+import useCard from "@/hooks/useCard";
+import { CardContent } from "@/model/card";
 import React, { useState } from "react";
 
 type Props = {
   params: string;
-  item: Content;
+  item: CardContent;
 };
 export type Review = "none" | "good" | "soso" | "again";
 
 export default function Assessment({ item, params }: Props) {
   const [clicked, setClicked] = useState<Review>("none");
-  const { updateProgress } = useStudy(params);
+  const { updateProgress } = useCard(params);
   const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     const updateNumber = event.currentTarget.id as Review;
     setClicked(updateNumber);

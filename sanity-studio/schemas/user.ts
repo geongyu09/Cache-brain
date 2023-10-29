@@ -29,16 +29,5 @@ export default {
         },
       ],
     },
-    {
-      type: 'array',
-      name: 'learning',
-      title: 'Learning',
-      of: [
-        {
-          type: 'reference',
-          to: [{type: 'learningCard'}],
-        },
-      ],
-    },
   ],
 }

@@ -1,5 +1,4 @@
 import EditPageSection from "@/components/EditPageSection";
-import React from "react";
 
 type Props = {
   params: {
