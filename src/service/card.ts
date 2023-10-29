@@ -6,7 +6,6 @@ import {
   DetailCard,
 } from "@/model/card";
 import { client } from "./sanity";
-import { getUserById } from "./user";
 
 export async function getCards({
   ownList,
@@ -91,4 +90,16 @@ export async function isAlreadyImport(cardId: string, userId: string) {
   return target !== cardId;
 }
 
-export async function editCard() {}
+export async function editCard(editedCard: DetailCard) {
+  const { title, description, tags, content, id } = editedCard;
+  console.log(id);
+  return await client
+    .patch(id)
+    .set({
+      title,
+      description,
+      tags,
+      content,
+    })
+    .commit();
+}

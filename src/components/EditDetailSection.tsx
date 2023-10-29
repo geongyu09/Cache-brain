@@ -3,7 +3,6 @@ import React from "react";
 import EditSaveButton from "./EditSaveButton";
 
 type Props = {
-  card: DetailCard;
   editCard: DetailCard;
   setEditCard: React.Dispatch<React.SetStateAction<DetailCard | undefined>>;
 };

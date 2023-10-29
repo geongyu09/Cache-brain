@@ -1,5 +1,5 @@
-import { CardContent } from "@/model/card";
-import { IMPORT_URL } from "../utils/urls";
+import { CardContent, DetailCard } from "@/model/card";
+import { CARD_EDIT_URL, IMPORT_URL } from "../utils/urls";
 
 export const importCardToOwn = async (
   cardId: string,
@@ -23,3 +23,6 @@ export const updateProgress = async (
     body: JSON.stringify({ content: item, progress: progress }),
   });
 };
+
+export const updateCard = async (editCard: DetailCard) =>
+  await fetch(CARD_EDIT_URL, { method: "PUT", body: JSON.stringify(editCard) });

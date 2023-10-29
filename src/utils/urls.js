@@ -4,3 +4,4 @@ export const GET_ALL_CARDS_URL = "/api/card/all";
 export const GET_CARD_URL = "/api/card/detail/";
 export const GET_LOGEDIN_INFO = "/api/user/loggedInUser";
 export const MAKE_NEW_CARD_URL = "/api/card/create";
+export const CARD_EDIT_URL = "/api/card/edit";
