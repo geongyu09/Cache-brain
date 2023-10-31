@@ -1,4 +1,3 @@
-import React from "react";
 import List from "./List";
 import { Card } from "@/model/card";
 import Link from "next/link";

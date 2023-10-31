@@ -23,30 +23,35 @@ export default function EditContentsSection({ editCard, setEditCard }: Props) {
       }),
     }));
   };
+
   return (
     <section className="h-[100vh] flex flex-col p-5 pb-[80px] ">
       <ul className="w-full max-h-screen grow overflow-y-scroll ">
-        {editCard.content.map((item) => (
-          <li key={item._key} className="bg-slate-200 mb-5 p-5 rounded-lg">
-            <input
-              type="text"
-              className="w-full mb-2 bg-inherit outline-none"
-              value={item.problem}
-              onChange={(e) => {
-                onChange(item._key, e.target.value, "problem");
-              }}
-              placeholder="Problem : "
-            />
-            <textarea
-              className="w-full h-min bg-inherit outline-none resize-none overflow-auto"
-              value={item.answer}
-              onChange={(e) => {
-                onChange(item._key, e.target.value, "answer");
-              }}
-              placeholder="Answer : "
-            />
-          </li>
-        ))}
+        {editCard.content.map((item) => {
+          const height = item.answer.split("\n").length * 24;
+          return (
+            <li key={item._key} className="bg-slate-200 mb-5 p-5 rounded-lg">
+              <input
+                type="text"
+                className="w-full mb-2 bg-inherit outline-none"
+                value={item.problem}
+                onChange={(e) => {
+                  onChange(item._key, e.target.value, "problem");
+                }}
+                placeholder="Problem : "
+              />
+              <textarea
+                className={`w-full bg-inherit outline-none resize-none overflow-auto`}
+                value={item.answer}
+                style={{ height: `${height}px` }}
+                onChange={(e) => {
+                  onChange(item._key, e.target.value, "answer");
+                }}
+                placeholder="Answer : "
+              />
+            </li>
+          );
+        })}
       </ul>
       <AddContentButton setEditCard={setEditCard} content={editCard.content} />
     </section>

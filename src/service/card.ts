@@ -92,7 +92,6 @@ export async function isAlreadyImport(cardId: string, userId: string) {
 
 export async function editCard(editedCard: DetailCard) {
   const { title, description, tags, content, id } = editedCard;
-  console.log(id);
   return await client
     .patch(id)
     .set({

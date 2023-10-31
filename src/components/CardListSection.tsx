@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import useSWR from "swr";
 import { Card } from "@/model/card";
 import CardList from "./CardList";

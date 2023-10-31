@@ -4,7 +4,7 @@ import HomeFilterSection from "@/components/HomeFilterSection";
 
 export default async function HomePage() {
   return (
-    <section className="border-b-2">
+    <section className="border-b-2 mx-auto">
       <section className="w-[100vw] h-[100vh] bg-slate-50 flex justify-between items-center flex-col mx-auto">
         <div className=" mt-60 text-center">
           <h1 className="text-6xl">Cache Brain</h1>

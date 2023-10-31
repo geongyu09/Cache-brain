@@ -15,6 +15,5 @@ export async function PUT(request: Request) {
       status: 401,
     });
   const data = await editCard(body);
-  console.log(data);
   return new Response(JSON.stringify(data));
 }
