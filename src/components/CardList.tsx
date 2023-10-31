@@ -9,7 +9,7 @@ type Props = {
 
 export default function CardList({ cards, modify }: Props) {
   return (
-    <ul className="grow w-full h-5/6 mx-5 overflow-y-auto">
+    <ul className="grow w-full h-5/6 mx-5 overflow-y-auto cursor-default">
       {cards.length == 0 || cards == undefined ? (
         <div>
           no cards.. How about make your own card!{"  "}
