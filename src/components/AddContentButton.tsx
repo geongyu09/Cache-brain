@@ -41,7 +41,7 @@ export default function AddContentButton({ content, setEditCard }: Props) {
   return (
     <StyledButton
       text="Add content"
-      style={`${
+      style={`w-full ${
         !isOkToCreate
           ? "bg-gray-600 hover:opacity-100 cursor-not-allowed shrink-0"
           : "shrink-0 bg-indigo-600"
