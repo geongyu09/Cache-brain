@@ -1,7 +1,7 @@
 import { DetailCard } from "@/model/card";
 import AddContentButton from "./AddContentButton";
 import { ChangeEvent } from "react";
-import { Delete } from "./ui/icon";
+import ListDeleteBtn from "./ListDeleteBtn";
 
 type Props = {
   editCard: DetailCard;
@@ -62,9 +62,7 @@ export default function EditContentsSection({ editCard, setEditCard }: Props) {
                   placeholder="Answer : "
                 />
               </div>
-              <button className=" flex w-1/12 min-h-full bg-slate-600 justify-center items-center">
-                <Delete />
-              </button>
+              <ListDeleteBtn target={item} setEditCard={setEditCard} />
             </li>
           );
         })}
