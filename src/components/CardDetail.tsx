@@ -1,4 +1,3 @@
-import React from "react";
 import StudyButton from "./StudyButton";
 import DetailSection from "./DetailSection";
 import { Loading } from "./ui/icon";

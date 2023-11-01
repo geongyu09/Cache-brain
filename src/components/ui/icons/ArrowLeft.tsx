@@ -1,4 +1,3 @@
-import React from "react";
 import { IoIosArrowBack } from "react-icons/io";
 
 export default function ArrowLeft() {

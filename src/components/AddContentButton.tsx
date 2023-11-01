@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import StyledButton from "./ui/StyledButton";
 import { CardContent, DetailCard } from "@/model/card";
 

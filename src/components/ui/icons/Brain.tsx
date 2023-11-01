@@ -1,4 +1,3 @@
-import React from "react";
 import { BiSolidBrain } from "react-icons/bi";
 
 export default function Brain() {

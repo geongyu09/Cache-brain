@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function page() {
-  return <div>contact</div>;
+  return <section className="w-full h-full flex bg-slate-200">contact</section>;
 }

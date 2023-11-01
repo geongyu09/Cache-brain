@@ -1,7 +1,7 @@
 "use client";
 import useCard from "@/hooks/useCard";
 import { CardContent } from "@/model/card";
-import React, { useState } from "react";
+import { useState } from "react";
 
 type Props = {
   params: string;
