@@ -1,4 +1,3 @@
-import React from "react";
 import HeaderForm from "./HeaderForm";
 import Link from "next/link";
 import NewCardButton from "./NewCardButton";
@@ -15,13 +14,13 @@ export default async function Header({ position }: Props) {
       {position == "detail" ? <HeaderForm /> : <MainIcon position="header" />}
       <nav className="flex w-full max-w-lg justify-between items-center">
         <Link href={"/"}>
-          <h3>home</h3>
+          <h3 className="hover:text-slate-600">home</h3>
         </Link>
         <Link href={`/cards`}>
-          <h3>cards</h3>
+          <h3 className="hover:text-slate-600">cards</h3>
         </Link>
         <Link href={"/contact"}>
-          <h3>contact</h3>
+          <h3 className="hover:text-slate-600">contact</h3>
         </Link>
         {position !== "new" ? <NewCardButton /> : <RouteBackButton />}
       </nav>
