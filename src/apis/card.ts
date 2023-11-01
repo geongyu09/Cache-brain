@@ -1,5 +1,6 @@
 import { CardContent, DetailCard } from "@/model/card";
 import { CARD_EDIT_URL, IMPORT_URL } from "../utils/urls";
+import { Dispatch, SetStateAction } from "react";
 
 export const importCardToOwn = async (
   cardId: string,
@@ -24,5 +25,11 @@ export const updateProgress = async (
   });
 };
 
-export const updateCard = async (editCard: DetailCard) =>
+export const updateCard = async (
+  editCard: DetailCard,
+  modify: Dispatch<SetStateAction<boolean>>
+) => {
+  modify(true);
   await fetch(CARD_EDIT_URL, { method: "PUT", body: JSON.stringify(editCard) });
+  modify(false);
+};
