@@ -15,7 +15,7 @@ export default function ListDeleteBtn({ target, setEditCard }: Props) {
   };
   return (
     <button
-      className="flex w-1/12 min-h-full bg-slate-600 justify-center items-center"
+      className="flex w-1/12 min-h-full bg-indigo-200 justify-center items-center hover:bg-indigo-400"
       onClick={onClick}
     >
       <Delete />
