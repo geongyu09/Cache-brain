@@ -5,7 +5,10 @@ type Props = {
   isDone: boolean;
 };
 
-export default function AddProblemButton({ isLoading, isDone }: Props) {
+export default function AddProblemButton({
+  isLoading,
+  isDone,
+}: Readonly<Props>) {
   const disabled = Boolean(isLoading || isDone);
   return (
     <StyledButton

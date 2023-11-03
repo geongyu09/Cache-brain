@@ -12,7 +12,10 @@ type Props = {
   username: string;
 };
 
-export default function CardListContent({ typeOwn, username }: Props) {
+export default function CardListContent({
+  typeOwn,
+  username,
+}: Readonly<Props>) {
   const [focus, setFocus] = useState(""); //cardId
   const GET_CARDS_URL = typeOwn ? GET_OWN_CARDS_URL : GET_ALL_CARDS_URL;
 

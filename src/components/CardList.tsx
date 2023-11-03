@@ -7,7 +7,7 @@ type Props = {
   modify: (id: string) => void;
 };
 
-export default function CardList({ cards, modify }: Props) {
+export default function CardList({ cards, modify }: Readonly<Props>) {
   return (
     <ul className="grow w-full h-5/6 mx-5 overflow-y-auto cursor-default">
       {cards.length == 0 || cards == undefined ? (

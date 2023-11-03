@@ -9,7 +9,7 @@ type Props = {
 };
 export type Review = "none" | "good" | "soso" | "again";
 
-export default function Assessment({ item, params }: Props) {
+export default function Assessment({ item, params }: Readonly<Props>) {
   const [clicked, setClicked] = useState<Review>("none");
   const { updateProgress } = useCard(params);
   const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {

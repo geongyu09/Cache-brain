@@ -8,7 +8,7 @@ type Props = {
   params: string;
 };
 
-export default function Carousel({ selected, params }: Props) {
+export default function Carousel({ selected, params }: Readonly<Props>) {
   const [level, setLevel] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
 

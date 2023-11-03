@@ -1,4 +1,3 @@
-import React from "react";
 import { createPortal } from "react-dom";
 import Modal from "./Modal";
 import { CardContent } from "@/model/card";

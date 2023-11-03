@@ -8,7 +8,10 @@ type Props = {
   setEditCard: React.Dispatch<React.SetStateAction<DetailCard | undefined>>;
 };
 
-export default function AddContentButton({ content, setEditCard }: Props) {
+export default function AddContentButton({
+  content,
+  setEditCard,
+}: Readonly<Props>) {
   const [isOkToCreate, setIsOkToCreate] = useState(false);
   useEffect(() => {
     if (

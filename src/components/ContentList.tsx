@@ -1,5 +1,5 @@
 import { CardContent } from "@/model/card";
-import React from "react";
+
 type Props = {
   title: string;
   content: CardContent[];
