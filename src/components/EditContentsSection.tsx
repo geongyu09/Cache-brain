@@ -7,7 +7,10 @@ type Props = {
   setEditCard: React.Dispatch<React.SetStateAction<DetailCard | undefined>>;
 };
 
-export default function EditContentsSection({ editCard, setEditCard }: Props) {
+export default function EditContentsSection({
+  editCard,
+  setEditCard,
+}: Readonly<Props>) {
   return (
     <section className="h-[100vh] flex flex-col p-5 pb-[80px] ">
       <ul className="w-full max-h-screen grow overflow-y-scroll ">

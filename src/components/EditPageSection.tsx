@@ -10,7 +10,7 @@ type Props = {
   cardId: string;
 };
 
-export default function EditPageSection({ cardId }: Props) {
+export default function EditPageSection({ cardId }: Readonly<Props>) {
   const {
     data: card,
     // isLoading,

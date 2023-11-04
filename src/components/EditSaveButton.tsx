@@ -13,13 +13,11 @@ export default function EditSaveButton({ editCard }: Props) {
   if (isLoading) text = "저장중...";
 
   return (
-    <>
-      <StyledButton
-        text={text}
-        handler={() => updateCard(editCard, setIsLoading)}
-        style={`${isLoading ? "cursor-not-allowed bg-gray-600" : ""}`}
-        disabled={isLoading}
-      />
-    </>
+    <StyledButton
+      text={text}
+      handler={() => updateCard(editCard, setIsLoading)}
+      style={`${isLoading ? "cursor-not-allowed bg-gray-600" : ""}`}
+      disabled={isLoading}
+    />
   );
 }
