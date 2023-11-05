@@ -26,7 +26,7 @@ export default function LearningCardDetail({
   filter,
   handleShowModal,
   selected,
-}: Props) {
+}: Readonly<Props>) {
   const router = useRouter();
   const session = useSession();
   const userId = session.data?.user.id;
@@ -41,7 +41,7 @@ export default function LearningCardDetail({
       {card && (
         <>
           <h2 className="my-4 text-lg ">{card?.title}</h2>
-          <p>{card?.description}</p>
+          <pre className="whitespace-pre-wrap">{card?.description}</pre>
         </>
       )}
       <FilterComponent modify={modify} filter={filter} />

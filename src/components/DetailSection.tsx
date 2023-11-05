@@ -32,13 +32,13 @@ export default function DetailSection({
             : null}
         </div>
         <hr className="my-1" />
-        <p>{card?.description}</p>
+        <pre className="whitespace-pre-wrap">{card?.description}</pre>
       </div>
       <ul className="grow">
         {card?.content.map((item, index) => (
           <li key={index} className="bg-slate-200 rounded-xl p-4 my-2">
             <p className="mb-1">{`Q : ${item.problem}`}</p>
-            <p>{`A : ${item.answer}`}</p>
+            <pre className="whitespace-pre-wrap">{`A : ${item.answer}`}</pre>
           </li>
         ))}
       </ul>

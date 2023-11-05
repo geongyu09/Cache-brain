@@ -8,7 +8,9 @@ import { CardContent } from "@/model/card";
 export type Progress = "unlearned" | "learned" | "learning";
 export type Filter = "all" | Progress;
 
-export default function StudyComponent({ params }: { params: string }) {
+export default function StudyComponent({
+  params,
+}: Readonly<{ params: string }>) {
   const [filter, setFilter] = useState<Filter>("all");
   const [selected, setSelected] = useState<CardContent[]>([]);
   const [showModal, setShowModal] = useState(false);
