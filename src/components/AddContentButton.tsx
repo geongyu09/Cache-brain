@@ -18,7 +18,7 @@ export default function AddContentButton({
       !content.find(
         (item) => item.problem.trim() == "" || item.answer.trim() == ""
       ) &&
-      content.length! < 30
+      content.length < 30
     ) {
       setIsOkToCreate(true);
     } else setIsOkToCreate(false);

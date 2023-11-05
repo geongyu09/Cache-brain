@@ -5,9 +5,14 @@ import EditSaveButton from "./EditSaveButton";
 type Props = {
   editCard: DetailCard;
   setEditCard: React.Dispatch<React.SetStateAction<DetailCard | undefined>>;
+  isOk: boolean;
 };
 
-export default function EditDetailSection({ editCard, setEditCard }: Props) {
+export default function EditDetailSection({
+  editCard,
+  setEditCard,
+  isOk,
+}: Readonly<Props>) {
   const onChange = (value: string, target: "title" | "description") => {
     setEditCard((prev) => {
       if (target == "title")
@@ -41,7 +46,7 @@ export default function EditDetailSection({ editCard, setEditCard }: Props) {
         }}
         rows={7}
       />
-      <EditSaveButton editCard={editCard} />
+      <EditSaveButton editCard={editCard} isOk={isOk} />
     </section>
   );
 }

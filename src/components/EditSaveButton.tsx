@@ -5,9 +5,10 @@ import { useState } from "react";
 
 type Props = {
   editCard: DetailCard;
+  isOk: boolean;
 };
 
-export default function EditSaveButton({ editCard }: Props) {
+export default function EditSaveButton({ editCard, isOk }: Readonly<Props>) {
   const [isLoading, setIsLoading] = useState(false);
   let text = "save";
   if (isLoading) text = "저장중...";
@@ -16,7 +17,7 @@ export default function EditSaveButton({ editCard }: Props) {
     <StyledButton
       text={text}
       handler={() => updateCard(editCard, setIsLoading)}
-      style={`${isLoading ? "cursor-not-allowed bg-gray-600" : ""}`}
+      style={`${isLoading || !isOk ? "cursor-not-allowed bg-gray-600" : ""}`}
       disabled={isLoading}
     />
   );
