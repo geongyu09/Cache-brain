@@ -23,7 +23,7 @@ export default function LearningCardContent({
   selected,
   showModal,
   selectedModify,
-}: Props) {
+}: Readonly<Props>) {
   const learned = content.filter((item) => {
     if (item.progress == 2) return item;
   });

@@ -23,7 +23,7 @@ export default function DetailSection({
   isNewPage,
 }: Props) {
   return (
-    <section className="flex flex-col h-full p-5">
+    <section className="flex flex-col h-[92vh] p-5 pb-[80px]">
       <div>
         <div className="flex justify-between items-center">
           <h4 className="text-lg">{card?.title}</h4>

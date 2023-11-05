@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <section className="w-full h-[100vh] overflow-hidden">
       <Header position="study" />
