@@ -1,5 +1,5 @@
 import React from "react";
-import Assessment from "./\bAssessment";
+import Assessment from "./Assessment";
 import { CardContent } from "@/model/card";
 type Props = {
   item: CardContent;

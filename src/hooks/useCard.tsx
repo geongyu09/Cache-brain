@@ -1,6 +1,6 @@
 "use client";
 import { updateProgress } from "@/apis/card";
-import { Review } from "@/components/\bAssessment";
+import { Review } from "@/components/Assessment";
 import { CardContent, DetailCard } from "@/model/card";
 import { GET_CARD_URL } from "@/utils/urls";
 import { useCallback } from "react";
