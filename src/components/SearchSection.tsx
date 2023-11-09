@@ -1,7 +1,7 @@
 "use client";
 import useSWR from "swr";
 import { useState } from "react";
-// import CardList from "./CardList";
+import { Card } from "@/model/card";
 import StyledButton from "./ui/StyledButton";
 
 type Props = {
@@ -12,9 +12,9 @@ export default function SearchSection({ goBack }: Readonly<Props>) {
   const [keyword, setKeyword] = useState("");
   const {
     data: cards,
-    isLoading,
-    error,
-  } = useSWR(`api/card/search/${keyword}`);
+    // isLoading,
+    // error,
+  } = useSWR<Card[]>(`api/card/search/${keyword}`);
 
   return (
     <section className="w-full h-full absolute bg-white">
@@ -28,6 +28,9 @@ export default function SearchSection({ goBack }: Readonly<Props>) {
         />
         <StyledButton text="x" />
       </form>
+      {cards?.map((item) => (
+        <li key={item.id}>{item.title}</li>
+      ))}
       {/* <CardList cards={} /> */}
     </section>
   );
