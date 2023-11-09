@@ -15,6 +15,7 @@ export default function SearchSection({ goBack }: Readonly<Props>) {
     isLoading,
     error,
   } = useSWR(`api/card/search/${keyword}`);
+
   return (
     <section className="w-full h-full absolute bg-white">
       <form className="w-full pl-60 pr-20 flex justify-center items-center py-2 border-b-2 ">
