@@ -6,7 +6,7 @@ type Props = {
   style?: string;
 };
 
-export default function HeaderForm({ style }: Props) {
+export default function HeaderForm({ style }: Readonly<Props>) {
   const [focus, setFocus] = useState(false);
   return (
     <form className={`hidden lg:inline ${style}`}>

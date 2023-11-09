@@ -8,7 +8,7 @@ type Props = {
   position: "study" | "detail" | "new";
 };
 
-export default async function Header({ position }: Props) {
+export default async function Header({ position }: Readonly<Props>) {
   return (
     <header className="w-full flex justify-between items-center px-4 py-4 border-b-2 static">
       {position == "detail" ? <HeaderForm /> : <MainIcon position="header" />}

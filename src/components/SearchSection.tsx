@@ -3,6 +3,7 @@ import useSWR from "swr";
 import { useState } from "react";
 import { Card } from "@/model/card";
 import StyledButton from "./ui/StyledButton";
+import useDebounce from "@/hooks/useDebounce";
 
 type Props = {
   goBack: () => void;
@@ -10,11 +11,12 @@ type Props = {
 
 export default function SearchSection({ goBack }: Readonly<Props>) {
   const [keyword, setKeyword] = useState("");
+  const debouncedKeyword = useDebounce(keyword, 1000);
   const {
     data: cards,
     // isLoading,
     // error,
-  } = useSWR<Card[]>(`api/card/search/${keyword}`);
+  } = useSWR<Card[]>(`api/card/search/${debouncedKeyword}`);
 
   return (
     <section className="w-full h-full absolute bg-white">
@@ -31,7 +33,6 @@ export default function SearchSection({ goBack }: Readonly<Props>) {
       {cards?.map((item) => (
         <li key={item.id}>{item.title}</li>
       ))}
-      {/* <CardList cards={} /> */}
     </section>
   );
 }

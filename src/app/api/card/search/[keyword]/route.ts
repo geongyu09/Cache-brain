@@ -1,4 +1,4 @@
-import { serarchWithTag } from "@/service/card";
+import { searchCard } from "@/service/card";
 
 type Prop = {
   params: {
@@ -7,6 +7,6 @@ type Prop = {
 };
 
 export async function GET(_: Request, { params: { keyword } }: Prop) {
-  const data = await serarchWithTag(keyword);
+  const data = await searchCard(keyword);
   return new Response(JSON.stringify(data));
 }
