@@ -102,3 +102,10 @@ export async function editCard(editedCard: DetailCard) {
     })
     .commit();
 }
+
+export async function searchCard(keyword: string): Promise<Card[]> {
+  const query = `
+  *[_type == "card" && title == "${keyword}" || "${keyword}" in tags || owner->name == "${keyword}"]{"id":_id,title,description,tags ,"createdAt":_createdAt,"updatedAt":_updatedAt,owner->{name,username}}
+  `;
+  return await client.fetch(query);
+}
