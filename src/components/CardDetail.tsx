@@ -5,7 +5,7 @@ import useCard from "@/hooks/useCard";
 
 type Props = {
   id: string;
-  username: string;
+  username?: string;
 };
 
 export default function CardDetail({ id, username }: Readonly<Props>) {

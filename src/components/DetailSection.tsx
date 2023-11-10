@@ -5,7 +5,7 @@ import EditButton from "./EditButton";
 type Props =
   | {
       card: DetailCard;
-      username: string;
+      username?: string;
       btn?: React.ReactElement;
       isNewPage: false;
     }

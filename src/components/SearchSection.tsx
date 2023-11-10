@@ -1,9 +1,10 @@
 "use client";
 import useSWR from "swr";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card } from "@/model/card";
 import StyledButton from "./ui/StyledButton";
 import useDebounce from "@/hooks/useDebounce";
+import SearchContentSectoin from "./SearchContentSectoin";
 
 type Props = {
   goBack: () => void;
@@ -11,13 +12,16 @@ type Props = {
 
 export default function SearchSection({ goBack }: Readonly<Props>) {
   const [keyword, setKeyword] = useState("");
+  const [focus, setFocus] = useState("");
   const debouncedKeyword = useDebounce(keyword, 1000);
   const {
     data: cards,
     // isLoading,
     // error,
   } = useSWR<Card[]>(`api/card/search/${debouncedKeyword}`);
-
+  useEffect(() => {
+    setFocus("");
+  }, [keyword]);
   return (
     <section className="w-full h-full absolute bg-white">
       <form className="w-full pl-60 pr-20 flex justify-center items-center py-2 border-b-2 ">
@@ -28,11 +32,18 @@ export default function SearchSection({ goBack }: Readonly<Props>) {
           placeholder="input keyword"
           className="w-full text-xl px-6 py-3 mx-auto outline-none  border-l-2"
         />
-        <StyledButton text="x" />
+        <StyledButton
+          text="x"
+          handler={() => {
+            goBack();
+          }}
+        />
       </form>
-      {cards?.map((item) => (
-        <li key={item.id}>{item.title}</li>
-      ))}
+      <section className="w-full h-full max-w-6xl bg-slate-50 mx-auto overflow-y-auto">
+        {cards ? (
+          <SearchContentSectoin cards={cards} modify={setFocus} id={focus} />
+        ) : null}
+      </section>
     </section>
   );
 }

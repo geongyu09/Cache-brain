@@ -46,6 +46,12 @@ export default function EditDetailSection({
         }}
         rows={7}
       />
+      <div className="grow flex flex-col">
+        <h2>Tags</h2>
+        {editCard.tags.map((item, index) => (
+          <input key={index} value={item} />
+        ))}
+      </div>
       <EditSaveButton editCard={editCard} isOk={isOk} />
     </section>
   );

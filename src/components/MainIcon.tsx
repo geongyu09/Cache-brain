@@ -5,10 +5,10 @@ type Props = {
   position: "header" | "nav";
 };
 
-export default function MainIcon({ position }: Props) {
+export default function MainIcon({ position }: Readonly<Props>) {
   return (
     <div
-      className={`flex z-50 relative gap-7 ${
+      className={`flex z-50 relative gap-7 cursor-default ${
         position == "nav" ? " w-full p-5" : ""
       }`}
     >

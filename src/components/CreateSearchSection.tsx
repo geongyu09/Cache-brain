@@ -6,7 +6,10 @@ type Props = {
   goBack: () => void;
 };
 
-export default function CreateSearchSection({ focus, goBack }: Props) {
+export default function CreateSearchSection({
+  focus,
+  goBack,
+}: Readonly<Props>) {
   return (
     <>
       {focus
