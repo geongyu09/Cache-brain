@@ -49,28 +49,40 @@ export default function EditDetailSection({
         rows={7}
       />
       <div className="grow flex flex-col">
-        <h2>Tags</h2>
+        <h2 className="text-lg font-semibold">Tags</h2>
         <form
+          className="w-full flex"
           onSubmit={(e) => {
             e.preventDefault();
             setEditCard((prev) => ({
               ...prev,
-              tags: [...prev?.tags, tagInput],
+              tags: [...prev?.tags, tagInput.trim()],
             }));
             setTagInput("");
           }}
         >
           <input
             type="text"
-            className="my-2"
             value={tagInput}
+            className="my-2 bg-inherit border-b-2 outline-none w-full"
             onChange={(e) => setTagInput(e.target.value)}
+            placeholder="Tag를 입력하세요!"
           />
           <button>insert</button>
         </form>
         <div className="flex flex-wrap gap-3">
           {editCard.tags.map((item, index) => (
-            <Tag key={index} tag={item} deleteBtn={true} />
+            <Tag
+              key={index}
+              tag={item}
+              deleteBtn={true}
+              deleteFn={() => {
+                setEditCard((prev) => ({
+                  ...prev,
+                  tags: prev?.tags.filter((_, i) => i !== index),
+                }));
+              }}
+            />
           ))}
         </div>
       </div>
