@@ -1,6 +1,7 @@
 import { DetailCard } from "@/model/card";
-import React from "react";
+import React, { useState } from "react";
 import EditSaveButton from "./EditSaveButton";
+import Tag from "./Tag";
 
 type Props = {
   editCard: DetailCard;
@@ -13,6 +14,7 @@ export default function EditDetailSection({
   setEditCard,
   isOk,
 }: Readonly<Props>) {
+  const [tagInput, setTagInput] = useState("");
   const onChange = (value: string, target: "title" | "description") => {
     setEditCard((prev) => {
       if (target == "title")
@@ -48,9 +50,29 @@ export default function EditDetailSection({
       />
       <div className="grow flex flex-col">
         <h2>Tags</h2>
-        {editCard.tags.map((item, index) => (
-          <input key={index} value={item} />
-        ))}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            setEditCard((prev) => ({
+              ...prev,
+              tags: [...prev?.tags, tagInput],
+            }));
+            setTagInput("");
+          }}
+        >
+          <input
+            type="text"
+            className="my-2"
+            value={tagInput}
+            onChange={(e) => setTagInput(e.target.value)}
+          />
+          <button>insert</button>
+        </form>
+        <div className="flex flex-wrap gap-3">
+          {editCard.tags.map((item, index) => (
+            <Tag key={index} tag={item} deleteBtn={true} />
+          ))}
+        </div>
       </div>
       <EditSaveButton editCard={editCard} isOk={isOk} />
     </section>
