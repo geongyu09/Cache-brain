@@ -1,6 +1,6 @@
 import { Card } from "@/model/card";
 import React from "react";
-import Tag from "./Tag";
+import Tag from "../../Tag";
 
 type Props = {
   card: Card;
@@ -15,6 +15,8 @@ export default function List({ card, modify }: Readonly<Props>) {
     <li
       className="flex justify-between items-center gap-10 border-b-2 p-5"
       onClick={onClick}
+      role="button"
+      tabIndex={0}
     >
       <div>
         <h4 className="text-lg">{`${card.title} / ${card.owner?.name}`}</h4>

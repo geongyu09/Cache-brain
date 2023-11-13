@@ -1,4 +1,4 @@
-import CardListContent from "@/components/CardListSection";
+import CardListContent from "@/components/pages/cards/CardListSection";
 import { authOptions } from "@/service/auth";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";

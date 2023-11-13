@@ -1,4 +1,4 @@
-import StyledButton from "./ui/StyledButton";
+import StyledButton from "../../ui/StyledButton";
 import { CardState } from "@/model/card";
 import { useSWRConfig } from "swr";
 import {
@@ -12,7 +12,11 @@ type Props = {
   setLoading: (loading: boolean) => void;
   setDone: (done: boolean) => void;
 };
-export default function CreateCardButton({ card, setLoading, setDone }: Props) {
+export default function CreateCardButton({
+  card,
+  setLoading,
+  setDone,
+}: Readonly<Props>) {
   const { mutate } = useSWRConfig();
   const makeNewCard = (card: CardState) => {
     fetch(MAKE_NEW_CARD_URL, {

@@ -1,6 +1,3 @@
-import { Card } from "@/model/card";
-import React from "react";
-
 type Props = {
   title: string;
   text: string;
@@ -13,9 +10,9 @@ export default function NewCardInput({
   text,
   setCard,
   readOnly,
-}: Props) {
+}: Readonly<Props>) {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const typedText = e.target.value as string;
+    const typedText = e.target.value;
     setCard(typedText);
   };
   return (

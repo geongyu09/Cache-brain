@@ -1,6 +1,5 @@
 import { CardState } from "@/model/card";
-import React from "react";
-import DetailSection from "./DetailSection";
+import DetailSection from "../../DetailSection";
 import CreateCardButton from "./CreateCardButton";
 import GoStudyButton from "./GoStudyButton";
 
@@ -16,7 +15,7 @@ export default function NewCardResult({
   isDone,
   setLoading,
   setDone,
-}: Props) {
+}: Readonly<Props>) {
   return (
     <DetailSection
       card={card}

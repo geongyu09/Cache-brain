@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Card } from "@/model/card";
 import CardList from "./CardList";
 import CardDetail from "./CardDetail";
-import { Loading } from "./ui/icon";
+import { Loading } from "../../ui/icon";
 import { GET_ALL_CARDS_URL, GET_OWN_CARDS_URL } from "@/utils/urls";
 
 type Props = {

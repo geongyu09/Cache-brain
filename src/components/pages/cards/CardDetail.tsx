@@ -1,6 +1,6 @@
 import StudyButton from "./StudyButton";
-import DetailSection from "./DetailSection";
-import { Loading } from "./ui/icon";
+import DetailSection from "../../DetailSection";
+import { Loading } from "../../ui/icon";
 import useCard from "@/hooks/useCard";
 
 type Props = {

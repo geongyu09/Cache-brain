@@ -1,4 +1,4 @@
-import LoginSection from "@/components/LoginSection";
+import LoginSection from "@/components/auth/signin/LoginSection";
 import { authOptions } from "@/service/auth";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";

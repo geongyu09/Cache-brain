@@ -19,7 +19,7 @@ export default function NewPageForm({
   setCard,
   setLoading,
   setDone,
-}: Props) {
+}: Readonly<Props>) {
   const inputItem = [
     {
       title: "카드 이름",
