@@ -5,6 +5,7 @@ import { Card } from "@/model/card";
 import StyledButton from "./ui/StyledButton";
 import useDebounce from "@/hooks/useDebounce";
 import SearchContentSectoin from "./SearchContentSectoin";
+import { Loading } from "./ui/icon";
 
 type Props = {
   goBack: () => void;
@@ -16,7 +17,7 @@ export default function SearchSection({ goBack }: Readonly<Props>) {
   const debouncedKeyword = useDebounce(keyword, 1000);
   const {
     data: cards,
-    // isLoading,
+    isLoading,
     // error,
   } = useSWR<Card[]>(`api/card/search/${debouncedKeyword}`);
   useEffect(() => {
@@ -39,7 +40,8 @@ export default function SearchSection({ goBack }: Readonly<Props>) {
           }}
         />
       </form>
-      <section className="w-full h-full max-w-6xl bg-slate-50 mx-auto overflow-y-auto">
+      <section className="w-full h-full max-w-6xl mx-auto overflow-y-auto">
+        {isLoading ? <Loading /> : null}
         {cards ? (
           <SearchContentSectoin cards={cards} modify={setFocus} id={focus} />
         ) : null}

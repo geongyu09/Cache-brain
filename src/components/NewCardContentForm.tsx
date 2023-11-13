@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { CardStateContent, CardState } from "@/model/card";
 import NewCardTextarea from "./NewCardTextarea";
 import AddProblemButton from "./AddProblemButton";
@@ -22,8 +22,9 @@ export default function NewCardStateContentForm({
   isDone,
   setCard,
   isLoading,
-}: Props) {
+}: Readonly<Props>) {
   const [content, setContent] = useState<CardStateContent>(DEFAULT_CONTENT);
+  const [isOkToAdd, setIsOkToAdd] = useState(false);
   const textareaItem = [
     {
       title: "문제",
@@ -40,6 +41,13 @@ export default function NewCardStateContentForm({
       },
     },
   ];
+  useEffect(() => {
+    const isNotEmpty: boolean = Boolean(
+      content.problem.length !== 0 && content.answer.length !== 0
+    );
+    setIsOkToAdd(isNotEmpty);
+  }, [content]);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newContentArray = [
@@ -67,7 +75,11 @@ export default function NewCardStateContentForm({
         contentMofify={textareaItem[1].contentMofify}
         readOnly={Boolean(isDone || isLoading)}
       />
-      <AddProblemButton isLoading={isLoading} isDone={isDone} />
+      <AddProblemButton
+        isLoading={isLoading}
+        isDone={isDone}
+        isOkToAdd={isOkToAdd}
+      />
     </form>
   );
 }

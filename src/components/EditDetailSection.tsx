@@ -1,7 +1,6 @@
 import { DetailCard } from "@/model/card";
-import React, { useState } from "react";
 import EditSaveButton from "./EditSaveButton";
-import Tag from "./Tag";
+import EditTag from "./EditTag";
 
 type Props = {
   editCard: DetailCard;
@@ -14,7 +13,6 @@ export default function EditDetailSection({
   setEditCard,
   isOk,
 }: Readonly<Props>) {
-  const [tagInput, setTagInput] = useState("");
   const onChange = (value: string, target: "title" | "description") => {
     setEditCard((prev) => {
       if (target == "title")
@@ -48,44 +46,7 @@ export default function EditDetailSection({
         }}
         rows={7}
       />
-      <div className="grow flex flex-col">
-        <h2 className="text-lg font-semibold">Tags</h2>
-        <form
-          className="w-full flex"
-          onSubmit={(e) => {
-            e.preventDefault();
-            setEditCard((prev) => ({
-              ...prev,
-              tags: [...prev?.tags, tagInput.trim()],
-            }));
-            setTagInput("");
-          }}
-        >
-          <input
-            type="text"
-            value={tagInput}
-            className="my-2 bg-inherit border-b-2 outline-none w-full"
-            onChange={(e) => setTagInput(e.target.value)}
-            placeholder="Tag를 입력하세요!"
-          />
-          <button>insert</button>
-        </form>
-        <div className="flex flex-wrap gap-3">
-          {editCard.tags.map((item, index) => (
-            <Tag
-              key={index}
-              tag={item}
-              deleteBtn={true}
-              deleteFn={() => {
-                setEditCard((prev) => ({
-                  ...prev,
-                  tags: prev?.tags.filter((_, i) => i !== index),
-                }));
-              }}
-            />
-          ))}
-        </div>
-      </div>
+      <EditTag editCard={editCard} setEditCard={setEditCard} />
       <EditSaveButton editCard={editCard} isOk={isOk} />
     </section>
   );

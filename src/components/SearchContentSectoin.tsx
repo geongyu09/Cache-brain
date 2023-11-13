@@ -15,9 +15,11 @@ export default function SearchContentSectoin({ cards, modify, id }: Props) {
   const session = useSession();
   const username = session.data?.user.username;
   return (
-    <section className="flex w-full h-full">
-      <CardList cards={cards} modify={modify} />
-      <CardDetail id={id} username={username} />
-    </section>
+    <>
+      <section className="flex w-full h-full">
+        <CardList cards={cards} modify={modify} />
+        <CardDetail id={id} username={username} />
+      </section>
+    </>
   );
 }
