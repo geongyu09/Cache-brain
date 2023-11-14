@@ -2,7 +2,7 @@ import HeaderForm from "./HeaderForm";
 import Link from "next/link";
 import NewCardButton from "./NewCardButton";
 import MainIcon from "./MainIcon";
-import RouteBackButton from "./RouteBackButton";
+import RouteBackButton from "../../RouteBackButton";
 
 type Props = {
   position: "study" | "detail" | "new";

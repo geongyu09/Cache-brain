@@ -2,7 +2,7 @@
 import React from "react";
 import ContentList from "./ContentList";
 import { Filter } from "./StudyComponent";
-import { Loading } from "./ui/icon";
+import { Loading } from "../../ui/icon";
 import { CardContent } from "@/model/card";
 
 type Props = {
@@ -18,7 +18,7 @@ type Props = {
 export default function LearningCardContent({
   content,
   isLoading,
-  error,
+  // error,
   filter,
   selected,
   showModal,

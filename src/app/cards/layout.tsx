@@ -1,5 +1,5 @@
-import Header from "@/components/Header";
-import NavigateSection from "@/components/NavigateSection";
+import Header from "@/components/pages/layout/Header";
+import NavigateSection from "@/components/pages/layout/NavigateSection";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

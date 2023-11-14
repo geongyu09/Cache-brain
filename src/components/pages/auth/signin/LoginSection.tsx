@@ -1,7 +1,7 @@
 "use client";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import StyledButton from "../../ui/StyledButton";
+import StyledButton from "../../../ui/StyledButton";
 
 export default function LoginSection() {
   const session = useSession();

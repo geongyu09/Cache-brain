@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import StyledButton from "./ui/StyledButton";
+import StyledButton from "../../ui/StyledButton";
 import { CardContent } from "@/model/card";
 
 type Props = {
@@ -8,7 +8,10 @@ type Props = {
   handleShowModal: () => void;
 };
 
-export default function StartButton({ handleShowModal, selected }: Props) {
+export default function StartButton({
+  handleShowModal,
+  selected,
+}: Readonly<Props>) {
   if (selected.length == 0)
     return (
       <StyledButton

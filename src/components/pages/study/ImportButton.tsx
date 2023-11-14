@@ -1,13 +1,13 @@
 "use client";
 import { useState } from "react";
-import StyledButton from "./ui/StyledButton";
+import StyledButton from "../../ui/StyledButton";
 import { importCardToOwn } from "@/apis/card";
 
 type Props = {
   cardId: string;
 };
 
-export default function ImportButton({ cardId }: Props) {
+export default function ImportButton({ cardId }: Readonly<Props>) {
   const [isLoading, setIsLoading] = useState(false);
   const text = isLoading ? "Loading..." : "import";
   const onClick = () => {

@@ -1,5 +1,5 @@
 import { CardState } from "@/model/card";
-import DetailSection from "../../DetailSection";
+import DetailSection from "../cards/DetailSection";
 import CreateCardButton from "./CreateCardButton";
 import GoStudyButton from "./GoStudyButton";
 

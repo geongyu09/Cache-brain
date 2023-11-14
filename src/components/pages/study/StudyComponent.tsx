@@ -2,7 +2,7 @@
 import { useState } from "react";
 import LearningCardDetail from "./LearningCardDetail";
 import LearningCardContent from "./LearningCardContent";
-import CreatePortal from "./CreatePortal";
+import CreatePortal from "./modal/CreatePortal";
 import useCard from "@/hooks/useCard";
 import { CardContent } from "@/model/card";
 export type Progress = "unlearned" | "learned" | "learning";

@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import StyledButton from "./ui/StyledButton";
+import StyledButton from "../../ui/StyledButton";
 import { CardContent, DetailCard } from "@/model/card";
 
 type Props = {

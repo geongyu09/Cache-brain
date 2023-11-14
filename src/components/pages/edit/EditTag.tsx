@@ -1,4 +1,4 @@
-import Tag from "./Tag";
+import Tag from "../../Tag";
 import React, { useState } from "react";
 import { DetailCard } from "@/model/card";
 

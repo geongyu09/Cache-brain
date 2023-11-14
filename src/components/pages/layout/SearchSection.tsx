@@ -2,10 +2,10 @@
 import useSWR from "swr";
 import { useEffect, useState } from "react";
 import { Card } from "@/model/card";
-import StyledButton from "./ui/StyledButton";
+import StyledButton from "../../ui/StyledButton";
 import useDebounce from "@/hooks/useDebounce";
 import SearchContentSectoin from "./SearchContentSectoin";
-import { Loading } from "./ui/icon";
+import { Loading } from "../../ui/icon";
 
 type Props = {
   goBack: () => void;

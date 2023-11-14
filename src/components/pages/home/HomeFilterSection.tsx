@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import { Filter } from "./StudyComponent";
-import StyledButton from "./ui/StyledButton";
+import { Filter } from "../study/StudyComponent";
+import StyledButton from "../../ui/StyledButton";
 import HomeContentList from "./HomeContentList";
 import { CardContent } from "@/model/card";
 

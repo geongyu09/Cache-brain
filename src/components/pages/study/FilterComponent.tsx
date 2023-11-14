@@ -7,7 +7,7 @@ type Props = {
   filter: Filter;
 };
 
-export default function FilterComponent({ modify, filter }: Props) {
+export default function FilterComponent({ modify, filter }: Readonly<Props>) {
   return (
     <section className="pt-20 grow">
       <h3 className="mb-5">모아 보기</h3>

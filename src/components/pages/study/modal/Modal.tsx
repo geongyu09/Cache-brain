@@ -1,6 +1,6 @@
 import React from "react";
 import Carousel from "./Carousel";
-import { Close } from "./ui/icon";
+import { Close } from "../../../ui/icon";
 import { CardContent } from "@/model/card";
 
 type Props = {

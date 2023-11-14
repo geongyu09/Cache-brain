@@ -1,4 +1,4 @@
-import EditPageSection from "@/components/EditPageSection";
+import EditPageSection from "@/components/pages/edit/EditPageSection";
 
 type Props = {
   params: {

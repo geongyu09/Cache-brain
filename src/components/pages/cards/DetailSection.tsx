@@ -1,6 +1,6 @@
 import { CardState, DetailCard } from "@/model/card";
 import React from "react";
-import EditButton from "./EditButton";
+import EditButton from "../edit/EditButton";
 
 type Props =
   | {

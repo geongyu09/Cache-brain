@@ -1,4 +1,4 @@
-import StudyComponent from "@/components/StudyComponent";
+import StudyComponent from "@/components/pages/study/StudyComponent";
 import React from "react";
 
 type Props = {

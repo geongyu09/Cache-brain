@@ -1,6 +1,6 @@
-import Footer from "../components/Footer";
-import HomeLoginComponent from "@/components/HomeLoginComponent";
-import HomeFilterSection from "@/components/HomeFilterSection";
+import Footer from "../components/pages/layout/Footer";
+import HomeLoginComponent from "@/components/pages/home/HomeLoginComponent";
+import HomeFilterSection from "@/components/pages/home/HomeFilterSection";
 
 export default async function HomePage() {
   return (

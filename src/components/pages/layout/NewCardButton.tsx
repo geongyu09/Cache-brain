@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import StyledButton from "./ui/StyledButton";
+import StyledButton from "../../ui/StyledButton";
 import { useRouter } from "next/navigation";
 
 export default function NewCardButton() {

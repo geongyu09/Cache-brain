@@ -4,7 +4,7 @@ import { Filter } from "./StudyComponent";
 import FilterComponent from "./FilterComponent";
 import { useRouter } from "next/navigation";
 import StartButton from "./StartButton";
-import { BackArrow, Loading } from "./ui/icon";
+import { BackArrow, Loading } from "../../ui/icon";
 import { useSession } from "next-auth/react";
 import ImportButton from "./ImportButton";
 

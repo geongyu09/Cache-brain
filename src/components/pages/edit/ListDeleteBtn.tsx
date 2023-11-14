@@ -1,12 +1,15 @@
 import { CardContent, DetailCard } from "@/model/card";
-import { Delete } from "./ui/icon";
+import { Delete } from "../../ui/icon";
 
 type Props = {
   target: CardContent;
   setEditCard: React.Dispatch<React.SetStateAction<DetailCard | undefined>>;
 };
 
-export default function ListDeleteBtn({ target, setEditCard }: Props) {
+export default function ListDeleteBtn({
+  target,
+  setEditCard,
+}: Readonly<Props>) {
   const onClick = () => {
     setEditCard((prev) => ({
       ...prev,

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Book, Complete, Instudy, Own } from "./ui/icon";
+import { Book, Complete, Instudy, Own } from "../../ui/icon";
 import NavListComponent from "./NavListComponent";
 import MainIcon from "./MainIcon";
 import Hero from "./Hero";

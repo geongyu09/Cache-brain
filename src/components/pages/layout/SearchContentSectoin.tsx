@@ -1,7 +1,7 @@
 "use client";
 import { Dispatch, SetStateAction } from "react";
-import CardList from "./pages/cards/CardList";
-import CardDetail from "./pages/cards/CardDetail";
+import CardList from "../cards/CardList";
+import CardDetail from "../cards/CardDetail";
 import { Card } from "@/model/card";
 import { useSession } from "next-auth/react";
 

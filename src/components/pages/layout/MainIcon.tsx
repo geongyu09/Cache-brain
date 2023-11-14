@@ -1,5 +1,5 @@
 import React from "react";
-import { Brain } from "./ui/icon";
+import { Brain } from "../../ui/icon";
 
 type Props = {
   position: "header" | "nav";

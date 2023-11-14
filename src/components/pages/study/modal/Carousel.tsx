@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import StudyContent from "./StudyContent";
-import { ArrowLeft, ArrowRight } from "./ui/icon";
+import { ArrowLeft, ArrowRight } from "../../../ui/icon";
 import { CardContent } from "@/model/card";
 type Props = {
   selected: CardContent[];

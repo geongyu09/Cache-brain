@@ -1,4 +1,4 @@
-import StyledButton from "./ui/StyledButton";
+import StyledButton from "../../ui/StyledButton";
 import { DetailCard } from "@/model/card";
 import { updateCard } from "@/apis/card";
 import { useState } from "react";

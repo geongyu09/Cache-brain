@@ -1,5 +1,5 @@
 import React from "react";
-import StyledButton from "./ui/StyledButton";
+import StyledButton from "../../ui/StyledButton";
 import Link from "next/link";
 
 type Props = {
