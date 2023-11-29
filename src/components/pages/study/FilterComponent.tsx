@@ -14,6 +14,7 @@ export default function FilterComponent({ modify, filter }: Readonly<Props>) {
       <ul className="flex flex-col gap-2">
         <li
           onClick={() => modify("all")}
+          onKeyDown={() => modify("all")}
           className={`cursor-pointer ${
             filter == "all" ? "text-purple-600" : ""
           }`}
@@ -22,6 +23,7 @@ export default function FilterComponent({ modify, filter }: Readonly<Props>) {
         </li>
         <li
           onClick={() => modify("learned")}
+          onKeyDown={() => modify("all")}
           className={`cursor-pointer ${
             filter == "learned" ? "text-purple-600" : ""
           }`}
@@ -30,6 +32,7 @@ export default function FilterComponent({ modify, filter }: Readonly<Props>) {
         </li>
         <li
           onClick={() => modify("learning")}
+          onKeyDown={() => modify("all")}
           className={`cursor-pointer ${
             filter == "learning" ? "text-purple-600" : ""
           }`}
@@ -38,6 +41,7 @@ export default function FilterComponent({ modify, filter }: Readonly<Props>) {
         </li>
         <li
           onClick={() => modify("unlearned")}
+          onKeyDown={() => modify("all")}
           className={`cursor-pointer ${
             filter == "unlearned" ? "text-purple-600" : ""
           }`}
