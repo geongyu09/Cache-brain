@@ -34,7 +34,11 @@ export default function LearningCardDetail({
 
   return (
     <section className="flex flex-col bg-slate-100 px-5 h-screen pb-[100px]">
-      <div onClick={() => router.back()} className="w-full border-b-2">
+      <div
+        onClick={() => router.back()}
+        onKeyDown={() => router.back()}
+        className="w-full border-b-2"
+      >
         <BackArrow />
       </div>
       {isLoading && <Loading />}
